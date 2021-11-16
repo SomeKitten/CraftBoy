@@ -1,0 +1,2 @@
+execute if score index craftboy matches 5312..5343 run function read:rom_10_1328
+execute if score index craftboy matches 5344..5375 run function read:rom_10_1336

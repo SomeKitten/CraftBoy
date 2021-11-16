@@ -1,0 +1,2 @@
+execute if score index craftboy matches 42240..42255 run function write:ram_9_320
+execute if score index craftboy matches 42256..42271 run function write:ram_9_324
