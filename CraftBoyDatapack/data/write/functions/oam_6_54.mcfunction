@@ -1,3 +1,3 @@
-execute if score index craftboy matches 65159 store result score 65159 oam run scoreboard players get transfer craftboy
-execute if score index craftboy matches 65160 store result score 65160 oam run scoreboard players get transfer craftboy
-execute if score index craftboy matches 65161 store result score 65161 oam run scoreboard players get transfer craftboy
+execute if score index craftboy matches 65159 run scoreboard players operation 65159 oam = transfer craftboy
+execute if score index craftboy matches 65160 run scoreboard players operation 65160 oam = transfer craftboy
+execute if score index craftboy matches 65161 run scoreboard players operation 65161 oam = transfer craftboy

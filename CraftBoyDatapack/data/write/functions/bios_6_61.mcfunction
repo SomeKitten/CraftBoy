@@ -1,4 +1,4 @@
-execute if score index craftboy matches 244 store result score 244 bios run scoreboard players get transfer craftboy
-execute if score index craftboy matches 245 store result score 245 bios run scoreboard players get transfer craftboy
-execute if score index craftboy matches 246 store result score 246 bios run scoreboard players get transfer craftboy
-execute if score index craftboy matches 247 store result score 247 bios run scoreboard players get transfer craftboy
+execute if score index craftboy matches 244 run scoreboard players operation 244 bios = transfer craftboy
+execute if score index craftboy matches 245 run scoreboard players operation 245 bios = transfer craftboy
+execute if score index craftboy matches 246 run scoreboard players operation 246 bios = transfer craftboy
+execute if score index craftboy matches 247 run scoreboard players operation 247 bios = transfer craftboy

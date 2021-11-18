@@ -1,1 +1,1 @@
-execute if score index craftboy matches 65535 store result score 65535 interrupt run scoreboard players get transfer craftboy
+execute if score index craftboy matches 65535 run scoreboard players operation 65535 interrupt = transfer craftboy
