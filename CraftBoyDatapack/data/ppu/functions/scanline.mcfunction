@@ -156,13 +156,13 @@ execute if score y ppu matches ..-1 run scoreboard players add y ppu 256
 execute if score y ppu matches 256.. run scoreboard players remove y ppu 256
 
 
-scoreboard players operation tmp_y ppu = y ppu
-scoreboard players operation tmp_y ppu /= 8 constants
-scoreboard players operation tileY ppu = tmp_y ppu
-scoreboard players operation tmp_y ppu *= 8 constants
+scoreboard players operation scanline ppu = y ppu
+scoreboard players operation scanline ppu /= 8 constants
+scoreboard players operation tileY ppu = scanline ppu
+scoreboard players operation scanline ppu *= 8 constants
 
 
-scoreboard players operation y ppu -= tmp_y ppu
+scoreboard players operation y ppu -= scanline ppu
 
 
 scoreboard players remove tileY ppu 31
@@ -181,7 +181,7 @@ scoreboard players operation in binary = 65351 io
 function util:binary_split3
 
 
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~160 ~ ~ minecraft:red_concrete
+execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:red_concrete
 
 
 execute if score 0_2 binary matches 1 run function ppu:tile
@@ -204,3 +204,10 @@ execute if score 0_2 binary matches 1 run function ppu:tile
 execute if score 0_2 binary matches 1 run function ppu:tile
 execute if score 0_2 binary matches 1 run function ppu:tile
 execute if score 0_2 binary matches 1 run function ppu:tile
+
+
+execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
+
+execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~7 ~ ~ minecraft:red_concrete
+
+function ppu:sprites

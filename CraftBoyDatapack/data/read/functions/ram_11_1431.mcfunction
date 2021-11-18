@@ -1,4 +1,4 @@
-execute if score index craftboy matches 46684 store result score transfer craftboy run scoreboard players get 46684 ram
-execute if score index craftboy matches 46685 store result score transfer craftboy run scoreboard players get 46685 ram
-execute if score index craftboy matches 46686 store result score transfer craftboy run scoreboard players get 46686 ram
-execute if score index craftboy matches 46687 store result score transfer craftboy run scoreboard players get 46687 ram
+execute if score index craftboy matches 46684 run scoreboard players operation transfer craftboy = 46684 ram
+execute if score index craftboy matches 46685 run scoreboard players operation transfer craftboy = 46685 ram
+execute if score index craftboy matches 46686 run scoreboard players operation transfer craftboy = 46686 ram
+execute if score index craftboy matches 46687 run scoreboard players operation transfer craftboy = 46687 ram

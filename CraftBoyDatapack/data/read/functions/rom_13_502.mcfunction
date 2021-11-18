@@ -1,4 +1,4 @@
-execute if score index craftboy matches 2008 store result score transfer craftboy run scoreboard players get 2008 rom
-execute if score index craftboy matches 2009 store result score transfer craftboy run scoreboard players get 2009 rom
-execute if score index craftboy matches 2010 store result score transfer craftboy run scoreboard players get 2010 rom
-execute if score index craftboy matches 2011 store result score transfer craftboy run scoreboard players get 2011 rom
+execute if score index craftboy matches 2008 run scoreboard players operation transfer craftboy = 2008 rom
+execute if score index craftboy matches 2009 run scoreboard players operation transfer craftboy = 2009 rom
+execute if score index craftboy matches 2010 run scoreboard players operation transfer craftboy = 2010 rom
+execute if score index craftboy matches 2011 run scoreboard players operation transfer craftboy = 2011 rom
