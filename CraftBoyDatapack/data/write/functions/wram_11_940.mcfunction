@@ -1,4 +1,4 @@
-execute if score index craftboy matches 52912 store result score 52912 wram run scoreboard players get transfer craftboy
-execute if score index craftboy matches 52913 store result score 52913 wram run scoreboard players get transfer craftboy
-execute if score index craftboy matches 52914 store result score 52914 wram run scoreboard players get transfer craftboy
-execute if score index craftboy matches 52915 store result score 52915 wram run scoreboard players get transfer craftboy
+execute if score index craftboy matches 52912 run scoreboard players operation 52912 wram = transfer craftboy
+execute if score index craftboy matches 52913 run scoreboard players operation 52913 wram = transfer craftboy
+execute if score index craftboy matches 52914 run scoreboard players operation 52914 wram = transfer craftboy
+execute if score index craftboy matches 52915 run scoreboard players operation 52915 wram = transfer craftboy

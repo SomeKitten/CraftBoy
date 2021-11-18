@@ -1,16 +1,6 @@
 local read_directory = "./CraftBoyDatapack/data/read/functions/"
 local write_directory = "./CraftBoyDatapack/data/write/functions/"
 
-command_read = {
-    "execute if score index craftboy matches ",
-    " store result score transfer craftboy run scoreboard players get ", " ",
-    "\n"
-}
-command_write = {
-    "execute if score index craftboy matches ", " store result score ", " ",
-    " run scoreboard players get transfer craftboy\n"
-}
-
 local recursions = 0
 
 function recursive(depth, unique_name, scoreboard, min, max)
@@ -64,7 +54,7 @@ function recursive(depth, unique_name, scoreboard, min, max)
             if i == 0xFF00 then
                 read_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " store result score transfer craftboy run scoreboard players get buttons craftboy\n")
+                        " run scoreboard players operation transfer craftboy = buttons craftboy")
                 -- elseif i == 0xFF44 then
                 --     read_file:write(
                 --         "execute if score index craftboy matches " .. i ..
@@ -82,9 +72,10 @@ function recursive(depth, unique_name, scoreboard, min, max)
                 --         "execute if score index craftboy matches " .. i ..
                 --             " run scoreboard players operation transfer craftboy = LY registers\n")
             else
-                read_file:write(command_read[1] .. i .. command_read[2] .. i ..
-                                    command_read[3] .. scoreboard ..
-                                    command_read[4])
+                read_file:write(
+                    "execute if score index craftboy matches " .. i ..
+                        " run scoreboard players operation transfer craftboy = " ..
+                        i .. " " .. scoreboard .. "\n")
             end
 
             if i == 0xFF50 then
@@ -95,10 +86,15 @@ function recursive(depth, unique_name, scoreboard, min, max)
                 --     write_file:write(
                 --         "execute if score index craftboy matches " .. i ..
                 --             " run scoreboard players set LY registers 0\n")
+            elseif i == 0xFF46 then
+                write_file:write(
+                    "execute if score index craftboy matches " .. i ..
+                        " run function graphics:oam_dma\n")
             else
                 write_file:write(
-                    command_write[1] .. i .. command_write[2] .. i ..
-                        command_write[3] .. scoreboard .. command_write[4])
+                    "execute if score index craftboy matches " .. i ..
+                        " run scoreboard players operation " .. i .. " " ..
+                        scoreboard .. " = transfer craftboy\n")
             end
 
             --             if i == 0xFF45 then

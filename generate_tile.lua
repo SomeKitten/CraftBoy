@@ -1,3 +1,4 @@
+-- TODO generate proper x scrolling
 local folder = "./CraftBoyDatapack/data/ppu/functions/"
 local master = io.open(folder .. "tile.mcfunction", "w")
 
@@ -40,111 +41,8 @@ execute if score 4_2 binary matches 1 run scoreboard players add row ppu 32768
 execute if score 4_2 binary matches 0 run scoreboard players add row ppu 36864
 execute if score 4_2 binary matches 0 if score row ppu matches 38912.. run scoreboard players remove row ppu 4096
 
+function ppu:row
 
-# TODO bits in wrong order?
-scoreboard players operation index craftboy = row ppu
-function read:tile_vram_0_0
-scoreboard players operation in binary = transfer craftboy
-function util:binary_split0
-
-
-scoreboard players add index craftboy 1
-function read:tile_vram_0_0
-scoreboard players operation in binary = transfer craftboy
-function util:binary_split1
-]])
-
-for i = 0, 7 do
-    master:write([[
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 0 if score 0_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 0 if score 0_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 1 if score 0_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 1 if score 0_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete
-
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete
-
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete
-
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 1 if score ]] .. i ..
-                     [[_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete
-
-
-]])
-end
-
-master:write([[
 execute as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp ~8 ~ ~
 
 
