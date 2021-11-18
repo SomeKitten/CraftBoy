@@ -1,3 +1,5 @@
+# TODO test speed of execute if binary search
+
 scoreboard players operation tmp0 binary = in binary
 
 scoreboard players operation tmp0 binary /= 2 constants

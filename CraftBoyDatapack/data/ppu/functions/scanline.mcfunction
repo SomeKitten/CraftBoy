@@ -143,9 +143,6 @@ execute if score 65348 io matches 140 as @e[type=minecraft:armor_stand,name=inne
 execute if score 65348 io matches 141 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp @s ~ ~ ~141
 execute if score 65348 io matches 142 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp @s ~ ~ ~142
 execute if score 65348 io matches 143 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp @s ~ ~ ~143
-scoreboard players operation in binary = 65344 io
-function util:binary_split2
-
 scoreboard players set y ppu 255
 
 scoreboard players operation y ppu -= 65346 io
@@ -177,29 +174,33 @@ scoreboard players operation tileX ppu /= 8 constants
 
 
 scoreboard players operation in binary = 65344 io
-function util:binary_split4
+function util:binary_split2
+
+
+scoreboard players operation in binary = 65351 io
+function util:binary_split3
 
 
 execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~160 ~ ~ minecraft:red_concrete
 
 
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
-execute if score 0_4 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile

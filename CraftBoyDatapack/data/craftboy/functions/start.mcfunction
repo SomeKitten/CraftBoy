@@ -66,3 +66,6 @@ scoreboard players set DEBUG craftboy 0
 
 # TEMP
 # scoreboard players set 65348 io 144
+
+# TODO rename to Block Matrix Game?
+# TODO set LY and others on start

@@ -1,2 +1,2 @@
-execute if score index craftboy matches 39840..39847 run function read:tile_map_vram_7_232
-execute if score index craftboy matches 39848..39855 run function read:tile_map_vram_7_234
+execute if score index craftboy matches 39840..39855 run function read:tile_map_vram_7_232
+execute if score index craftboy matches 39856..39871 run function read:tile_map_vram_7_236

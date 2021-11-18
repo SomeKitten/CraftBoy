@@ -66,14 +66,17 @@ execute if score req_int graphics matches 1 unless score mode graphics = current
 #     status = util.set_bit(status, 1, 2)
 #     if util.get_bit(status, 6) == 1 then memory.set_IF(1, 1) end
 
+execute if score 65348 io = 65349 io if score 2_0 binary matches 0 if score 6_0 binary matches 1 run function interrupt:set_lcdstatus
+
 # TODO reset from "debug" to "set_lcdstatus"
 execute if score 65348 io = 65349 io run scoreboard players set 2_0 binary 1
-execute if score 65348 io = 65349 io if score 6_0 binary matches 1 run function interrupt:set_lcdstatus
+execute unless score 65348 io = 65349 io run scoreboard players set 2_0 binary 0
+
+
 # execute if score 65348 io = 65349 io if score 6_0 binary matches 1 run function interrupt:debug
 
 # else
 #     status = util.set_bit(status, 0, 2)
-execute unless score 65348 io = 65349 io run scoreboard players set 2_0 binary 0
 # end
 
 # memory.set(0xFF41, status)

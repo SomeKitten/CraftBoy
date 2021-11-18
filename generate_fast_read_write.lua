@@ -100,6 +100,17 @@ function recursive(depth, unique_name, scoreboard, min, max)
                     command_write[1] .. i .. command_write[2] .. i ..
                         command_write[3] .. scoreboard .. command_write[4])
             end
+
+            --             if i == 0xFF45 then
+            --                 write_file:write([[
+            -- execute if score index craftboy matches ]] .. i ..
+            --                                      [[ run scoreboard players operation in binary = 65345 io
+            -- execute if score index craftboy matches ]] .. i ..
+            --                                      [[ run function util:binary_split2
+            -- execute if score index craftboy matches ]] .. i ..
+            --                                      [[ if score 65348 io = 65349 io if score 6_2 binary matches 1 run function interrupt:set_lcdstatus
+            -- ]])
+            --             end
         end
 
         read_file:close()
@@ -114,7 +125,7 @@ recursive(0, "rom", "rom", 0x0000, 0x7FFF)
 recursions = 0
 recursive(0, "tile_vram", "vram", 0x8000, 0x97FF)
 recursions = 0
-recursive(0, "tile_map_vram", "vram", 0x9800, 0x9BFF)
+recursive(0, "tile_map_vram", "vram", 0x9800, 0x9FFF)
 recursions = 0
 recursive(0, "ram", "ram", 0xA000, 0xBFFF)
 recursions = 0

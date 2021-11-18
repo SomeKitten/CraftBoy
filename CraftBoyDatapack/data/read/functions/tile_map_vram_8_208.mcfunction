@@ -1,4 +1,2 @@
-execute if score index craftboy matches 39744 store result score transfer craftboy run scoreboard players get 39744 vram
-execute if score index craftboy matches 39745 store result score transfer craftboy run scoreboard players get 39745 vram
-execute if score index craftboy matches 39746 store result score transfer craftboy run scoreboard players get 39746 vram
-execute if score index craftboy matches 39747 store result score transfer craftboy run scoreboard players get 39747 vram
+execute if score index craftboy matches 39744..39747 run function read:tile_map_vram_9_208
+execute if score index craftboy matches 39748..39751 run function read:tile_map_vram_9_209
