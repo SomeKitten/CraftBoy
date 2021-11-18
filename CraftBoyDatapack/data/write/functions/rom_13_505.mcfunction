@@ -1,4 +1,4 @@
-execute if score index craftboy matches 2020 store result score 2020 rom run scoreboard players get transfer craftboy
-execute if score index craftboy matches 2021 store result score 2021 rom run scoreboard players get transfer craftboy
-execute if score index craftboy matches 2022 store result score 2022 rom run scoreboard players get transfer craftboy
-execute if score index craftboy matches 2023 store result score 2023 rom run scoreboard players get transfer craftboy
+execute if score index craftboy matches 2020 run scoreboard players operation 2020 rom = transfer craftboy
+execute if score index craftboy matches 2021 run scoreboard players operation 2021 rom = transfer craftboy
+execute if score index craftboy matches 2022 run scoreboard players operation 2022 rom = transfer craftboy
+execute if score index craftboy matches 2023 run scoreboard players operation 2023 rom = transfer craftboy

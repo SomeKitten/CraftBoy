@@ -1,4 +1,4 @@
-execute if score index craftboy matches 30448 store result score 30448 rom run scoreboard players get transfer craftboy
-execute if score index craftboy matches 30449 store result score 30449 rom run scoreboard players get transfer craftboy
-execute if score index craftboy matches 30450 store result score 30450 rom run scoreboard players get transfer craftboy
-execute if score index craftboy matches 30451 store result score 30451 rom run scoreboard players get transfer craftboy
+execute if score index craftboy matches 30448 run scoreboard players operation 30448 rom = transfer craftboy
+execute if score index craftboy matches 30449 run scoreboard players operation 30449 rom = transfer craftboy
+execute if score index craftboy matches 30450 run scoreboard players operation 30450 rom = transfer craftboy
+execute if score index craftboy matches 30451 run scoreboard players operation 30451 rom = transfer craftboy

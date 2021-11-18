@@ -1,3 +1,3 @@
-execute if score index craftboy matches 36269 store result score 36269 vram run scoreboard players get transfer craftboy
-execute if score index craftboy matches 36270 store result score 36270 vram run scoreboard players get transfer craftboy
-execute if score index craftboy matches 36271 store result score 36271 vram run scoreboard players get transfer craftboy
+execute if score index craftboy matches 36269 run scoreboard players operation 36269 vram = transfer craftboy
+execute if score index craftboy matches 36270 run scoreboard players operation 36270 vram = transfer craftboy
+execute if score index craftboy matches 36271 run scoreboard players operation 36271 vram = transfer craftboy
