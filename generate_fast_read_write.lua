@@ -54,7 +54,7 @@ function recursive(depth, unique_name, scoreboard, min, max)
             if i == 0xFF00 then
                 read_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run scoreboard players operation transfer craftboy = buttons craftboy")
+                        " run scoreboard players operation transfer craftboy = buttons craftboy\n")
                 -- elseif i == 0xFF44 then
                 --     read_file:write(
                 --         "execute if score index craftboy matches " .. i ..

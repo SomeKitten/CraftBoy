@@ -61,6 +61,12 @@ scoreboard players set inst_count registers 0
 scoreboard players set HALT registers 0
 scoreboard players set STOP registers 0
 scoreboard players set IME registers 0
+scoreboard players set 65344 io 145
+scoreboard players set 65345 io 133
+scoreboard players set 65346 io 0
+scoreboard players set 65347 io 0
+scoreboard players set 65348 io 0
+
 scoreboard players set DEBUG craftboy 0
 # scoreboard players set opcode undefined -1
 

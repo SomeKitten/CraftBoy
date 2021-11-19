@@ -4,7 +4,7 @@ command_set_rom = {"scoreboard players set ", " ", " ", "\n"}
 
 rom = {}
 rom.filename =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/dmg-acid2/dmg-acid2.gb"
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/flappyboy.gb"
 
 rom.file = io.open(rom.filename, "r")
 rom.data = {}
@@ -13,13 +13,15 @@ util.file_to_bytes(rom.file, rom.data, 0x0000)
 
 if rom.filename ~= "bios.gb" then
     rom.name = util.get_name()
-    rom.name_lower = rom.name:lower()
+    rom.name_lower = rom.name:lower():gsub("%s+", "")
     rom.destination = "rom"
 else
     rom.name = "BIOS"
     rom.name_lower = "bios"
     rom.destination = "bios"
 end
+
+print(rom.name_lower)
 
 rom.directory = "./CraftBoyDatapack/data/rom_" .. rom.name_lower .. "/"
 
