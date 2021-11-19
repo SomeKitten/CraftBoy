@@ -21,25 +21,10 @@ scoreboard players operation tmp_x ppu += ]] .. i + 1 .. [[ oam
 scoreboard players remove tmp_x ppu 8
 execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
 
-scoreboard players remove sprite_lower ppu 16
-scoreboard players remove sprite_higher ppu 8
-
 scoreboard players operation sprite ppu = ]] .. i + 2 .. [[ oam
 
-scoreboard players operation sprite ppu *= 16 constants
-
-execute if score 6_4 binary matches 0 run scoreboard players operation row ppu = 65348 io
-execute if score 6_4 binary matches 0 run scoreboard players operation row ppu -= sprite_lower ppu
-execute if score 6_4 binary matches 0 run scoreboard players operation row ppu *= 2 constants
-execute if score 6_4 binary matches 0 run scoreboard players operation row ppu += sprite ppu
-
-execute if score 6_4 binary matches 1 run scoreboard players operation row ppu = sprite_lower ppu
-execute if score 6_4 binary matches 1 run scoreboard players operation row ppu -= 65348 io
-execute if score 6_4 binary matches 1 run scoreboard players add row ppu 7
-execute if score 6_4 binary matches 1 run scoreboard players operation row ppu *= 2 constants
-execute if score 6_4 binary matches 1 run scoreboard players operation row ppu += sprite ppu
-
-scoreboard players add row ppu 32768
+execute if score 2_2 binary matches 0 run function ppu:get_sprite_row_normal
+execute if score 2_2 binary matches 1 run function ppu:get_sprite_row_tall
 
 execute if score 4_4 binary matches 0 run scoreboard players operation in binary = 65352 io
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
