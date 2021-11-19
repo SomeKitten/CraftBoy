@@ -7,6 +7,8 @@ local map_vram = 0x9800
 master:write(
     "tp @e[type=minecraft:armor_stand,name=inner_screen_paste1] @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1]\n")
 
+-- TODO test if doing execute store is faster
+-- TODO look at generate_sprites for example
 for i = 0, 143 do
     master:write("execute if score 65348 io matches " .. i ..
                      " as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp @s ~ ~ ~" ..
@@ -79,7 +81,7 @@ execute if score 0_2 binary matches 1 run function ppu:tile
 
 execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~7 ~ ~ minecraft:red_concrete
+# execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~7 ~ ~ minecraft:red_concrete
 
 function ppu:sprites
 ]])
