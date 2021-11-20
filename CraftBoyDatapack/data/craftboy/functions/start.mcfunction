@@ -72,6 +72,8 @@ scoreboard players set DEBUG craftboy 0
 
 execute store result score screen_x graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 
+execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function sort:summon
+
 # TEMP
 # scoreboard players set 65348 io 144
 

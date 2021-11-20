@@ -4,24 +4,43 @@ local sprites = io.open(folder .. "sprites.mcfunction", "w")
 local oam_min = 0xFE00
 local oam_max = 0xFEA0 - 4
 
-sprites:write("scoreboard players set sprite_count ppu 0\n")
+sprites:write([[
+function sort:sprites
+
+scoreboard players set sprite_count ppu 0
+
+execute as @e[type=minecraft:armor_stand,name=sort_root] at @s run tp ~10 ~ ~
+
+]])
 
 -- TODO optimize by making as much optional as possible
 
-for i = oam_max, oam_min, -4 do
+for i = 0, 9 do
     sprites:write([[
-scoreboard players operation in binary = ]] .. i + 3 .. [[ oam
+function sort:get
+
+scoreboard players add index craftboy 3
+function read:oam_0_0
+scoreboard players operation in binary = transfer craftboy
 function util:binary_split4
 
-scoreboard players operation sprite_lower ppu = ]] .. i .. [[ oam
-scoreboard players operation sprite_higher ppu = ]] .. i .. [[ oam
+scoreboard players remove index craftboy 3
+function read:oam_0_0
+scoreboard players operation sprite_lower ppu = transfer craftboy
+scoreboard players operation sprite_higher ppu = transfer craftboy
 
 scoreboard players operation tmp_x ppu = screen_x graphics
-scoreboard players operation tmp_x ppu += ]] .. i + 1 .. [[ oam
+
+scoreboard players add index craftboy 1
+function read:oam_0_0
+scoreboard players operation tmp_x ppu += transfer craftboy
+
 scoreboard players remove tmp_x ppu 8
 execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
 
-scoreboard players operation sprite ppu = ]] .. i + 2 .. [[ oam
+scoreboard players add index craftboy 1
+function read:oam_0_0
+scoreboard players operation sprite ppu = transfer craftboy
 
 execute if score 2_2 binary matches 0 run function ppu:get_sprite_row_normal
 execute if score 2_2 binary matches 1 run function ppu:get_sprite_row_tall
