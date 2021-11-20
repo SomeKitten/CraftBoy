@@ -53,35 +53,43 @@ function util:binary_split2
 scoreboard players operation in binary = 65351 io
 function util:binary_split3
 
+execute if score 1_3 binary matches 0 if score 0_3 binary matches 0 at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:lime_concrete_powder
+execute if score 1_3 binary matches 0 if score 0_3 binary matches 1 at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:lime_concrete
+execute if score 1_3 binary matches 1 if score 0_3 binary matches 0 at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:green_concrete_powder
+execute if score 1_3 binary matches 1 if score 0_3 binary matches 1 at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:green_concrete
 
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:red_concrete
-
-
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-
+scoreboard players set sprite_bg_priority ppu 1
+function ppu:sprites
 
 execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 
-# execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~7 ~ ~ minecraft:red_concrete
 
+scoreboard players operation in binary = 65351 io
+function util:binary_split3
+
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 0_2 binary matches 1 run function ppu:tile
+
+execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
+
+scoreboard players set sprite_bg_priority ppu 0
 function ppu:sprites
 ]])

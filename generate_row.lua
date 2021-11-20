@@ -20,27 +20,6 @@ for i = 0, 7 do
 execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
                      7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
                      [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 0 if score 0_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 0 if score 0_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ lime_concrete
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 1 if score 0_3 binary matches 0 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete_powder
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
-                     [[_0 binary matches 0 if score 1_3 binary matches 1 if score 0_3 binary matches 1 run setblock ~]] ..
-                     7 - i .. [[ ~ ~ green_concrete
-
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
-                     7 - i .. [[ ~ ~ minecraft:dirt if score ]] .. i ..
-                     [[_1 binary matches 0 if score ]] .. i ..
                      [[_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~]] ..
                      7 - i .. [[ ~ ~ lime_concrete_powder
 execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] unless block ~]] ..
