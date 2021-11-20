@@ -185,35 +185,13 @@ execute if score 1_3 binary matches 0 if score 0_3 binary matches 1 at @e[type=m
 execute if score 1_3 binary matches 1 if score 0_3 binary matches 0 at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:green_concrete_powder
 execute if score 1_3 binary matches 1 if score 0_3 binary matches 1 at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run fill ~ ~ ~ ~159 ~ ~ minecraft:green_concrete
 
+
 scoreboard players set sprite_bg_priority ppu 1
 function ppu:sprites
 
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
+execute if score 0_2 binary matches 1 run function ppu:background
 
-
-scoreboard players operation in binary = 65351 io
-function util:binary_split3
-
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
-execute if score 0_2 binary matches 1 run function ppu:tile
+execute if score 65354 io <= 65348 io if score 65354 io matches 0..143 if score 65355 io matches 0..166 if score 5_2 binary matches 1 run function ppu:window
 
 execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 

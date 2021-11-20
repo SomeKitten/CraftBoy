@@ -3,10 +3,12 @@ util = require "util"
 command_set_rom = {"scoreboard players set ", " ", " ", "\n"}
 
 rom = {}
-rom.filename =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/flappyboy.gb"
 
-rom.file = io.open(rom.filename, "r")
+directory =
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mealybug-tearoom-tests/ppu/"
+rom.filename = "m3_lcdc_win_en_change_multiple.gb"
+
+rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
 
 util.file_to_bytes(rom.file, rom.data, 0x0000)
@@ -14,6 +16,7 @@ util.file_to_bytes(rom.file, rom.data, 0x0000)
 if rom.filename ~= "bios.gb" then
     rom.name = util.get_name()
     rom.name_lower = rom.name:lower():gsub("%s+", "")
+    if rom.name_lower == "" then rom.name_lower = rom.filename:sub(1, -4) end
     rom.destination = "rom"
 else
     rom.name = "BIOS"
