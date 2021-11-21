@@ -52,9 +52,11 @@ scoreboard players set SP registers 65534
 
 function unmap:boot
 scoreboard players set PC registers 256
+scoreboard players set DIV timer 0
 
 # function rom_bios:bios
 # scoreboard players set PC registers 0
+scoreboard players set DIV timer 24
 
 # scoreboard players set inst_count registers -47932
 scoreboard players set inst_count registers 0

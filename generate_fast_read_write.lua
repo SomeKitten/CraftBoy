@@ -51,34 +51,49 @@ function recursive(depth, unique_name, scoreboard, min, max)
                                        ".mcfunction", "w")
 
         for i = min, max do
+            -- if i == 0xFF00 then
+            --     read_file:write(
+            --         "execute if score index craftboy matches " .. i ..
+            --             " run scoreboard players operation transfer craftboy = buttons craftboy\n")
+            -- elseif i == 0xFF44 then
+            --     read_file:write(
+            --         "execute if score index craftboy matches " .. i ..
+            --             " run scoreboard players set transfer craftboy " .. 0x90 ..
+            --             "\n")
+
+            -- elseif i == 0xFF44 then
+            --     read_file:write(
+            --         "execute if score index craftboy matches " .. i ..
+            --             " run scoreboard players add LY registers 1\n")
+            --     read_file:write(
+            --         "execute if score index craftboy matches " .. i ..
+            --             " run execute if score LY registers matches 154.. run scoreboard players set LY registers 0\n")
+            --     read_file:write(
+            --         "execute if score index craftboy matches " .. i ..
+            --             " run scoreboard players operation transfer craftboy = LY registers\n")
+            -- else
+            read_file:write("execute if score index craftboy matches " .. i ..
+                                " run scoreboard players operation transfer craftboy = " ..
+                                i .. " " .. scoreboard .. "\n")
+            -- end
+
             if i == 0xFF00 then
-                read_file:write(
-                    "execute if score index craftboy matches " .. i ..
-                        " run scoreboard players operation transfer craftboy = buttons craftboy\n")
-                -- elseif i == 0xFF44 then
-                --     read_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " run scoreboard players set transfer craftboy " .. 0x90 ..
-                --             "\n")
+                write_file:write([[
+scoreboard players operation in binary = transfer craftboy
+function util:binary_split5
 
-                -- elseif i == 0xFF44 then
-                --     read_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " run scoreboard players add LY registers 1\n")
-                --     read_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " run execute if score LY registers matches 154.. run scoreboard players set LY registers 0\n")
-                --     read_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " run scoreboard players operation transfer craftboy = LY registers\n")
-            else
-                read_file:write(
+execute if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
+execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
+]])
+            elseif i == 0xFF04 then
+                write_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run scoreboard players operation transfer craftboy = " ..
-                        i .. " " .. scoreboard .. "\n")
-            end
-
-            if i == 0xFF50 then
+                        " run scoreboard players set DIV timer 0")
+                write_file:write(
+                    "execute if score index craftboy matches " .. i ..
+                        " run scoreboard players set " .. i .. " " .. scoreboard ..
+                        " 0")
+            elseif i == 0xFF50 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
                         " run function unmap:boot\n")

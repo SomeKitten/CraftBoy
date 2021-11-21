@@ -15,7 +15,7 @@ for i = 0, 159 do
     master:write("function craftboy:read\n")
     master:write(
         "scoreboard players operation index craftboy = dma_to graphics\n")
-    master:write("function craftboy:write\n")
+    master:write("function write:oam_0_0\n")
 
     master:write("scoreboard players add dma_from graphics 1\n")
     master:write("scoreboard players add dma_to graphics 1\n")
