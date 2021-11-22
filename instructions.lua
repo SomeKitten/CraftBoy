@@ -1285,6 +1285,7 @@ function i.SET_FLAG_C(value)
     i.SET_F("tmp_C craftboy")
 end
 
+-- TODO optimize by writing a specific splitter function just for flags
 function i.GET_FLAGS()
     w("#GET_FLAGS")
     i.GET_LO16("AF registers")

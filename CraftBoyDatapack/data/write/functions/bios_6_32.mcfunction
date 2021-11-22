@@ -1,4 +1,0 @@
-execute if score index craftboy matches 128 run scoreboard players operation 128 bios = transfer craftboy
-execute if score index craftboy matches 129 run scoreboard players operation 129 bios = transfer craftboy
-execute if score index craftboy matches 130 run scoreboard players operation 130 bios = transfer craftboy
-execute if score index craftboy matches 131 run scoreboard players operation 131 bios = transfer craftboy

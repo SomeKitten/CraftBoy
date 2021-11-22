@@ -51,39 +51,39 @@ function recursive(depth, unique_name, scoreboard, min, max)
                                        ".mcfunction", "w")
 
         for i = min, max do
-            -- if i == 0xFF00 then
-            --     read_file:write(
-            --         "execute if score index craftboy matches " .. i ..
-            --             " run scoreboard players operation transfer craftboy = buttons craftboy\n")
-            -- elseif i == 0xFF44 then
-            --     read_file:write(
-            --         "execute if score index craftboy matches " .. i ..
-            --             " run scoreboard players set transfer craftboy " .. 0x90 ..
-            --             "\n")
+            if i == 0xFF4D then
+                read_file:write(
+                    "execute if score index craftboy matches " .. i ..
+                        " run scoreboard players set transfter craftboy 255\n")
+            else
+                read_file:write(
+                    "execute if score index craftboy matches " .. i ..
+                        " run scoreboard players operation transfer craftboy = " ..
+                        i .. " " .. scoreboard .. "\n")
+            end
 
-            -- elseif i == 0xFF44 then
-            --     read_file:write(
-            --         "execute if score index craftboy matches " .. i ..
-            --             " run scoreboard players add LY registers 1\n")
-            --     read_file:write(
-            --         "execute if score index craftboy matches " .. i ..
-            --             " run execute if score LY registers matches 154.. run scoreboard players set LY registers 0\n")
-            --     read_file:write(
-            --         "execute if score index craftboy matches " .. i ..
-            --             " run scoreboard players operation transfer craftboy = LY registers\n")
-            -- else
-            read_file:write("execute if score index craftboy matches " .. i ..
-                                " run scoreboard players operation transfer craftboy = " ..
-                                i .. " " .. scoreboard .. "\n")
-            -- end
-
-            if i == 0xFF00 then
+            if i < 0x8000 then
+                -- if i >= 0x200 and i < 0x4000 then
+                --     write_file:write(
+                --         "execute if score index craftboy matches " .. i ..
+                --             " run function mbc:swap_rom_lo")
+                -- end
+                -- if i >= 0x4000 and i < 0x6000 then
+                --     write_file:write(
+                --         "execute if score index craftboy matches " .. i ..
+                --             " if score 327 rom matches 1..3 run function mbc:swap_rom_hi")
+                -- end
+            elseif i == 0xFF00 then
                 write_file:write([[
-scoreboard players operation in binary = transfer craftboy
-function util:binary_split5
+execute if score index craftboy matches " .. i ..
+                        " run scoreboard players operation in binary = transfer craftboy
+execute if score index craftboy matches " .. i ..
+                        " run function util:binary_split5
 
-execute if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
-execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
+execute if score index craftboy matches " .. i ..
+                        " if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
+execute if score index craftboy matches " .. i ..
+                        " if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
 ]])
             elseif i == 0xFF04 then
                 write_file:write(
@@ -97,10 +97,10 @@ execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io 
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
                         " run function unmap:boot\n")
-                -- elseif i == 0xFF44 then
-                --     write_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " run scoreboard players set LY registers 0\n")
+            elseif i == 0xFF44 then
+                write_file:write(
+                    "execute if score index craftboy matches " .. i ..
+                        " run scoreboard players set LY registers 0\n")
             elseif i == 0xFF46 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
@@ -111,17 +111,6 @@ execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io 
                         " run scoreboard players operation " .. i .. " " ..
                         scoreboard .. " = transfer craftboy\n")
             end
-
-            --             if i == 0xFF45 then
-            --                 write_file:write([[
-            -- execute if score index craftboy matches ]] .. i ..
-            --                                      [[ run scoreboard players operation in binary = 65345 io
-            -- execute if score index craftboy matches ]] .. i ..
-            --                                      [[ run function util:binary_split2
-            -- execute if score index craftboy matches ]] .. i ..
-            --                                      [[ if score 65348 io = 65349 io if score 6_2 binary matches 1 run function interrupt:set_lcdstatus
-            -- ]])
-            --             end
         end
 
         read_file:close()

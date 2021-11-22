@@ -1,12 +1,10 @@
 util = require "util"
 
-command_set_rom = {"scoreboard players set ", " ", " ", "\n"}
-
 rom = {}
 
 directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mealybug-tearoom-tests/ppu/"
-rom.filename = "m3_lcdc_win_en_change_multiple.gb"
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mooneye-gb/emulator-only/mbc1/"
+rom.filename = "bits_bank2.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
@@ -15,7 +13,7 @@ util.file_to_bytes(rom.file, rom.data, 0x0000)
 
 if rom.filename ~= "bios.gb" then
     rom.name = util.get_name()
-    rom.name_lower = rom.name:lower():gsub("%s+", "")
+    rom.name_lower = rom.name:lower():gsub("%s+", ""):gsub("%.+", "")
     if rom.name_lower == "" then rom.name_lower = rom.filename:sub(1, -4) end
     rom.destination = "rom"
 else
@@ -33,10 +31,21 @@ os.execute("mkdir " .. rom.directory .. "functions/")
 rom.mcfunction_rom = io.open(rom.directory .. "functions/" .. rom.name_lower ..
                                  ".mcfunction", "w")
 
-for i = 0, #rom.data do
-    rom.mcfunction_rom:write(command_set_rom[1] .. i .. command_set_rom[2] ..
-                                 rom.destination .. command_set_rom[3] ..
-                                 rom.data[i] .. command_set_rom[4])
+for i = 0, 0x7FFF do
+    rom.mcfunction_rom:write("scoreboard players set " .. i .. " " ..
+                                 rom.destination .. " " .. rom.data[i] .. "\n")
+end
+
+for i = 1, math.floor(#rom.data / 0x4000) do
+    local file = io.open(rom.directory .. "functions/bank_" .. i ..
+                             ".mcfunction", "w")
+
+    file:write("say ROM BANK " .. i .. "\n")
+
+    for j = 0x4000, 0x7FFF do
+        file:write("scoreboard players set " .. j .. " rom " ..
+                       rom.data[i * 0x4000 + j - 0x4000] .. "\n")
+    end
 end
 
 rom.mcfunction_rom:close()
