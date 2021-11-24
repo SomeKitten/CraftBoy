@@ -24,10 +24,10 @@ lookups.rp2[2] = "HL registers"
 lookups.rp2[3] = "AF registers"
 
 lookups.cc = {}
-lookups.cc[0] = "7_0 binary matches 0" -- NZF
-lookups.cc[1] = "7_0 binary matches 1" -- ZF
-lookups.cc[2] = "4_0 binary matches 0" -- NCF
-lookups.cc[3] = "4_0 binary matches 1" -- CF
+lookups.cc[0] = "Z flags matches 0" -- NZF
+lookups.cc[1] = "Z flags matches 1" -- ZF
+lookups.cc[2] = "C flags matches 0" -- NCF
+lookups.cc[3] = "C flags matches 1" -- CF
 
 lookups.alu = {}
 lookups.alu[0] = "ADD_A"

@@ -51,6 +51,11 @@ function recursive(depth, unique_name, scoreboard, min, max)
                                        ".mcfunction", "w")
 
         for i = min, max do
+            -- if i == 0xFF44 then
+            --     read_file:write(
+            --         "execute if score index craftboy matches " .. i ..
+            --             " run scoreboard players set transfter craftboy 144\n")
+            -- else..
             if i == 0xFF4D then
                 read_file:write(
                     "execute if score index craftboy matches " .. i ..
@@ -75,15 +80,15 @@ function recursive(depth, unique_name, scoreboard, min, max)
                 -- end
             elseif i == 0xFF00 then
                 write_file:write([[
-execute if score index craftboy matches " .. i ..
-                        " run scoreboard players operation in binary = transfer craftboy
-execute if score index craftboy matches " .. i ..
-                        " run function util:binary_split5
+execute if score index craftboy matches ]] .. i ..
+                                     [[ run scoreboard players operation in binary = transfer craftboy
+execute if score index craftboy matches ]] .. i ..
+                                     [[ run function util:binary_split5
 
-execute if score index craftboy matches " .. i ..
-                        " if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
-execute if score index craftboy matches " .. i ..
-                        " if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
+execute if score index craftboy matches ]] .. i ..
+                                     [[ if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
+execute if score index craftboy matches ]] .. i ..
+                                     [[ if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
 ]])
             elseif i == 0xFF04 then
                 write_file:write(

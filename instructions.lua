@@ -1288,13 +1288,14 @@ end
 -- TODO optimize by writing a specific splitter function just for flags
 function i.GET_FLAGS()
     w("#GET_FLAGS")
-    i.GET_LO16("AF registers")
-    i.LD("in binary", "out binary")
-    w("function util:binary_split0")
-    i.LD("Z flags", "7_0 binary")
-    i.LD("N flags", "6_0 binary")
-    i.LD("H flags", "5_0 binary")
-    i.LD("C flags", "4_0 binary")
+    w('function util:split_flags')
+    -- i.GET_LO16("AF registers")
+    -- i.LD("in binary", "out binary")
+    -- w("function util:binary_split0")
+    -- i.LD("Z flags", "7_0 binary")
+    -- i.LD("N flags", "6_0 binary")
+    -- i.LD("H flags", "5_0 binary")
+    -- i.LD("C flags", "4_0 binary")
 end
 
 function i.M_CYCLES(value)
