@@ -2,8 +2,9 @@ util = require "util"
 
 rom = {}
 
-directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-rom.filename = "drmario.gb"
+directory =
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/"
+rom.filename = "06-ld r,r.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}

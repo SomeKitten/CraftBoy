@@ -1,6 +1,6 @@
 here = "./CraftBoyDatapack/data/"
 there =
-    "/home/kitten/.minecraft/saves/New World/datapacks/CraftBoyDatapack/data/"
+    "/home/kitten/.minecraft/saves/GB Emulator 1_18_1/datapacks/CraftBoyDatapack/data/"
 
 dir = "rom_" .. "drmario"
 

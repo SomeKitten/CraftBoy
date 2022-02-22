@@ -93,11 +93,11 @@ execute if score index craftboy matches ]] .. i ..
             elseif i == 0xFF04 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run scoreboard players set DIV timer 0")
+                        " run scoreboard players set DIV timer 0\n")
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
                         " run scoreboard players set " .. i .. " " .. scoreboard ..
-                        " 0")
+                        " 0\n")
             elseif i == 0xFF50 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..

@@ -1,46 +1,19 @@
+
+scoreboard players operation in binary = AF registers
 scoreboard players operation tmp0 binary = AF registers
-
-scoreboard players operation tmp0 binary /= 32 constants
-scoreboard players operation tmp0 binary *= 32 constants
-
-scoreboard players operation C flags = AF registers
-
-scoreboard players operation C flags -= tmp0 binary
-
-scoreboard players operation C flags /= 16 constants
-
-
-scoreboard players operation tmp0 binary = AF registers
-
-scoreboard players operation tmp0 binary /= 64 constants
-scoreboard players operation tmp0 binary *= 64 constants
-
-scoreboard players operation H flags = AF registers
-
-scoreboard players operation H flags -= tmp0 binary
-
-scoreboard players operation H flags /= 32 constants
-
-
-scoreboard players operation tmp0 binary = AF registers
-
-scoreboard players operation tmp0 binary /= 128 constants
-scoreboard players operation tmp0 binary *= 128 constants
-
-scoreboard players operation N flags = AF registers
-
-scoreboard players operation N flags -= tmp0 binary
-
-scoreboard players operation N flags /= 64 constants
-
-
-scoreboard players operation tmp0 binary = AF registers
-
 scoreboard players operation tmp0 binary /= 256 constants
 scoreboard players operation tmp0 binary *= 256 constants
+scoreboard players operation in binary -= tmp0 binary
 
-scoreboard players operation Z flags = AF registers
+scoreboard players set Z flags 0
+scoreboard players set N flags 0
+scoreboard players set H flags 0
+scoreboard players set C flags 0
 
-scoreboard players operation Z flags -= tmp0 binary
-
-scoreboard players operation Z flags /= 128 constants
+execute if score in binary matches 128.. run scoreboard players set Z flags 1
+execute if score in binary matches 128.. run scoreboard players remove in binary 128
+execute if score in binary matches 64.. run scoreboard players set N flags 1
+execute if score in binary matches 64.. run scoreboard players remove in binary 64
+execute if score in binary matches 32.. run scoreboard players set H flags 1
+execute if score in binary matches 32.. run scoreboard players remove in binary 32
+execute if score in binary matches 16.. run scoreboard players set C flags 1
