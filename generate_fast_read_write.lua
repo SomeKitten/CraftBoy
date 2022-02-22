@@ -26,10 +26,8 @@ function recursive(depth, unique_name, scoreboard, min, max)
         write_file:close()
         recursive(depth + 1, unique_name, scoreboard, min, min + len)
 
-        local read_file = io.open(read_directory .. filename .. ".mcfunction",
-                                  "a")
-        local write_file = io.open(write_directory .. filename .. ".mcfunction",
-                                   "a")
+        read_file = io.open(read_directory .. filename .. ".mcfunction", "a")
+        write_file = io.open(write_directory .. filename .. ".mcfunction", "a")
 
         child_filename = unique_name .. "_" .. (depth + 1) .. "_" .. recursions
         read_file:write("execute if score index craftboy matches " ..
@@ -109,7 +107,7 @@ execute if score index craftboy matches ]] .. i ..
             elseif i == 0xFF46 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run function graphics:oam_dma\n")
+                        " run function dma:dma_0_0\n")
             else
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
