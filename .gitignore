@@ -1,2 +1,5 @@
 **/*.txt
 **/CraftBoyDatapack/data/rom_*/**
+**/read/functions/*
+**/write/functions/*
+**/step/functions/*

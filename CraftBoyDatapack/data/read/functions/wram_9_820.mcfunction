@@ -1,2 +1,0 @@
-execute if score index craftboy matches 52432..52439 run function read:wram_10_820
-execute if score index craftboy matches 52440..52447 run function read:wram_10_822

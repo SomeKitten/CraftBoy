@@ -1,2 +1,0 @@
-execute if score index craftboy matches 2008..2011 run function read:rom_13_502
-execute if score index craftboy matches 2012..2015 run function read:rom_13_503

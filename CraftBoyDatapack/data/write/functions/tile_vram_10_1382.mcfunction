@@ -1,2 +1,0 @@
-execute if score index craftboy matches 36914..36916 run function write:tile_vram_11_1382
-execute if score index craftboy matches 36917..36919 run function write:tile_vram_11_1383

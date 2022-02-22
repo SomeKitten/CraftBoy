@@ -1,2 +1,0 @@
-execute if score index craftboy matches 49472..49475 run function write:wram_11_80
-execute if score index craftboy matches 49476..49479 run function write:wram_11_81
