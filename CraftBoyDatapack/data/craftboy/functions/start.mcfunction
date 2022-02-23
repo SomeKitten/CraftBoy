@@ -68,6 +68,7 @@ scoreboard players set 65345 io 133
 scoreboard players set 65346 io 0
 scoreboard players set 65347 io 0
 scoreboard players set 65348 io 0
+# scoreboard players set 65348 io 144
 
 scoreboard players set rom_bank craftboy 1
 function mbc:swap_rom

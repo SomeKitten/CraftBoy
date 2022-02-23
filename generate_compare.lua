@@ -6,7 +6,7 @@ os.execute("mkdir ./CraftBoyDatapack/data/compare/functions")
 -- 257 - 47933
 start = 0
 
-txt_name = "02.txt"
+txt_name = "07.txt"
 
 filename =
     "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/" ..
@@ -74,9 +74,6 @@ HL = tonumber(line:sub(40, 41), 16) * 256 + tonumber(line:sub(46, 47), 16)
 SP = tonumber(line:sub(53, 56), 16)
 PC = tonumber(line:sub(65, 68), 16)
 
-out_file:write(
-    "execute if score inst_count registers matches .." .. start - 1 ..
-        " run function util:get_op\n")
 out_file:write("function compare:0_0\n")
 
 lines = {}

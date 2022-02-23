@@ -4,7 +4,7 @@ rom = {}
 
 directory =
     "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/"
-rom.filename = "06-ld r,r.gb"
+rom.filename = "03-op sp,hl.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
