@@ -811,9 +811,6 @@ function i.OR_A(value)
     w("function util:binary_split1")
 
     for b = 0, 7 do
-        w("execute if score " .. b .. "_0 binary matches 0 if score " .. b ..
-              "_1 binary matches 0 run scoreboard players set " .. b ..
-              "_0 binary 0")
         w("execute if score " .. b ..
               "_1 binary matches 1 run scoreboard players set " .. b ..
               "_0 binary 1")

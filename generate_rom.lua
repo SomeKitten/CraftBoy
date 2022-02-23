@@ -3,8 +3,8 @@ util = require "util"
 rom = {}
 
 directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/"
-rom.filename = "03-op sp,hl.gb"
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/"
+rom.filename = "cpu_instrs.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
