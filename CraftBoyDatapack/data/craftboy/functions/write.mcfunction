@@ -1,5 +1,6 @@
-execute if score index craftboy matches 8192..16383 run function mbc:swap_rom_lo
+execute if score index craftboy matches 8192..16383 if score 327 rom matches 1..3 run function mbc:swap_rom_lo
 execute if score index craftboy matches 16384..24575 if score 327 rom matches 1..3 run function mbc:swap_rom_hi
+execute if score index craftboy matches 8192..16383 if score 327 rom matches 16..20 run function mbc:swap_rom_mbc3
 
 execute if score index craftboy matches 32768..38911 run function write:tile_vram_0_0
 execute if score index craftboy matches 38912..40959 run function write:tile_map_vram_0_0

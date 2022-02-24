@@ -6,7 +6,7 @@ os.execute("mkdir ./CraftBoyDatapack/data/compare/functions")
 -- 257 - 47933
 start = 0
 
-txt_name = "07.txt"
+txt_name = "09.txt"
 
 filename =
     "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/" ..
@@ -101,6 +101,7 @@ while line ~= nil do
 
     line = in_file:read()
     i = i + 1
+    if i >= 1000000 then break end
 end
 
 out_file:write("execute if score inst_count registers matches " .. i ..

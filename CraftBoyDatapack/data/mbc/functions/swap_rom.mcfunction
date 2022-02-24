@@ -1,14 +1,3 @@
-scoreboard players operation bank craftboy = rom_bank craftboy
-
-execute if score 328 rom matches 5..6 run scoreboard players operation in binary = rom_bank craftboy
-execute if score 328 rom matches 5..6 run function util:binary_split0
-execute if score 328 rom matches 5..6 run scoreboard players operation in binary = ram_bank craftboy
-execute if score 328 rom matches 5..6 run function util:binary_split1
-execute if score 328 rom matches 5..6 run scoreboard players operation 5_0 binary = 0_1 binary
-execute if score 328 rom matches 6 run scoreboard players operation 6_0 binary = 1_1 binary
-execute if score 328 rom matches 5..6 run function util:binary_join0
-execute if score 328 rom matches 5..6 run scoreboard players operation bank craftboy = out binary
-
 execute if score bank craftboy matches 1 run function mbc:bank_1
 execute if score bank craftboy matches 2 run function mbc:bank_2
 execute if score bank craftboy matches 3 run function mbc:bank_3

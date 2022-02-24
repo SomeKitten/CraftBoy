@@ -2,9 +2,8 @@ util = require "util"
 
 rom = {}
 
-directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/"
-rom.filename = "cpu_instrs.gb"
+directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/dmg-acid2/"
+rom.filename = "dmg-acid2.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
@@ -44,7 +43,7 @@ for i = 1, math.floor(#rom.data / 0x4000) do
     local file = io.open(rom.directory .. "functions/bank_" .. i ..
                              ".mcfunction", "w")
 
-    file:write("say ROM BANK " .. i .. "\n")
+    -- file:write("say ROM BANK " .. i .. "\n")
 
     for j = 0x4000, 0x7FFF do
         file:write("scoreboard players set " .. j .. " rom " ..

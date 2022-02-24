@@ -228,19 +228,13 @@ for opcode = 0, 255 do
                 elseif y == 2 then
                     insts.M_CYCLES(1)
 
-                    insts.GET_FLAGS()
-
                     insts.RLA()
                 elseif y == 3 then
                     insts.M_CYCLES(1)
 
-                    insts.GET_FLAGS()
-
                     insts.RRA()
                 elseif y == 4 then
                     insts.M_CYCLES(1)
-
-                    insts.GET_FLAGS()
 
                     insts.DAA()
                 elseif y == 5 then
@@ -248,8 +242,6 @@ for opcode = 0, 255 do
                 elseif y == 6 then
                     insts.SCF()
                 elseif y == 7 then
-                    insts.GET_FLAGS()
-
                     insts.CCF()
                 end
             end
@@ -289,7 +281,6 @@ for opcode = 0, 255 do
         elseif x == 3 then
             if z == 0 then
                 if y >= 0 and y <= 3 then
-                    insts.GET_FLAGS()
                     insts.RETC(lookups.cc[y])
                 elseif y == 4 then
                     insts.M_CYCLES(3)
@@ -373,7 +364,6 @@ for opcode = 0, 255 do
                 if y >= 0 and y <= 3 then
                     insts.M_CYCLES(3)
 
-                    insts.GET_FLAGS()
                     w(get_nn)
                     insts.JPC(lookups.cc[y], "nn craftboy")
 
@@ -443,7 +433,6 @@ for opcode = 0, 255 do
                 end
             elseif z == 4 then
                 if y >= 0 and y <= 3 then
-                    insts.GET_FLAGS()
                     -- w(get_nn) -- already called in insts.CALL (205)
                     insts.CALLC(lookups.cc[y], "nn craftboy")
 

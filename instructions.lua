@@ -21,6 +21,9 @@ function i.JP(value)
 end
 function i.JPC(condition, value)
     w("#JPC")
+
+    i.GET_FLAGS()
+
     w("execute if score " .. condition ..
           " run scoreboard players operation PC registers = " .. value)
 end
@@ -48,6 +51,8 @@ end
 function i.CALLC(condition, value)
     w("#CALLC")
 
+    i.GET_FLAGS()
+
     w("execute if score " .. condition .. " run function instructions:205")
     w("execute unless score " .. condition ..
           " run scoreboard players add PC registers 2")
@@ -65,6 +70,8 @@ function i.RETI()
 end
 function i.RETC(condition)
     w("#RETC")
+
+    i.GET_FLAGS()
 
     w("execute if score " .. condition .. " run function instructions:201")
 end
@@ -358,6 +365,8 @@ end
 function i.RLA()
     w("#RLA")
 
+    i.GET_FLAGS()
+
     i.GET_A()
     i.LD("tmp_RLA craftboy", "out binary")
 
@@ -379,7 +388,6 @@ function i.RLA()
     i.LD("tmp_RLA craftboy", "out binary")
     i.SET_A("tmp_RLA craftboy")
 
-    i.GET_FLAGS()
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
@@ -392,6 +400,8 @@ function i.RLA()
 end
 function i.RRA()
     w("#RRA")
+
+    i.GET_FLAGS()
 
     i.GET_A()
     i.LD("tmp_RRA craftboy", "out binary")
@@ -414,7 +424,6 @@ function i.RRA()
     i.LD("tmp_RRA craftboy", "out binary")
     i.SET_A("tmp_RRA craftboy")
 
-    i.GET_FLAGS()
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
@@ -427,6 +436,8 @@ function i.RRA()
 end
 function i.DAA()
     w("#DAA")
+
+    i.GET_FLAGS()
 
     i.GET_A()
 
@@ -471,9 +482,8 @@ function i.DAA()
 
     i.SET_A("tmpA_DAA craftboy")
 
-    i.GET_FLAGS()
     w("scoreboard players set H flags 0")
-    i.GET_FLAGS()
+    i.SET_FLAGS()
     -- i.SET_FLAG_Z("Z flags")
     -- i.SET_FLAG_H("0 constants")
     -- i.SET_FLAG_C("C flags")
@@ -518,9 +528,8 @@ end
 function i.CCF()
     w("#CCF")
 
-    i.INV_BIT("C flags")
-
     i.GET_FLAGS()
+    i.INV_BIT("C flags")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     i.SET_FLAGS()
