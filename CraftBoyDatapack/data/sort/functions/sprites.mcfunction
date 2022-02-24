@@ -318,4 +318,4 @@ execute if score 2_2 binary matches 0 run scoreboard players remove sprite_highe
 data modify entity @e[type=minecraft:armor_stand,name=sort_39,limit=1] ArmorItems[3].tag.Damage set value 1000000000
 execute if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu store result entity @e[type=minecraft:armor_stand,name=sort_39,limit=1] ArmorItems[3].tag.Damage int 1 run scoreboard players get 65025 oam
 data modify entity @e[type=minecraft:armor_stand,name=sort_39,limit=1] ArmorItems[2].tag.Damage set value 65024
-function sort:sort
+execute as @e[type=minecraft:armor_stand,name=sort_root] run function sort:sort

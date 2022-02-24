@@ -27,4 +27,5 @@ data modify entity @e[type=minecraft:armor_stand,name=sort_]] .. n ..
     n = n + 1
 end
 
-sprites:write("function sort:sort")
+sprites:write(
+    "execute as @e[type=minecraft:armor_stand,name=sort_root] run function sort:sort")
