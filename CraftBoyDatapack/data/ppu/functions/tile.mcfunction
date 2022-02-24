@@ -1,9 +1,3 @@
-# TODO : DEBUG
-# scoreboard players set map_addr ppu 38912
-# scoreboard players set tileX ppu 0
-# scoreboard players set y ppu 0
-
-
 scoreboard players operation index craftboy = map_addr ppu
 function read:tile_map_vram_0_0
 scoreboard players operation tileAddr ppu = transfer craftboy
@@ -21,7 +15,7 @@ execute if score 4_2 binary matches 1 run scoreboard players add row ppu 32768
 execute if score 4_2 binary matches 0 run scoreboard players add row ppu 36864
 execute if score 4_2 binary matches 0 if score row ppu matches 38912.. run scoreboard players remove row ppu 4096
 
-function ppu:row
+execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function ppu:row
 
 execute as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp ~8 ~ ~
 

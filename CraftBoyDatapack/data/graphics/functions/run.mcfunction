@@ -13,7 +13,7 @@ scoreboard players operation scancount graphics -= m_cycles craftboy
 execute if score scancount graphics matches ..0 if score 65348 io matches 144 run function interrupt:set_vblank
 
 #     if currentline < 144 then draw_scanline() end
-execute if score scancount graphics matches ..0 if score 65348 io matches ..143 run function ppu:scanline
+execute if score scancount graphics matches ..0 if score 65348 io matches ..143 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function ppu:scanline
 
 #     if currentline > 153 then
 #         memory[0xFF44] = 0
