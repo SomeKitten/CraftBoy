@@ -11,7 +11,6 @@ scoreboard players operation scancount graphics -= m_cycles craftboy
 
 #     if currentline == 144 then memory.set_IF(0, 1) end
 execute if score scancount graphics matches ..0 if score 65348 io matches 144 run function interrupt:set_vblank
-# execute if score scancount graphics matches ..0 if score 65348 io matches 144 run function ppu:vram_debug
 
 #     if currentline < 144 then draw_scanline() end
 execute if score scancount graphics matches ..0 if score 65348 io matches ..143 run function ppu:scanline
