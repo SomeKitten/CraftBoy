@@ -23,7 +23,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -36,8 +36,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -58,7 +58,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -71,8 +71,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -93,7 +93,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -106,8 +106,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -128,7 +128,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -141,8 +141,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -163,7 +163,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -176,8 +176,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -198,7 +198,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -211,8 +211,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -233,7 +233,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -246,8 +246,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -268,7 +268,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -281,8 +281,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -303,7 +303,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -316,8 +316,8 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
 function sort:get
 
@@ -338,7 +338,7 @@ function read:oam_0_0
 scoreboard players operation tmp_x ppu += transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
 
 scoreboard players add index craftboy 1
 function read:oam_0_0
@@ -351,6 +351,6 @@ execute if score 4_4 binary matches 0 run scoreboard players operation in binary
 execute if score 4_4 binary matches 1 run scoreboard players operation in binary = 65353 io
 function util:binary_split3
 
-execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row
-execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu run function ppu:sprite_row_flipped
+execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
+execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 

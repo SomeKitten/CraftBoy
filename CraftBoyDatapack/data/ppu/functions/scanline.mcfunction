@@ -187,7 +187,7 @@ execute if score 1_3 binary matches 1 if score 0_3 binary matches 1 at @s run fi
 
 
 scoreboard players set sprite_bg_priority ppu 1
-function ppu:sprites
+execute as @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function ppu:sprites
 
 execute if score 0_2 binary matches 1 run function ppu:background
 
@@ -196,4 +196,4 @@ execute if score 65354 io <= 65348 io if score 65354 io matches 0..143 if score 
 execute store result entity @s Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 
 scoreboard players set sprite_bg_priority ppu 0
-function ppu:sprites
+execute as @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function ppu:sprites
