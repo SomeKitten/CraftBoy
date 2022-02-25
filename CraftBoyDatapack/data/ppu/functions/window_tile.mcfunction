@@ -5,4 +5,4 @@ execute if score 6_2 binary matches 0 run scoreboard players add map_addr ppu 38
 execute if score 6_2 binary matches 1 run scoreboard players add map_addr ppu 39936
 
 
-function ppu:tile
+function ppu:tile_window
