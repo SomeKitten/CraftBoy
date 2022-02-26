@@ -70,6 +70,9 @@ scoreboard players set 65347 io 0
 scoreboard players set 65348 io 0
 # scoreboard players set 65348 io 144
 
+scoreboard players set mode2_bounds graphics 376
+scoreboard players set mode3_bounds graphics 204
+
 scoreboard players set rom_bank craftboy 1
 scoreboard players set ram_bank craftboy 0
 scoreboard players set bank craftboy 1
@@ -79,6 +82,7 @@ scoreboard players set DEBUG craftboy 0
 # scoreboard players set opcode undefined -1
 
 execute store result score screen_x graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
+execute store result score screen_y graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[2]
 
 execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function sort:summon
 

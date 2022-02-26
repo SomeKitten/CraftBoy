@@ -1,6 +1,3 @@
-# local requested = memory.get(0xFF0F) / 65295
-# local enabled = memory.get(0xFFFF) / 65535
-
 scoreboard players operation in binary = 65295 io
 function util:binary_split2
 scoreboard players operation in binary = 65535 interrupt

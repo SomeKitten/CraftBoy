@@ -1,10 +1,7 @@
-scoreboard players set op craftboy 0
+execute if score mode graphics matches 1 run scoreboard players set scancount graphics 0
 
-function step:0_0
+execute if score mode graphics matches 0 run scoreboard players set scancount graphics 376
+execute if score mode graphics matches 2 run scoreboard players set scancount graphics 204
+execute if score mode graphics matches 3 run scoreboard players set scancount graphics 0
 
-# TODO debug m_cycles
-scoreboard players set m_cycles craftboy 456
-# scoreboard players set m_cycles craftboy 1
-
-# function timer:emu_cycles
 function graphics:run
