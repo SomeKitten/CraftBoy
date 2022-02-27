@@ -1,7 +1,10 @@
+# TODO make window not bg overlay, but bg replacement
+
 scoreboard players operation y ppu = window_count graphics
 scoreboard players set x ppu 0
 
 
+execute if score y ppu matches ..-1 run scoreboard players add y ppu 256
 execute if score y ppu matches 256.. run scoreboard players remove y ppu 256
 
 

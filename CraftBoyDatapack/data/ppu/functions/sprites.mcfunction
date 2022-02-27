@@ -4,7 +4,7 @@ scoreboard players set sprite_count ppu 0
 
 execute as @e[type=minecraft:armor_stand,name=sort_root] at @s run tp ~10 ~ ~
 
-function sort:get
+scoreboard players operation index craftboy = value_9 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -39,7 +39,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_8 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -74,7 +74,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_7 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -109,7 +109,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_6 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -144,7 +144,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_5 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -179,7 +179,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_4 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -214,7 +214,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_3 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -249,7 +249,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_2 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -284,7 +284,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_1 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0
@@ -319,7 +319,7 @@ function util:binary_split3
 execute if score 5_4 binary matches 0 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row
 execute if score 5_4 binary matches 1 if score 7_4 binary = sprite_bg_priority ppu if score 1_2 binary matches 1 if score sprite_count ppu matches ..9 if score sprite_lower ppu <= 65348 io if score 65348 io < sprite_higher ppu at @s run function ppu:sprite_row_flipped
 
-function sort:get
+scoreboard players operation index craftboy = value_0 sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0

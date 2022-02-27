@@ -18,7 +18,7 @@ execute as @e[type=minecraft:armor_stand,name=sort_root] at @s run tp ~10 ~ ~
 
 for i = 0, 9 do
     sprites:write([[
-function sort:get
+scoreboard players operation index craftboy = value_]] .. 9 - i .. [[ sort
 
 scoreboard players add index craftboy 3
 function read:oam_0_0

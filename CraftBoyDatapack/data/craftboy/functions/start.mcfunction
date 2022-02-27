@@ -17,6 +17,7 @@ scoreboard objectives add hram dummy
 scoreboard objectives add interrupt dummy
 scoreboard objectives add binary dummy
 scoreboard objectives add timer dummy
+scoreboard objectives add sort dummy
 
 scoreboard objectives add constants dummy
 scoreboard players set -8 constants -8
@@ -84,7 +85,7 @@ scoreboard players set DEBUG craftboy 0
 execute store result score screen_x graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 execute store result score screen_y graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[2]
 
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function sort:summon
+# execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function sort:summon
 
 # TEMP
 # scoreboard players set 65348 io 144
