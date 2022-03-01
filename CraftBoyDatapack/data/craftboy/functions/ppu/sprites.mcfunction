@@ -1,4 +1,4 @@
-function sort:sprites
+function craftboy:sort/sprites
 
 scoreboard players set sprite_count ppu 0
 

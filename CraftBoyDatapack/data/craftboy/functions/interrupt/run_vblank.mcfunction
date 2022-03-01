@@ -1,8 +1,10 @@
+# say VBLANK!
+
 # regs.IME = 0
 scoreboard players set IME registers 0
 
 # memory.set_IF(i, 0)
-function interrupt:reset_lcdstatus
+function craftboy:interrupt/reset_vblank
 
 # TODO why check IME right after setting it?
 # if not (halt and regs.IME == 0) then
@@ -31,7 +33,7 @@ scoreboard players operation transfer craftboy = out binary
 function craftboy:craftboy/write
 
 #     regs.set_PC(interrupt_locations[i + 1])
-scoreboard players set PC registers 72
+scoreboard players set PC registers 64
 
 # end
 

@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/sort/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/sort/"
 local sprites = io.open(folder .. "sprites.mcfunction", "w")
 
 local oam_min = 0xFE00
@@ -31,4 +31,4 @@ scoreboard players set value_]] .. n .. [[ sort ]] .. i .. [[
     n = n + 1
 end
 
-sprites:write("function sort:sort")
+sprites:write("function craftboy:sort/sort")

@@ -5,7 +5,7 @@ local oam_min = 0xFE00
 local oam_max = 0xFEA0 - 4
 
 sprites:write([[
-function sort:sprites
+function craftboy:sort/sprites
 
 scoreboard players set sprite_count ppu 0
 

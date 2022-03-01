@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/sort/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/sort/"
 local sort = io.open(folder .. "sort.mcfunction", "w")
 
 local oam_min = 0xFE00
@@ -11,11 +11,12 @@ sort:write("scoreboard players set sort craftboy 0\n")
 for i = oam_max - 4, oam_min, -4 do
     sort:write([[
 execute if score x_]] .. n .. [[ sort > x_]] .. (n + 1) ..
-                   [[ sort run function sort:swap_]] .. n .. [[
+                   [[ sort run function craftboy:sort/swap_]] .. n .. [[
 
 
 ]])
     n = n + 1
 end
 
-sort:write("execute if score sort craftboy matches 1 run function sort:sort")
+sort:write(
+    "execute if score sort craftboy matches 1 run function craftboy:sort/sort")

@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/sort/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/sort/"
 local summon = io.open(folder .. "summon.mcfunction", "w")
 
 summon:write("kill @e[type=armor_stand,name=sort_root]\n")

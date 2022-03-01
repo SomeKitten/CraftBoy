@@ -103,7 +103,7 @@ execute if score index craftboy matches ]] .. i ..
             elseif i == 0xFF50 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run function unmap:boot\n")
+                        " run function craftboy:craftboy/unmap_boot\n")
             elseif i == 0xFF44 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
@@ -111,7 +111,7 @@ execute if score index craftboy matches ]] .. i ..
             elseif i == 0xFF46 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run function dma:dma_0_0\n")
+                        " run function craftboy:dma/dma_0_0\n")
             else
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..

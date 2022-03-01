@@ -456,17 +456,17 @@ function i.DAA()
 
     w("scoreboard players set tmpOR_DAA craftboy 0")
     w("execute if score N flags matches 0 " ..
-          "if score C flags matches 1 run function daa:aplusequalssixzero")
+          "if score C flags matches 1 run function craftboy:daa/aplusequalssixzero")
     w(
         "execute if score tmpOR_DAA craftboy matches 0 if score N flags matches 0 " ..
-            "if score tmpA_DAA craftboy matches 154.. run function daa:aplusequalssixzero")
+            "if score tmpA_DAA craftboy matches 154.. run function craftboy:daa/aplusequalssixzero")
 
     w("scoreboard players set tmpOR_DAA craftboy 0")
     w("execute if score N flags matches 0 " ..
-          "if score H flags matches 1 run function daa:aplusequalssix")
+          "if score H flags matches 1 run function craftboy:daa/aplusequalssix")
     w(
         "execute if score tmpOR_DAA craftboy matches 0 if score N flags matches 0 " ..
-            "if score tmpA_F_DAA craftboy matches 10.. run function daa:aplusequalssix")
+            "if score tmpA_F_DAA craftboy matches 10.. run function craftboy:daa/aplusequalssix")
 
     w(
         "execute if score N flags matches 1 if score C flags matches 1 run scoreboard players remove tmpA_DAA craftboy 96")

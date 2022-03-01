@@ -1,4 +1,4 @@
-execute if score 65348 io matches 144 run function interrupt:set_vblank
+execute if score 65348 io matches 144 run function craftboy:interrupt/set_vblank
 
 execute if score 65348 io matches ..143 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function craftboy:ppu/scanline
 

@@ -558,4 +558,4 @@ execute if score lower_39 sort <= 65348 io if score 65348 io < higher_39 sort ru
 scoreboard players set value_39 sort 65180
 
 
-function sort:sort
+function craftboy:sort/sort

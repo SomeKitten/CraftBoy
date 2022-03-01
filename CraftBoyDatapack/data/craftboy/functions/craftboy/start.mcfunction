@@ -54,7 +54,7 @@ scoreboard players set SP registers 65534
 
 # NECESSARY
 
-function unmap:boot
+function craftboy:craftboy/unmap_boot
 scoreboard players set PC registers 256
 scoreboard players set DIV timer 0
 
@@ -90,7 +90,7 @@ scoreboard players set DEBUG craftboy 0
 execute store result score screen_x graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
 execute store result score screen_y graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[2]
 
-# execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function sort:summon
+# execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function craftboy:sort/summon
 
 # TEMP
 # scoreboard players set 65348 io 144

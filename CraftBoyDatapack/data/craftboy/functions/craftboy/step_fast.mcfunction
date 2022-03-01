@@ -1,5 +1,5 @@
 function craftboy:util/get_op
 
-function step:0_0
-function timer:emu_cycles
-function graphics:run
+function craftboy:step/0_0
+function craftboy:timer/emu_cycles
+function craftboy:graphics/run

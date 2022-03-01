@@ -334,7 +334,7 @@ for opcode = 0, 255 do
         file_cb:write(
             "scoreboard players operation op_old craftboy = op_cb craftboy\n")
         file_cb:write("scoreboard players add op_old craftboy 51968\n")
-        file_cb:write("function step:cb_0_0\n")
+        file_cb:write("function craftboy:step/cb_0_0\n")
 
         for cb_opcode = 0, 255 do
             file = io.open(path .. "cb_" .. cb_opcode .. ".mcfunction", "w")

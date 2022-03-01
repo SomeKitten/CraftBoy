@@ -1,4 +1,4 @@
-local directory = "./CraftBoyDatapack/data/step/functions/"
+local directory = "./CraftBoyDatapack/data/craftboy/functions/step/"
 
 command_step = {
     "execute if score op craftboy matches ",
@@ -27,7 +27,7 @@ function recursive(depth, prefix, min, max)
 
         local child_filename = prefix .. (depth + 1) .. "_" .. recursions
         file:write(execute_if .. min .. ".." .. (min + len) ..
-                       " run function step:" .. child_filename .. "\n")
+                       " run function craftboy:step/" .. child_filename .. "\n")
 
         file:close()
         recursive(depth + 1, prefix, min, min + len)
@@ -36,7 +36,7 @@ function recursive(depth, prefix, min, max)
 
         child_filename = prefix .. (depth + 1) .. "_" .. recursions
         file:write(execute_if .. (min + len + 1) .. ".." .. max ..
-                       " run function step:" .. child_filename .. "\n")
+                       " run function craftboy:step/" .. child_filename .. "\n")
 
         file:close()
         recursive(depth + 1, prefix, min + len + 1, max)

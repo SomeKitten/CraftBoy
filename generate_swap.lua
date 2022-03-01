@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/sort/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/sort/"
 
 local oam_min = 0xFE00
 local oam_max = 0xFEA0 - 4

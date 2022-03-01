@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/dma/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/dma/"
 
 local recursions = 0
 
@@ -12,7 +12,7 @@ function recursive(depth, unique_name, min, max)
         local child_filename = unique_name .. "_" .. (depth + 1) .. "_" ..
                                    recursions
         dma_file:write("execute if score transfer craftboy matches " .. min ..
-                           ".." .. (min + len) .. " run function dma:" ..
+                           ".." .. (min + len) .. " run function craftboy:dma/" ..
                            child_filename .. "\n")
 
         dma_file:close()
@@ -24,7 +24,8 @@ function recursive(depth, unique_name, min, max)
         child_filename = unique_name .. "_" .. (depth + 1) .. "_" .. recursions
         dma_file:write("execute if score transfer craftboy matches " ..
                            (min + len + 1) .. ".." .. max ..
-                           " run function dma:" .. child_filename .. "\n")
+                           " run function craftboy:dma/" .. child_filename ..
+                           "\n")
 
         dma_file:close()
         recursive(depth + 1, unique_name, min + len + 1, max)
@@ -35,7 +36,7 @@ function recursive(depth, unique_name, min, max)
 
         for i = min, max do
             dma_file:write("execute if score transfer craftboy matches " .. i ..
-                               " run function dma:" .. i .. "\n")
+                               " run function craftboy:dma/" .. i .. "\n")
         end
 
         dma_file:close()

@@ -6,7 +6,7 @@
 # local prev_div = regs.get_DIV()
 scoreboard players operation prev_DIV timer = DIV timer
 # regs.inc_DIV()
-scoreboard players operation DIV timer += t_cycles craftboy
+scoreboard players add DIV timer 1
 execute if score DIV timer matches 65536.. run scoreboard players remove DIV timer 65536
 
 # local timer_update = false
@@ -63,10 +63,10 @@ function craftboy:util/binary_split0_16
 execute if score update timer matches 1 if score 2_0 binary matches 1 run scoreboard players add 65285 io 1
 execute if score update timer matches 1 if score 2_0 binary matches 1 if score 65285 io matches 256 run scoreboard players operation 65285 io = 65286 io
 
-execute if score update timer matches 1 if score 2_0 binary matches 1 if score 65285 io matches 256 run function interrupt:set_timer
+execute if score update timer matches 1 if score 2_0 binary matches 1 if score 65285 io matches 256 run function craftboy:interrupt/set_timer
 
-# scoreboard players remove t_cycles craftboy 1
-# execute if score t_cycles craftboy matches 1.. run function timer:tick
+scoreboard players remove t_cycles craftboy 1
+execute if score t_cycles craftboy matches 1.. run function craftboy:timer/tick
 
 scoreboard players operation 65284 io = DIV timer
 scoreboard players operation 65284 io /= 256 constants

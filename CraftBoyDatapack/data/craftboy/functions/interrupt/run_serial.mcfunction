@@ -2,7 +2,7 @@
 scoreboard players set IME registers 0
 
 # memory.set_IF(i, 0)
-function interrupt:reset_serial
+function craftboy:interrupt/reset_serial
 
 # TODO why check IME right after setting it?
 # if not (halt and regs.IME == 0) then
