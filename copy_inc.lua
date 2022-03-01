@@ -1,6 +1,6 @@
 here = "./CraftBoyDatapack/"
 there =
-    "/home/kitten/.minecraft/saves/GB Emulator 1_18_1/datapacks/CraftBoyDatapack/"
+    "/home/kitten/.minecraft/saves/GB Emulator 1_18_2/datapacks/CraftBoyDatapack/"
 
 function string.starts(String, Start)
     return string.sub(String, 1, string.len(Start)) == Start

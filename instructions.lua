@@ -894,16 +894,11 @@ end
 function i.DI()
     w("#DI")
 
-    w("say DI")
-
     w("scoreboard players set IME registers 0")
 end
 function i.EI()
     w("#EI")
 
-    w("say EI")
-
-    -- w("scoreboard players set IME registers 1")
     w("scoreboard players set SET_IME_0 craftboy 1")
 end
 

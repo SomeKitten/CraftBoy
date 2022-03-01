@@ -64,7 +64,7 @@ recursive(0, "dma", 0, 0xF1)
 
 for i = 0, 0xF1 do
     local f = io.open(folder .. i .. ".mcfunction", "w")
-    f:write("say OAM DMA " .. i .. "\n")
+    -- f:write("say OAM DMA " .. i .. "\n")
     for j = 0, 0x9F do
         f:write("scoreboard players operation " .. (0xFE00 + j) .. " oam = " ..
                     (i * 0x100 + j) .. " " .. get_area(i * 0x100 + j) .. "\n")

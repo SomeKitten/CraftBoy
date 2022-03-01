@@ -3,8 +3,6 @@ execute if score HALT registers matches 0 run function craftboy:step_fast
 # execute if score HALT registers matches 0 run function craftboy:step
 execute if score HALT registers matches 1 run function craftboy:halt
 
-execute if score 65295 io matches 1.. run scoreboard players set HALT registers 0
-
 execute if score IME registers matches 1 if score 65295 io matches 1.. if score 65535 interrupt matches 1.. run function interrupt:run_interrupts
 
 

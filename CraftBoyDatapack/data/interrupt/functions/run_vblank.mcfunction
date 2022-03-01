@@ -1,4 +1,4 @@
-say VBLANK!
+# say VBLANK!
 
 # regs.IME = 0
 scoreboard players set IME registers 0

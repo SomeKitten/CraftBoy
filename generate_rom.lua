@@ -3,7 +3,7 @@ util = require "util"
 rom = {}
 
 directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-rom.filename = "kirby.gb"
+rom.filename = "Faceball 2000 (USA).gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
@@ -45,10 +45,14 @@ for i = 1, math.floor(#rom.data / 0x4000) do
 
     -- file:write("say ROM BANK " .. i .. "\n")
 
-    for j = 0x4000, 0x7FFF do
-        file:write("scoreboard players set " .. j .. " rom " ..
-                       rom.data[i * 0x4000 + j - 0x4000] .. "\n")
-    end
+    pcall(function()
+        for j = 0x4000, 0x7FFF do
+            file:write("scoreboard players set " .. j .. " rom " ..
+                           rom.data[i * 0x4000 + j - 0x4000] .. "\n")
+        end
+    end)
+
+    file:close()
 end
 
 rom.mcfunction_rom:close()

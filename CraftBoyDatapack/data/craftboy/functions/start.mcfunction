@@ -6,6 +6,7 @@ scoreboard objectives add ppu dummy
 scoreboard objectives add flags dummy
 scoreboard objectives add graphics dummy
 scoreboard objectives add undefined dummy
+
 scoreboard objectives add bios dummy
 scoreboard objectives add rom dummy
 scoreboard objectives add vram dummy
@@ -15,6 +16,8 @@ scoreboard objectives add oam dummy
 scoreboard objectives add io dummy
 scoreboard objectives add hram dummy
 scoreboard objectives add interrupt dummy
+scoreboard objectives add sram dummy
+
 scoreboard objectives add binary dummy
 scoreboard objectives add timer dummy
 scoreboard objectives add sort dummy
@@ -74,10 +77,12 @@ scoreboard players set 65348 io 0
 scoreboard players set mode2_bounds graphics 376
 scoreboard players set mode3_bounds graphics 204
 
+scoreboard players set ram_gate craftboy 1
 scoreboard players set rom_bank craftboy 1
 scoreboard players set ram_bank craftboy 0
 scoreboard players set bank craftboy 1
 function mbc:swap_rom
+function mbc:swap_ram
 
 scoreboard players set DEBUG craftboy 0
 # scoreboard players set opcode undefined -1
@@ -92,3 +97,5 @@ execute store result score screen_y graphics run data get entity @e[type=minecra
 
 # TODO rename to Block Matrix Game?
 # TODO set LY and others on start
+# TODO refactor into one namespace
+# TODO split flags, and registers
