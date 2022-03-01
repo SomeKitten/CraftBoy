@@ -1,7 +1,7 @@
 scoreboard players operation in binary = 65295 io
-function util:binary_split2
+function craftboy:util/binary_split2
 scoreboard players operation in binary = 65535 interrupt
-function util:binary_split3
+function craftboy:util/binary_split3
 
 execute if score 0_2 binary matches 1 if score 0_3 binary matches 1 run function interrupt:run_vblank
 

@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/mbc/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/mbc/"
 
 for i = 0, 3 do
     local bank = io.open(folder .. "ram_bank_" .. i .. ".mcfunction", "w")

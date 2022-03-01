@@ -1,12 +1,13 @@
 local directory = "./CraftBoyDatapack/data/step/functions/"
 
 command_step = {
-    "execute if score op craftboy matches ", " run function instructions:", "\n"
+    "execute if score op craftboy matches ",
+    " run function craftboy:instructions/", "\n"
 }
 
 command_step_cb = {
-    "execute if score op_cb craftboy matches ", " run function instructions:",
-    "\n"
+    "execute if score op_cb craftboy matches ",
+    " run function craftboy:instructions/", "\n"
 }
 
 local recursions = 0

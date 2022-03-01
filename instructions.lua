@@ -53,7 +53,8 @@ function i.CALLC(condition, value)
 
     i.GET_FLAGS()
 
-    w("execute if score " .. condition .. " run function instructions:205")
+    w("execute if score " .. condition ..
+          " run function craftboy:instructions/205")
     w("execute unless score " .. condition ..
           " run scoreboard players add PC registers 2")
 end
@@ -73,7 +74,8 @@ function i.RETC(condition)
 
     i.GET_FLAGS()
 
-    w("execute if score " .. condition .. " run function instructions:201")
+    w("execute if score " .. condition ..
+          " run function craftboy:instructions/201")
 end
 
 function i.PUSH(value)
@@ -306,7 +308,7 @@ function i.RLCA()
     w("#RLCA")
     i.GET_A()
     i.LD("in binary", "out binary")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RLCA craftboy", "7_0 binary")
     i.LD("7_0 binary", "6_0 binary")
@@ -318,7 +320,7 @@ function i.RLCA()
     i.LD("1_0 binary", "0_0 binary")
     i.LD("0_0 binary", "tmp_RLCA craftboy")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.SET_A("out binary")
 
     i.GET_FLAGS()
@@ -336,7 +338,7 @@ function i.RRCA()
     w("#RRCA")
     i.GET_A()
     i.LD("in binary", "out binary")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RRCA craftboy", "0_0 binary")
     i.LD("0_0 binary", "1_0 binary")
@@ -348,7 +350,7 @@ function i.RRCA()
     i.LD("6_0 binary", "7_0 binary")
     i.LD("7_0 binary", "tmp_RRCA craftboy")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.SET_A("out binary")
 
     i.GET_FLAGS()
@@ -371,7 +373,7 @@ function i.RLA()
     i.LD("tmp_RLA craftboy", "out binary")
 
     i.LD("in binary", "tmp_RLA craftboy")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("cflag_RLA craftboy", "7_0 binary")
     i.LD("7_0 binary", "6_0 binary")
@@ -383,7 +385,7 @@ function i.RLA()
     i.LD("1_0 binary", "0_0 binary")
     i.LD("0_0 binary", "C flags")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
 
     i.LD("tmp_RLA craftboy", "out binary")
     i.SET_A("tmp_RLA craftboy")
@@ -407,7 +409,7 @@ function i.RRA()
     i.LD("tmp_RRA craftboy", "out binary")
 
     i.LD("in binary", "tmp_RRA craftboy")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("cflag_RRA craftboy", "0_0 binary")
     i.LD("0_0 binary", "1_0 binary")
@@ -419,7 +421,7 @@ function i.RRA()
     i.LD("6_0 binary", "7_0 binary")
     i.LD("7_0 binary", "C flags")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
 
     i.LD("tmp_RRA craftboy", "out binary")
     i.SET_A("tmp_RRA craftboy")
@@ -444,12 +446,12 @@ function i.DAA()
     i.LD("tmpA_DAA craftboy", "out binary")
 
     i.LD("in binary", "tmpA_DAA craftboy")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
     w("scoreboard players set 4_0 binary 0")
     w("scoreboard players set 5_0 binary 0")
     w("scoreboard players set 6_0 binary 0")
     w("scoreboard players set 7_0 binary 0")
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD("tmpA_F_DAA craftboy", "out binary")
 
     w("scoreboard players set tmpOR_DAA craftboy 0")
@@ -492,7 +494,7 @@ function i.CPL()
     w("#CPL")
     i.GET_A()
     i.LD("in binary", "out binary")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.INV_BIT("0_0 binary")
     i.INV_BIT("1_0 binary")
@@ -503,7 +505,7 @@ function i.CPL()
     i.INV_BIT("6_0 binary")
     i.INV_BIT("7_0 binary")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.SET_A("out binary")
 
     i.GET_FLAGS()
@@ -743,17 +745,17 @@ function i.AND_A(value)
     w("#AND_A")
     i.GET_A()
     i.LD("in binary", "out binary")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("in binary", value)
-    w("function util:binary_split1")
+    w("function craftboy:util/binary_split1")
 
     for b = 0, 7 do
         w("scoreboard players operation " .. b .. "_0 binary *= " .. b ..
               "_1 binary")
     end
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
 
     -- ZFLAG
     w("scoreboard players set zflag_AND_A craftboy 0")
@@ -777,10 +779,10 @@ function i.XOR_A(value)
     w("#XOR_A")
     i.GET_A()
     i.LD("in binary", "out binary")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("in binary", value)
-    w("function util:binary_split1")
+    w("function craftboy:util/binary_split1")
 
     for b = 0, 7 do
         w("scoreboard players operation " .. b .. "_0 binary -= " .. b ..
@@ -789,7 +791,7 @@ function i.XOR_A(value)
               "_0 binary")
     end
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
 
     -- ZFLAG
     w("scoreboard players set zflag_XOR_A craftboy 0")
@@ -814,10 +816,10 @@ function i.OR_A(value)
 
     i.GET_A()
     i.LD("in binary", "out binary")
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("in binary", value)
-    w("function util:binary_split1")
+    w("function craftboy:util/binary_split1")
 
     for b = 0, 7 do
         w("execute if score " .. b ..
@@ -825,7 +827,7 @@ function i.OR_A(value)
               "_0 binary 1")
     end
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
 
     -- ZFLAG
     w("scoreboard players set zflag_OR_A craftboy 0")
@@ -905,7 +907,7 @@ end
 function i.RLC(value)
     w("#RLC")
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RLC craftboy", "7_0 binary")
     i.LD("7_0 binary", "6_0 binary")
@@ -917,7 +919,7 @@ function i.RLC(value)
     i.LD("1_0 binary", "0_0 binary")
     i.LD("0_0 binary", "tmp_RLC craftboy")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -939,7 +941,7 @@ end
 function i.RRC(value)
     w("#RRC")
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RRC craftboy", "0_0 binary")
     i.LD("0_0 binary", "1_0 binary")
@@ -951,7 +953,7 @@ function i.RRC(value)
     i.LD("6_0 binary", "7_0 binary")
     i.LD("7_0 binary", "tmp_RRC craftboy")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -974,7 +976,7 @@ function i.RL(value)
     w("#RL")
 
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RL craftboy", "7_0 binary")
     i.LD("7_0 binary", "6_0 binary")
@@ -986,7 +988,7 @@ function i.RL(value)
     i.LD("1_0 binary", "0_0 binary")
     i.LD("0_0 binary", "C flags")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -1009,7 +1011,7 @@ function i.RR(value)
     w("#RR")
 
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RR craftboy", "0_0 binary")
     i.LD("0_0 binary", "1_0 binary")
@@ -1021,7 +1023,7 @@ function i.RR(value)
     i.LD("6_0 binary", "7_0 binary")
     i.LD("7_0 binary", "C flags")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -1044,7 +1046,7 @@ function i.SLA(value)
     w("#SLA")
 
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("cflag_SLA craftboy", "7_0 binary")
     i.LD("7_0 binary", "6_0 binary")
@@ -1056,7 +1058,7 @@ function i.SLA(value)
     i.LD("1_0 binary", "0_0 binary")
     w("scoreboard players set 0_0 binary 0")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -1079,7 +1081,7 @@ function i.SRA(value)
     w("#SRA")
 
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("cflag_SRA craftboy", "0_0 binary")
     i.LD("0_0 binary", "1_0 binary")
@@ -1090,7 +1092,7 @@ function i.SRA(value)
     i.LD("5_0 binary", "6_0 binary")
     i.LD("6_0 binary", "7_0 binary")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -1139,7 +1141,7 @@ function i.SRL(value)
     w("#SRL")
 
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
 
     i.LD("tmp_SRL craftboy", "0_0 binary")
     i.LD("0_0 binary", "1_0 binary")
@@ -1151,7 +1153,7 @@ function i.SRL(value)
     i.LD("6_0 binary", "7_0 binary")
     i.LD("7_0 binary", "0 constants")
 
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
     i.LD(value, "out binary")
 
     -- ZFLAG
@@ -1201,7 +1203,7 @@ end
 function i.READ8(index)
     w("#READ8")
     i.LD("index craftboy", index)
-    w("function craftboy:read")
+    w("function craftboy:craftboy/read")
 end
 function i.READ16(index)
     w("#READ16")
@@ -1217,7 +1219,7 @@ function i.WRITE8(index, value)
     i.LD("index craftboy", index)
     i.LD("transfer craftboy", value)
 
-    w("function craftboy:write")
+    w("function craftboy:craftboy/write")
 end
 function i.WRITE16(index, value)
     w("#WRITE16")
@@ -1233,23 +1235,23 @@ end
 function i.GET_LO8(value)
     w("#GET_LO8")
     i.LD("in binary", value)
-    w("function util:get_lo8")
+    w("function craftboy:util/get_lo8")
 end
 function i.GET_HI8(value)
     w("#GET_HI8")
     i.LD("in binary", value)
-    w("function util:get_hi8")
+    w("function craftboy:util/get_hi8")
 end
 
 function i.GET_LO16(value)
     w("#GET_LO16")
     i.LD("in binary", value)
-    w("function util:get_lo16")
+    w("function craftboy:util/get_lo16")
 end
 function i.GET_HI16(value)
     w("#GET_HI16")
     i.LD("in binary", value)
-    w("function util:get_hi16")
+    w("function craftboy:util/get_hi16")
 end
 
 function i.GET_LO16_12(value)
@@ -1378,15 +1380,15 @@ end
 function i.GET_BIT(value, index)
     w("#GET_BIT")
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
     i.LD("out binary", index .. "_0 binary")
 end
 function i.SET_BIT(value, index, bit)
     w("#SET_BIT")
     i.LD("in binary", value)
-    w("function util:binary_split0")
+    w("function craftboy:util/binary_split0")
     w("scoreboard players operation " .. index .. "_0 binary = " .. bit)
-    w("function util:binary_join0")
+    w("function craftboy:util/binary_join0")
 end
 function i.INV_BIT(value)
     w("#INV_BIT")
@@ -1430,10 +1432,10 @@ end
 
 function i.GET_FLAGS()
     w("#GET_FLAGS")
-    w('function util:split_flags')
+    w('function craftboy:util/split_flags')
     -- i.GET_LO16("AF registers")
     -- i.LD("in binary", "out binary")
-    -- w("function util:binary_split0")
+    -- w("function craftboy:util/binary_split0")
     -- i.LD("Z flags", "7_0 binary")
     -- i.LD("N flags", "6_0 binary")
     -- i.LD("H flags", "5_0 binary")
@@ -1442,7 +1444,7 @@ end
 
 function i.SET_FLAGS()
     w("#SET_FLAGS")
-    w('function util:join_flags')
+    w('function craftboy:util/join_flags')
 end
 
 function i.M_CYCLES(value)

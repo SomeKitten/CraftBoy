@@ -7,4 +7,4 @@ dir = "rom_" .. "pokemonred"
 os.execute("rm -r \"" .. there .. dir .. "\"")
 os.execute("cp -r " .. here .. dir .. " \"" .. there .. dir .. "\"")
 os.execute("cp " .. here .. dir .. "/functions/bank_*.mcfunction \"" .. there ..
-               "mbc/functions/\"")
+               "craftboy/functions/mbc/\"")

@@ -2,7 +2,7 @@ util = require "util"
 
 there =
     "/home/kitten/.minecraft/saves/GB Emulator 1_18_2/datapacks/CraftBoyDatapack/data/"
-therefile = "mbc/functions/load_save.mcfunction"
+therefile = "craftboy/functions/mbc/load_save.mcfunction"
 
 save = {}
 
@@ -24,6 +24,6 @@ for i = 0, 0x7FFF do
 end
 
 save.mcfunction_rom:write("scoreboard players set ram_bank craftboy 0\n")
-save.mcfunction_rom:write("function mbc:swap_ram")
+save.mcfunction_rom:write("function craftboy:mbc/swap_ram")
 
 save.mcfunction_rom:close()

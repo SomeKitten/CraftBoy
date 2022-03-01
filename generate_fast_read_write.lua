@@ -1,5 +1,5 @@
-local read_directory = "./CraftBoyDatapack/data/read/functions/"
-local write_directory = "./CraftBoyDatapack/data/write/functions/"
+local read_directory = "./CraftBoyDatapack/data/craftboy/functions/read/"
+local write_directory = "./CraftBoyDatapack/data/craftboy/functions/write/"
 
 local recursions = 0
 
@@ -16,11 +16,13 @@ function recursive(depth, unique_name, scoreboard, min, max)
         local child_filename = unique_name .. "_" .. (depth + 1) .. "_" ..
                                    recursions
         read_file:write("execute if score index craftboy matches " .. min ..
-                            ".." .. (min + len) .. " run function read:" ..
-                            child_filename .. "\n")
+                            ".." .. (min + len) ..
+                            " run function craftboy:read/" .. child_filename ..
+                            "\n")
         write_file:write("execute if score index craftboy matches " .. min ..
-                             ".." .. (min + len) .. " run function write:" ..
-                             child_filename .. "\n")
+                             ".." .. (min + len) ..
+                             " run function craftboy:write/" .. child_filename ..
+                             "\n")
 
         read_file:close()
         write_file:close()
@@ -32,10 +34,12 @@ function recursive(depth, unique_name, scoreboard, min, max)
         child_filename = unique_name .. "_" .. (depth + 1) .. "_" .. recursions
         read_file:write("execute if score index craftboy matches " ..
                             (min + len + 1) .. ".." .. max ..
-                            " run function read:" .. child_filename .. "\n")
+                            " run function craftboy:read/" .. child_filename ..
+                            "\n")
         write_file:write("execute if score index craftboy matches " ..
                              (min + len + 1) .. ".." .. max ..
-                             " run function write:" .. child_filename .. "\n")
+                             " run function craftboy:write/" .. child_filename ..
+                             "\n")
 
         read_file:close()
         write_file:close()
@@ -69,19 +73,19 @@ function recursive(depth, unique_name, scoreboard, min, max)
                 -- if i >= 0x200 and i < 0x4000 then
                 --     write_file:write(
                 --         "execute if score index craftboy matches " .. i ..
-                --             " run function mbc:swap_rom_lo")
+                --             " run function craftboy:mbc/swap_rom_lo")
                 -- end
                 -- if i >= 0x4000 and i < 0x6000 then
                 --     write_file:write(
                 --         "execute if score index craftboy matches " .. i ..
-                --             " if score 327 rom matches 1..3 run function mbc:swap_rom_hi")
+                --             " if score 327 rom matches 1..3 run function craftboy:mbc/swap_rom_hi")
                 -- end
             elseif i == 0xFF00 then
                 write_file:write([[
 execute if score index craftboy matches ]] .. i ..
                                      [[ run scoreboard players operation in binary = transfer craftboy
 execute if score index craftboy matches ]] .. i ..
-                                     [[ run function util:binary_split5
+                                     [[ run function craftboy:util/binary_split5
 
 execute if score index craftboy matches ]] .. i ..
                                      [[ if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy

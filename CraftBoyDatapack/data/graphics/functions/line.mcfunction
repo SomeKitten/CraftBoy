@@ -1,6 +1,6 @@
 execute if score 65348 io matches 144 run function interrupt:set_vblank
 
-execute if score 65348 io matches ..143 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function ppu:scanline
+execute if score 65348 io matches ..143 as @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function craftboy:ppu/scanline
 
 scoreboard players add 65348 io 1
 

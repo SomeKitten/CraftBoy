@@ -14,7 +14,7 @@ scoreboard players set update timer 0
 
 # local lower_tac = bit.band(memory.get_TAC(), 0x03)
 scoreboard players operation in binary = 65287 io
-function util:binary_split0
+function craftboy:util/binary_split0
 
 scoreboard players set 2_0 binary 0
 scoreboard players set 3_0 binary 0
@@ -23,7 +23,7 @@ scoreboard players set 5_0 binary 0
 scoreboard players set 6_0 binary 0
 scoreboard players set 7_0 binary 0
 
-function util:binary_join0
+function craftboy:util/binary_join0
 scoreboard players operation lower_TAC timer = out binary
 
 # if lower_tac == 0x00 then
@@ -40,9 +40,9 @@ scoreboard players operation lower_TAC timer = out binary
 #                         util.get_bit(regs.get_DIV(), 7) == 0
 # end
 scoreboard players operation in binary = prev_DIV timer
-function util:binary_split0_16
+function craftboy:util/binary_split0_16
 scoreboard players operation in binary = DIV timer
-function util:binary_split1_16
+function craftboy:util/binary_split1_16
 
 execute if score lower_TAC timer matches 0 if score 9_0 binary matches 1 if score 9_1 binary matches 0 run scoreboard players set update timer 1
 execute if score lower_TAC timer matches 1 if score 3_0 binary matches 1 if score 3_1 binary matches 0 run scoreboard players set update timer 1
@@ -59,7 +59,7 @@ execute if score lower_TAC timer matches 3 if score 7_0 binary matches 1 if scor
 #     end
 # end
 scoreboard players operation in binary = 65287 io
-function util:binary_split0_16
+function craftboy:util/binary_split0_16
 execute if score update timer matches 1 if score 2_0 binary matches 1 run scoreboard players add 65285 io 1
 execute if score update timer matches 1 if score 2_0 binary matches 1 if score 65285 io matches 256 run scoreboard players operation 65285 io = 65286 io
 

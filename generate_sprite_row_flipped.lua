@@ -1,4 +1,4 @@
-local folder = "./CraftBoyDatapack/data/ppu/functions/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/ppu/"
 local master = io.open(folder .. "sprite_row_flipped.mcfunction", "w")
 
 master:write([[
@@ -6,15 +6,15 @@ scoreboard players add sprite_count ppu 1
 
 # TODO bits in wrong order?
 scoreboard players operation index craftboy = row ppu
-function read:tile_vram_0_0
+function craftboy:read/tile_vram_0_0
 scoreboard players operation in binary = transfer craftboy
-function util:binary_split0
+function craftboy:util/binary_split0
 
 
 scoreboard players add index craftboy 1
-function read:tile_vram_0_0
+function craftboy:read/tile_vram_0_0
 scoreboard players operation in binary = transfer craftboy
-function util:binary_split1
+function craftboy:util/binary_split1
 ]])
 
 for i = 0, 7 do

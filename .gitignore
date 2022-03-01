@@ -1,8 +1,8 @@
 **/*.txt
-**/CraftBoyDatapack/data/rom_*/**
-**/read/functions/*
-**/write/functions/*
-**/step/functions/*
-**/dma/functions/*
-**/instructions/functions/*
-**/compare/functions/*
+**/rom_*/**/*
+**/read/**/*
+**/write/**/*
+**/step/**/*
+**/dma/**/*
+**/instructions/**/*
+**/compare/**/*

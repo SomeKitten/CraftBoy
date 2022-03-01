@@ -1,5 +1,5 @@
 scoreboard players operation in binary = 65345 io
-function util:binary_split0
+function craftboy:util/binary_split0
 
 # -- TODO LCD ENABLE/DISABLE
 scoreboard players operation currentmode graphics = mode graphics
@@ -21,5 +21,5 @@ execute if score 65348 io = 65349 io if score 2_0 binary matches 0 if score 6_0 
 execute if score 65348 io = 65349 io run scoreboard players set 2_0 binary 1
 execute unless score 65348 io = 65349 io run scoreboard players set 2_0 binary 0
 
-function util:binary_join0
+function craftboy:util/binary_join0
 scoreboard players operation 65345 io = out binary
