@@ -1,4 +1,4 @@
-gamerule maxCommandChainLength 1000000000
+gamerule maxCommandChainLength 2147483647
 
 scoreboard objectives add craftboy dummy
 scoreboard objectives add registers dummy
@@ -87,6 +87,9 @@ scoreboard players set 65348 io 0
 
 scoreboard players set mode2_bounds graphics 376
 scoreboard players set mode3_bounds graphics 204
+
+scoreboard players set frame craftboy 0
+execute unless score frame_skip craftboy matches 1.. run scoreboard players set frame_skip craftboy 1
 
 scoreboard players set ram_gate craftboy 1
 scoreboard players set rom_bank craftboy 1
