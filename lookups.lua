@@ -2,25 +2,25 @@ local lookups = {}
 local insts = require("instructions")
 
 lookups.r = {}
-lookups.r[0] = "B"
-lookups.r[1] = "C"
-lookups.r[2] = "D"
-lookups.r[3] = "E"
-lookups.r[4] = "H"
-lookups.r[5] = "L"
-lookups.r[6] = "(HL)"
-lookups.r[7] = "A"
+lookups.r[0] = "B registers"
+lookups.r[1] = "C registers"
+lookups.r[2] = "D registers"
+lookups.r[3] = "E registers"
+lookups.r[4] = "H registers"
+lookups.r[5] = "L registers"
+lookups.r[6] = "HL registers"
+lookups.r[7] = "A registers"
 
 lookups.rp = {}
-lookups.rp[0] = "BC registers"
-lookups.rp[1] = "DE registers"
-lookups.rp[2] = "HL registers"
+lookups.rp[0] = {"B registers", "C registers"}
+lookups.rp[1] = {"D registers", "E registers"}
+lookups.rp[2] = {"H registers", "L registers"}
 lookups.rp[3] = "SP registers"
 
 lookups.rp2 = {}
-lookups.rp2[0] = "BC registers"
-lookups.rp2[1] = "DE registers"
-lookups.rp2[2] = "HL registers"
+lookups.rp2[0] = {"B registers", "C registers"}
+lookups.rp2[1] = {"D registers", "E registers"}
+lookups.rp2[2] = {"H registers", "L registers"}
 lookups.rp2[3] = "AF registers"
 
 lookups.cc = {}

@@ -6,7 +6,7 @@ os.execute("mkdir ./CraftBoyDatapack/data/compare/functions")
 -- 257 - 47933
 start = 0
 
-txt_name = "09.txt"
+txt_name = "06.txt"
 
 filename =
     "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/" ..
@@ -74,8 +74,6 @@ HL = tonumber(line:sub(40, 41), 16) * 256 + tonumber(line:sub(46, 47), 16)
 SP = tonumber(line:sub(53, 56), 16)
 PC = tonumber(line:sub(65, 68), 16)
 
-out_file:write("function compare:0_0\n")
-
 lines = {}
 
 while line ~= nil do
@@ -91,10 +89,10 @@ while line ~= nil do
                        txt_template[5] .. SP .. txt_template[6] .. PC .. "\n")
 
     lines[i] = "execute if score inst_count registers matches " .. i + start ..
-                   " if score AF registers matches " .. AF ..
-                   " if score BC registers matches " .. BC ..
-                   " if score DE registers matches " .. DE ..
-                   " if score HL registers matches " .. HL ..
+                   " if score AF compare matches " .. AF ..
+                   " if score BC compare matches " .. BC ..
+                   " if score DE compare matches " .. DE ..
+                   " if score HL compare matches " .. HL ..
                    " if score SP registers matches " .. SP ..
                    " if score PC registers matches " .. PC ..
                    " run scoreboard players set DEBUG craftboy 0\n"
@@ -103,6 +101,35 @@ while line ~= nil do
     i = i + 1
     if i >= 1000000 then break end
 end
+
+out_file:write("scoreboard players set DEBUG craftboy 1\n")
+
+out_file:write([[
+scoreboard players operation AF compare = A registers
+scoreboard players operation AF compare *= 2 constants
+scoreboard players operation AF compare += Z flags
+scoreboard players operation AF compare *= 2 constants
+scoreboard players operation AF compare += N flags
+scoreboard players operation AF compare *= 2 constants
+scoreboard players operation AF compare += H flags
+scoreboard players operation AF compare *= 2 constants
+scoreboard players operation AF compare += C flags
+scoreboard players operation AF compare *= 16 constants
+
+scoreboard players operation BC compare = B registers
+scoreboard players operation BC compare *= 256 constants
+scoreboard players operation BC compare += C registers
+
+scoreboard players operation DE compare = D registers
+scoreboard players operation DE compare *= 256 constants
+scoreboard players operation DE compare += E registers
+
+scoreboard players operation HL compare = H registers
+scoreboard players operation HL compare *= 256 constants
+scoreboard players operation HL compare += L registers
+]])
+
+out_file:write("function compare:0_0\n")
 
 out_file:write("execute if score inst_count registers matches " .. i ..
                    ".. run say Compare finished!\n")

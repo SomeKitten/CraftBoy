@@ -39,7 +39,6 @@ for opcode = 0, 255 do
                     w(get_d)
                     insts.JR("d craftboy")
                 elseif y >= 4 and y <= 7 then
-                    insts.GET_FLAGS()
                     insts.M_CYCLES_C(lookups.cc[y - 4], 3, 2)
                     w(get_d)
                     insts.JRC(lookups.cc[y - 4], "d craftboy")
@@ -50,99 +49,282 @@ for opcode = 0, 255 do
 
                     w(get_nn)
 
-                    insts.LD(lookups.rp[p], "nn craftboy")
+                    if #lookups.rp[p] == 2 then
+                        insts.LD(lookups.rp[p][2], "nn_lo craftboy")
+                        insts.LD(lookups.rp[p][1], "nn_hi craftboy")
+                    else
+                        insts.LD(lookups.rp[p], "nn craftboy")
+                    end
                 elseif q == 1 then
-                    insts.ADD("HL registers", lookups.rp[p])
+                    insts.LD("tmp2_rp craftboy", "H registers")
+                    w(
+                        "scoreboard players operation tmp2_rp craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation tmp2_rp craftboy += L registers")
+
+                    if #lookups.rp[p] == 2 then
+                        insts.LD("tmp_rp craftboy", lookups.rp[p][1])
+                        w(
+                            "scoreboard players operation tmp_rp craftboy *= 256 constants")
+                        w("scoreboard players operation tmp_rp craftboy += " ..
+                              lookups.rp[p][2])
+                        insts.ADD("tmp2_rp craftboy", "tmp_rp craftboy")
+                    else
+                        insts.ADD("tmp2_rp craftboy", lookups.rp[p])
+                    end
+
+                    insts.LD("H registers", "tmp2_rp craftboy")
+                    insts.LD("L registers", "tmp2_rp craftboy")
+                    w(
+                        "scoreboard players operation H registers /= 256 constants")
+                    w(
+                        "scoreboard players operation L registers %= 256 constants")
                 end
             elseif z == 2 then
                 if q == 0 then
                     if p == 0 then
                         insts.M_CYCLES(2)
 
-                        insts.GET_A()
-                        insts.WRITE8("BC registers", "out binary")
+                        insts.LD("index craftboy", "B registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += C registers")
+
+                        insts.LD("transfer craftboy", "A registers")
+
+                        w("function craftboy:craftboy/write")
                     end
                     if p == 1 then
                         insts.M_CYCLES(2)
 
-                        insts.GET_A()
-                        insts.WRITE8("DE registers", "out binary")
+                        insts.LD("index craftboy", "D registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += E registers")
+
+                        insts.LD("transfer craftboy", "A registers")
+
+                        w("function craftboy:craftboy/write")
                     end
                     if p == 2 then
                         insts.M_CYCLES(2)
-                        insts.GET_A()
-                        insts.WRITE8("HL registers", "out binary")
-                        insts.INC16("HL registers")
+
+                        insts.LD("index craftboy", "H registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += L registers")
+
+                        insts.LD("transfer craftboy", "A registers")
+
+                        w("function craftboy:craftboy/write")
+
+                        w("scoreboard players add L registers 1")
+                        w(
+                            "execute if score L registers matches 256.. run scoreboard players add H registers 1")
+                        w(
+                            "scoreboard players operation H registers %= 256 constants")
+                        w(
+                            "scoreboard players operation L registers %= 256 constants")
                     end
                     if p == 3 then
                         insts.M_CYCLES(2)
-                        insts.GET_A()
-                        insts.WRITE8("HL registers", "out binary")
-                        insts.DEC16("HL registers")
+
+                        insts.LD("index craftboy", "H registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += L registers")
+
+                        insts.LD("transfer craftboy", "A registers")
+
+                        w("function craftboy:craftboy/write")
+
+                        w("scoreboard players remove L registers 1")
+                        w(
+                            "execute if score L registers matches ..-1 run scoreboard players remove H registers 1")
+                        w(
+                            "scoreboard players operation H registers %= 256 constants")
+                        w(
+                            "scoreboard players operation L registers %= 256 constants")
                     end
                 elseif q == 1 then
                     if p == 0 then
-                        insts.READ8("BC registers")
-                        insts.SET_A("transfer craftboy")
+                        insts.M_CYCLES(2)
+
+                        insts.LD("index craftboy", "B registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += C registers")
+
+                        w("function craftboy:craftboy/read")
+
+                        insts.LD("A registers", "transfer craftboy")
                     end
                     if p == 1 then
                         insts.M_CYCLES(2)
 
-                        insts.READ8("DE registers")
-                        insts.SET_A("transfer craftboy")
+                        insts.LD("index craftboy", "D registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += E registers")
+
+                        w("function craftboy:craftboy/read")
+
+                        insts.LD("A registers", "transfer craftboy")
                     end
                     if p == 2 then
                         insts.M_CYCLES(2)
 
-                        insts.READ8("HL registers")
-                        insts.SET_A("transfer craftboy")
-                        insts.INC16("HL registers")
+                        insts.LD("index craftboy", "H registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += L registers")
+
+                        w("function craftboy:craftboy/read")
+
+                        insts.LD("A registers", "transfer craftboy")
+
+                        w("scoreboard players add L registers 1")
+                        w(
+                            "execute if score L registers matches 256.. run scoreboard players add H registers 1")
+                        w(
+                            "scoreboard players operation H registers %= 256 constants")
+                        w(
+                            "scoreboard players operation L registers %= 256 constants")
                     end
                     if p == 3 then
-                        insts.READ8("HL registers")
-                        insts.SET_A("transfer craftboy")
-                        insts.DEC16("HL registers")
+                        insts.M_CYCLES(2)
+
+                        insts.LD("index craftboy", "H registers")
+                        w(
+                            "scoreboard players operation index craftboy *= 256 constants")
+                        w(
+                            "scoreboard players operation index craftboy += L registers")
+
+                        w("function craftboy:craftboy/read")
+
+                        insts.LD("A registers", "transfer craftboy")
+
+                        w("scoreboard players remove L registers 1")
+                        w(
+                            "execute if score L registers matches ..-1 run scoreboard players remove H registers 1")
+                        w(
+                            "scoreboard players operation H registers %= 256 constants")
+                        w(
+                            "scoreboard players operation L registers %= 256 constants")
                     end
                 end
             elseif z == 3 then
                 if q == 0 then
                     insts.M_CYCLES(2)
 
-                    insts.INC16(lookups.rp[p])
+                    if #lookups.rp[p] == 2 then
+                        w("scoreboard players add " .. lookups.rp[p][2] .. " 1")
+                        w("execute if score " .. lookups.rp[p][2] ..
+                              " matches 256.. run scoreboard players add " ..
+                              lookups.rp[p][1] .. " 1")
+                        w("scoreboard players operation " .. lookups.rp[p][2] ..
+                              " %= 256 constants")
+                        w("scoreboard players operation " .. lookups.rp[p][1] ..
+                              " %= 256 constants")
+                    else
+                        insts.INC16(lookups.rp[p])
+                    end
                 elseif q == 1 then
-                    insts.DEC16(lookups.rp[p])
+                    insts.M_CYCLES(2)
+
+                    if #lookups.rp[p] == 2 then
+                        w("scoreboard players remove " .. lookups.rp[p][2] ..
+                              " 1")
+                        w("execute if score " .. lookups.rp[p][2] ..
+                              " matches ..-1 run scoreboard players remove " ..
+                              lookups.rp[p][1] .. " 1")
+                        w("scoreboard players operation " .. lookups.rp[p][2] ..
+                              " %= 256 constants")
+                        w("scoreboard players operation " .. lookups.rp[p][1] ..
+                              " %= 256 constants")
+                    else
+                        insts.DEC16(lookups.rp[p])
+                    end
                 end
             elseif z == 4 then
-                if lookups.r[y] == "(HL)" then
+                if lookups.r[y] == "HL registers" then
                     insts.M_CYCLES(3)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/read")
+
+                    insts.INC8("transfer craftboy")
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/write")
                 else
                     insts.M_CYCLES(1)
+
+                    insts.INC8(lookups.r[y])
                 end
-
-                insts["GET_" .. lookups.r[y]]()
-                insts.LD("value craftboy", "out binary")
-
-                insts.INC8("value craftboy")
-
-                insts["SET_" .. lookups.r[y]]("value craftboy")
             elseif z == 5 then
-                insts.M_CYCLES(1)
-
-                insts["GET_" .. lookups.r[y]]()
-                insts.LD("value craftboy", "out binary")
-
-                insts.DEC8("value craftboy")
-
-                insts["SET_" .. lookups.r[y]]("value craftboy")
-            elseif z == 6 then
-                if lookups.r[y] == "(HL)" then
+                if lookups.r[y] == "HL registers" then
                     insts.M_CYCLES(3)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/read")
+
+                    insts.DEC8("transfer craftboy")
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/write")
+                else
+                    insts.M_CYCLES(1)
+
+                    insts.DEC8(lookups.r[y])
+                end
+            elseif z == 6 then
+                w(get_n)
+
+                if lookups.r[y] == "HL registers" then
+                    insts.M_CYCLES(3)
+
+                    insts.LD("transfer craftboy", "n craftboy")
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/write")
                 else
                     insts.M_CYCLES(2)
+
+                    insts.LD(lookups.r[y], "n craftboy")
                 end
-                w(get_n)
-                insts.LD("tmp_LD craftboy", "n craftboy")
-                insts["SET_" .. lookups.r[y]]("tmp_LD craftboy")
             elseif z == 7 then
                 if y == 0 then
                     insts.RLCA()
@@ -172,28 +354,51 @@ for opcode = 0, 255 do
             if z == 6 and y == 6 then
                 insts.HALT()
             else
-                if lookups.r[y] == "(HL)" or lookups.r[z] == "(HL)" then
+                if lookups.r[y] == "HL registers" then
                     insts.M_CYCLES(2)
+
+                    insts.LD("transfer craftboy", lookups.r[z])
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/write")
+                elseif lookups.r[z] == "HL registers" then
+                    insts.M_CYCLES(2)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+                    w("function craftboy:craftboy/read")
+
+                    insts.LD(lookups.r[y], "transfer craftboy")
                 else
                     insts.M_CYCLES(1)
-                end
 
-                insts["GET_" .. lookups.r[z]]()
-                insts.LD("value craftboy", "out binary")
-                insts["SET_" .. lookups.r[y]]("value craftboy")
+                    insts.LD(lookups.r[y], lookups.r[z])
+                end
             end
         elseif x == 2 then
-            if lookups.r[z] == "(HL)" then
+            if lookups.r[z] == "HL registers" then
                 insts.M_CYCLES(2)
+
+                insts.LD("index craftboy", "H registers")
+                w("scoreboard players operation index craftboy *= 256 constants")
+                w("scoreboard players operation index craftboy += L registers")
+
+                w("function craftboy:craftboy/read")
+
+                insts[lookups.alu[y]]("transfer craftboy")
             else
                 insts.M_CYCLES(1)
+
+                insts[lookups.alu[y]](lookups.r[z])
             end
-
-            insts.GET_FLAGS()
-
-            insts["GET_" .. lookups.r[z]]()
-            insts.LD("value craftboy", "out binary")
-            insts[lookups.alu[y]]("value craftboy")
         elseif x == 3 then
             if z == 0 then
                 if y >= 0 and y <= 3 then
@@ -202,9 +407,8 @@ for opcode = 0, 255 do
                     insts.M_CYCLES(3)
 
                     w(get_n)
-                    insts.GET_A()
                     insts.ADD_FF00("n craftboy")
-                    insts.WRITE8("n craftboy", "out binary")
+                    insts.WRITE8("n craftboy", "A registers")
                 elseif y == 5 then
                     w(get_d)
                     insts.ADD_SPD("SP registers", "d craftboy")
@@ -214,24 +418,27 @@ for opcode = 0, 255 do
                     w(get_n)
                     insts.ADD_FF00("n craftboy")
                     insts.READ8("n craftboy")
-                    insts.SET_A("transfer craftboy")
+                    insts.LD("A registers", "transfer craftboy")
                 elseif y == 7 then
                     w(get_d)
                     insts.LD("tmp0 craftboy", "SP registers")
                     insts.ADD_SPD("tmp0 craftboy", "d craftboy")
-                    insts.LD("HL registers", "tmp0 craftboy")
+                    insts.LD("H registers", "tmp0 craftboy")
+                    insts.LD("L registers", "tmp0 craftboy")
+                    w(
+                        "scoreboard players operation H registers /= 256 constants")
+                    w(
+                        "scoreboard players operation L registers %= 256 constants")
                 end
             elseif z == 1 then
                 if q == 0 then
                     insts.M_CYCLES(3)
 
-                    insts.POP(lookups.rp2[p])
-
-                    if lookups.rp2[p] == "AF registers" then
-                        w(
-                            "scoreboard players operation AF registers /= 16 constants")
-                        w(
-                            "scoreboard players operation AF registers *= 16 constants")
+                    if #lookups.rp2[p] == 2 then
+                        insts.POP2(lookups.rp2[p])
+                    else
+                        insts.POP2({"A registers", "flags flags"})
+                        w("function craftboy:util/split_flags")
                     end
                 elseif q == 1 then
                     if p == 0 then
@@ -245,9 +452,19 @@ for opcode = 0, 255 do
                     elseif p == 2 then
                         insts.M_CYCLES(1)
 
-                        insts.JP("HL registers")
+                        w(
+                            "scoreboard players operation PC registers = H registers")
+                        w(
+                            "scoreboard players operation PC registers *= 256 constants")
+                        w(
+                            "scoreboard players operation PC registers += L registers")
                     elseif p == 3 then
-                        insts.LD("SP registers", "HL registers")
+                        w(
+                            "scoreboard players operation SP registers = H registers")
+                        w(
+                            "scoreboard players operation SP registers *= 256 constants")
+                        w(
+                            "scoreboard players operation SP registers += L registers")
                     end
                 end
             elseif z == 2 then
@@ -259,27 +476,23 @@ for opcode = 0, 255 do
                 elseif y == 4 then
                     insts.M_CYCLES(2)
 
-                    insts.GET_C()
-                    insts.LD("value craftboy", "out binary")
+                    insts.LD("value craftboy", "C registers")
                     insts.ADD_FF00("value craftboy")
-                    insts.GET_A()
-                    insts.WRITE8("value craftboy", "out binary")
+                    insts.WRITE8("value craftboy", "A registers")
                 elseif y == 5 then
                     insts.M_CYCLES(4)
 
                     w(get_nn)
-                    insts.GET_A()
-                    insts.WRITE8("nn craftboy", "out binary")
+                    insts.WRITE8("nn craftboy", "A registers")
                 elseif y == 6 then
-                    insts.GET_C()
-                    insts.LD("value craftboy", "out binary")
+                    insts.LD("value craftboy", "C registers")
                     insts.ADD_FF00("value craftboy")
                     insts.READ8("value craftboy")
-                    insts.SET_HI16("AF registers", "transfer craftboy")
+                    insts.LD("A registers", "transfer craftboy")
                 elseif y == 7 then
                     w(get_nn)
                     insts.READ8("nn craftboy")
-                    insts.SET_HI16("AF registers", "transfer craftboy")
+                    insts.LD("A registers", "transfer craftboy")
                 end
             elseif z == 3 then
                 if y == 0 then
@@ -305,7 +518,12 @@ for opcode = 0, 255 do
                 if q == 0 then
                     insts.M_CYCLES(4)
 
-                    insts.PUSH(lookups.rp2[p])
+                    if #lookups.rp2[p] == 2 then
+                        insts.PUSH2(lookups.rp2[p])
+                    else
+                        w("function craftboy:util/join_flags")
+                        insts.PUSH2({"A registers", "flags flags"})
+                    end
                 elseif q == 1 then
                     if p == 0 then
                         insts.M_CYCLES(6)
@@ -316,8 +534,6 @@ for opcode = 0, 255 do
                 end
             elseif z == 6 then
                 insts.M_CYCLES(2)
-
-                insts.GET_FLAGS()
 
                 w(get_n)
                 insts[lookups.alu[y]]("n craftboy")
@@ -347,50 +563,100 @@ for opcode = 0, 255 do
             local z = tonumber(oct_code:sub(3, 3))
 
             if x == 0 then
-                if lookups.r[z] == "(HL)" then
+                if lookups.r[z] == "HL registers" then
                     insts.M_CYCLES(2)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/read")
+
+                    insts[lookups.rot[y]]("transfer craftboy")
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/write")
                 else
                     insts.M_CYCLES(1)
+
+                    insts[lookups.rot[y]](lookups.r[z])
                 end
-
-                insts.GET_FLAGS()
-
-                insts["GET_" .. lookups.r[z]]()
-                insts.LD("tmp_ROT craftboy", "out binary")
-                insts[lookups.rot[y]]("tmp_ROT craftboy")
-                insts["SET_" .. lookups.r[z]]("tmp_ROT craftboy")
             elseif x == 1 then
-                if lookups.r[z] == "(HL)" then
+                if lookups.r[z] == "HL registers" then
                     insts.M_CYCLES(3)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/read")
+
+                    insts.BIT(y, "transfer craftboy")
                 else
                     insts.M_CYCLES(2)
-                end
 
-                insts["GET_" .. lookups.r[z]]()
-                insts.LD("tmp_BIT craftboy", "out binary")
-                insts.BIT(y, "tmp_BIT craftboy")
+                    insts.BIT(y, lookups.r[z])
+                end
             elseif x == 2 then
-                if lookups.r[z] == "(HL)" then
+                if lookups.r[z] == "HL registers" then
                     insts.M_CYCLES(4)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/read")
+
+                    insts.RES(y, "transfer craftboy")
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+                    w("function craftboy:craftboy/write")
                 else
                     insts.M_CYCLES(2)
-                end
 
-                insts["GET_" .. lookups.r[z]]()
-                insts.LD("tmp_RES craftboy", "out binary")
-                insts.RES(y, "tmp_RES craftboy")
-                insts["SET_" .. lookups.r[z]]("tmp_RES craftboy")
+                    insts.RES(y, lookups.r[z])
+                end
             elseif x == 3 then
-                if lookups.r[z] == "(HL)" then
+                if lookups.r[z] == "HL registers" then
                     insts.M_CYCLES(4)
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/read")
+
+                    insts.SET(y, "transfer craftboy")
+
+                    insts.LD("index craftboy", "H registers")
+                    w(
+                        "scoreboard players operation index craftboy *= 256 constants")
+                    w(
+                        "scoreboard players operation index craftboy += L registers")
+
+                    w("function craftboy:craftboy/write")
                 else
                     insts.M_CYCLES(2)
-                end
 
-                insts["GET_" .. lookups.r[z]]()
-                insts.LD("tmp_SET craftboy", "out binary")
-                insts.SET(y, "tmp_SET craftboy")
-                insts["SET_" .. lookups.r[z]]("tmp_SET craftboy")
+                    insts.SET(y, lookups.r[z])
+                end
             end
 
             file:close()

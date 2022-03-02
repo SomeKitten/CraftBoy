@@ -107,7 +107,7 @@ execute if score index craftboy matches ]] .. i ..
             elseif i == 0xFF44 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..
-                        " run scoreboard players set LY registers 0\n")
+                        " run scoreboard players set 65348 io 0\n")
             elseif i == 0xFF46 then
                 write_file:write(
                     "execute if score index craftboy matches " .. i ..

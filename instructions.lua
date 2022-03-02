@@ -22,8 +22,6 @@ end
 function i.JPC(condition, value)
     w("#JPC")
 
-    i.GET_FLAGS()
-
     w("execute if score " .. condition ..
           " run scoreboard players operation PC registers = " .. value)
 end
@@ -51,8 +49,6 @@ end
 function i.CALLC(condition, value)
     w("#CALLC")
 
-    i.GET_FLAGS()
-
     w("execute if score " .. condition ..
           " run function craftboy:instructions/205")
     w("execute unless score " .. condition ..
@@ -72,8 +68,6 @@ end
 function i.RETC(condition)
     w("#RETC")
 
-    i.GET_FLAGS()
-
     w("execute if score " .. condition ..
           " run function craftboy:instructions/201")
 end
@@ -89,6 +83,15 @@ function i.PUSH(value)
     i.DEC16("SP registers")
     i.WRITE8("SP registers", "out binary")
 end
+function i.PUSH2(value)
+    w("#PUSH")
+
+    i.DEC16("SP registers")
+    i.WRITE8("SP registers", value[1])
+
+    i.DEC16("SP registers")
+    i.WRITE8("SP registers", value[2])
+end
 function i.POP(to)
     w("#POP")
     i.READ8("SP registers")
@@ -100,6 +103,18 @@ function i.POP(to)
     i.INC16("SP registers")
 
     i.SET_HI16(to, "transfer craftboy")
+end
+function i.POP2(to)
+    w("#POP")
+    i.READ8("SP registers")
+    i.INC16("SP registers")
+
+    i.LD(to[2], "transfer craftboy")
+
+    i.READ8("SP registers")
+    i.INC16("SP registers")
+
+    i.LD(to[1], "transfer craftboy")
 end
 
 function i.ADD(to, from)
@@ -129,14 +144,9 @@ function i.ADD(to, from)
     w("execute if score " .. to ..
           " matches 65536.. run scoreboard players remove " .. to .. " 65536")
 
-    i.GET_FLAGS()
     w("scoreboard players set N flags 0")
     w("scoreboard players operation H flags = hflag_ADD craftboy")
     w("scoreboard players operation C flags = cflag_ADD craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("hflag_ADD craftboy")
-    -- i.SET_FLAG_C("cflag_ADD craftboy")
 end
 function i.ADD_SPD(to, from)
     w("#ADD")
@@ -177,16 +187,10 @@ function i.ADD_SPD(to, from)
         "execute if score " .. to .. " matches ..-1 run scoreboard players add " ..
             to .. " 65536")
 
-    i.GET_FLAGS()
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players operation H flags = hflag_ADD_SPD craftboy")
     w("scoreboard players operation C flags = cflag_ADD_SPD craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("0 constants")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("hflag_ADD_SPD craftboy")
-    -- i.SET_FLAG_C("cflag_ADD_SPD craftboy")
 end
 function i.SUB(to, from)
     w("#SUB")
@@ -219,16 +223,10 @@ function i.SUB(to, from)
     w("execute if score " .. to ..
           " matches 0 run scoreboard players set zflag_SUB craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SUB craftboy")
     w("scoreboard players set N flags 1")
     w("scoreboard players operation H flags = hflag_SUB craftboy")
     w("scoreboard players operation C flags = cflag_SUB craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SUB craftboy")
-    -- i.SET_FLAG_N("1 constants")
-    -- i.SET_FLAG_H("hflag_SUB craftboy")
-    -- i.SET_FLAG_C("cflag_SUB craftboy")
 end
 
 function i.INC8(value)
@@ -251,14 +249,9 @@ function i.INC8(value)
     w("execute if score " .. value ..
           " matches 0 run scoreboard players set zflag_INC craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_INC craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players operation H flags = hflag_INC craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_INC craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("hflag_INC craftboy")
 end
 function i.DEC8(value)
     w("#DEC8")
@@ -280,14 +273,9 @@ function i.DEC8(value)
     w("execute if score " .. value ..
           " matches 0 run scoreboard players set zflag_DEC craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_DEC craftboy")
     w("scoreboard players set N flags 1")
     w("scoreboard players operation H flags = hflag_DEC craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_DEC craftboy")
-    -- i.SET_FLAG_N("1 constants")
-    -- i.SET_FLAG_H("hflag_DEC craftboy")
 end
 function i.INC16(value)
     w("#INC16")
@@ -306,8 +294,7 @@ end
 
 function i.RLCA()
     w("#RLCA")
-    i.GET_A()
-    i.LD("in binary", "out binary")
+    i.LD("in binary", "A registers")
     w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RLCA craftboy", "7_0 binary")
@@ -321,23 +308,16 @@ function i.RLCA()
     i.LD("0_0 binary", "tmp_RLCA craftboy")
 
     w("function craftboy:util/binary_join0")
-    i.SET_A("out binary")
+    i.LD("A registers", "out binary")
 
-    i.GET_FLAGS()
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_RLCA craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("0 constants")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_RLCA craftboy")
 end
 function i.RRCA()
     w("#RRCA")
-    i.GET_A()
-    i.LD("in binary", "out binary")
+    i.LD("in binary", "A registers")
     w("function craftboy:util/binary_split0")
 
     i.LD("tmp_RRCA craftboy", "0_0 binary")
@@ -351,26 +331,17 @@ function i.RRCA()
     i.LD("7_0 binary", "tmp_RRCA craftboy")
 
     w("function craftboy:util/binary_join0")
-    i.SET_A("out binary")
+    i.LD("A registers", "out binary")
 
-    i.GET_FLAGS()
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_RRCA craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("0 constants")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_RRCA craftboy")
 end
 function i.RLA()
     w("#RLA")
 
-    i.GET_FLAGS()
-
-    i.GET_A()
-    i.LD("tmp_RLA craftboy", "out binary")
+    i.LD("tmp_RLA craftboy", "A registers")
 
     i.LD("in binary", "tmp_RLA craftboy")
     w("function craftboy:util/binary_split0")
@@ -388,25 +359,17 @@ function i.RLA()
     w("function craftboy:util/binary_join0")
 
     i.LD("tmp_RLA craftboy", "out binary")
-    i.SET_A("tmp_RLA craftboy")
+    i.LD("A registers", "tmp_RLA craftboy")
 
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = cflag_RLA craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("0 constants")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("cflag_RLA craftboy")
 end
 function i.RRA()
     w("#RRA")
 
-    i.GET_FLAGS()
-
-    i.GET_A()
-    i.LD("tmp_RRA craftboy", "out binary")
+    i.LD("tmp_RRA craftboy", "A registers")
 
     i.LD("in binary", "tmp_RRA craftboy")
     w("function craftboy:util/binary_split0")
@@ -424,26 +387,17 @@ function i.RRA()
     w("function craftboy:util/binary_join0")
 
     i.LD("tmp_RRA craftboy", "out binary")
-    i.SET_A("tmp_RRA craftboy")
+    i.LD("A registers", "tmp_RRA craftboy")
 
     w("scoreboard players set Z flags 0")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = cflag_RRA craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("0 constants")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("cflag_RRA craftboy")
 end
 function i.DAA()
     w("#DAA")
 
-    i.GET_FLAGS()
-
-    i.GET_A()
-
-    i.LD("tmpA_DAA craftboy", "out binary")
+    i.LD("tmpA_DAA craftboy", "A registers")
 
     i.LD("in binary", "tmpA_DAA craftboy")
     w("function craftboy:util/binary_split0")
@@ -482,18 +436,13 @@ function i.DAA()
     w(
         "execute if score tmpA_DAA craftboy matches 0 run scoreboard players set Z flags 1")
 
-    i.SET_A("tmpA_DAA craftboy")
+    i.LD("A registers", "tmpA_DAA craftboy")
 
     w("scoreboard players set H flags 0")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("Z flags")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("C flags")
 end
 function i.CPL()
     w("#CPL")
-    i.GET_A()
-    i.LD("in binary", "out binary")
+    i.LD("in binary", "A registers")
     w("function craftboy:util/binary_split0")
 
     i.INV_BIT("0_0 binary")
@@ -506,48 +455,30 @@ function i.CPL()
     i.INV_BIT("7_0 binary")
 
     w("function craftboy:util/binary_join0")
-    i.SET_A("out binary")
+    i.LD("A registers", "out binary")
 
-    i.GET_FLAGS()
     w("scoreboard players set N flags 1")
     w("scoreboard players set H flags 1")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_N("1 constants")
-    -- i.SET_FLAG_H("1 constants")
 end
 function i.SCF()
     w("#SCF")
 
-    i.GET_FLAGS()
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players set C flags 1")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("1 constants")
 end
 function i.CCF()
     w("#CCF")
 
-    i.GET_FLAGS()
     i.INV_BIT("C flags")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("C flags")
 end
 
 function i.ADD_A(value)
     w("#ADD_A")
-    i.GET_A()
-    i.LD("tmp0_ADD_A craftboy", "out binary")
-
-    i.LD("tmp_ADD_A craftboy", "out binary")
-
-    -- i.ADD("tmp_ADD_A craftboy", value)
+    i.LD("tmp0_ADD_A craftboy", "A registers")
+    i.LD("tmp_ADD_A craftboy", "A registers")
 
     w("scoreboard players operation tmp_ADD_A craftboy += " .. value)
 
@@ -576,26 +507,17 @@ function i.ADD_A(value)
     w(
         "execute if score tmp_ADD_A craftboy matches 0 run scoreboard players set zflag_ADD_A craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_ADD_A craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players operation H flags = hflag_ADD_A craftboy")
     w("scoreboard players operation C flags = cflag_ADD_A craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_ADD_A craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("hflag_ADD_A craftboy")
-    -- i.SET_FLAG_C("cflag_ADD_A craftboy")
 
-    i.SET_A("tmp_ADD_A craftboy")
+    i.LD("A registers", "tmp_ADD_A craftboy")
 end
 function i.ADC_A(value)
     w("#ADC_A")
-    i.GET_A()
-    i.LD("tmp_ADC_A craftboy", "out binary")
-    i.LD("tmp2_ADC_A craftboy", "out binary")
-
-    -- i.ADD("tmp_ADC_A craftboy", value)
+    i.LD("tmp_ADC_A craftboy", "A registers")
+    i.LD("tmp2_ADC_A craftboy", "A registers")
 
     w("scoreboard players operation tmp_ADC_A craftboy += " .. value)
     w("scoreboard players operation tmp_ADC_A craftboy += C flags")
@@ -627,24 +549,16 @@ function i.ADC_A(value)
     w(
         "execute if score tmp_ADC_A craftboy matches 0 run scoreboard players set zflag_ADC_A craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_ADC_A craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players operation H flags = hflag_ADC_A craftboy")
     w("scoreboard players operation C flags = cflag_ADC_A craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_ADC_A craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("hflag_ADC_A craftboy")
-    -- i.SET_FLAG_C("cflag_ADC_A craftboy")
 
-    i.SET_A("tmp_ADC_A craftboy")
+    i.LD("A registers", "tmp_ADC_A craftboy")
 end
 function i.SUB_A(value)
     w("#SUB_A")
-    i.GET_A()
-
-    i.LD("tmp_SUB_A craftboy", "out binary")
+    i.LD("tmp_SUB_A craftboy", "A registers")
 
     i.LD("tmp2_SUB_A craftboy", "tmp_SUB_A craftboy")
 
@@ -674,27 +588,18 @@ function i.SUB_A(value)
     w(
         "execute if score tmp_SUB_A craftboy matches 0 run scoreboard players set zflag_SUB craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SUB craftboy")
     w("scoreboard players set N flags 1")
     w("scoreboard players operation H flags = hflag_SUB craftboy")
     w("scoreboard players operation C flags = cflag_SUB craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SUB craftboy")
-    -- i.SET_FLAG_N("1 constants")
-    -- i.SET_FLAG_H("hflag_SUB craftboy")
-    -- i.SET_FLAG_C("cflag_SUB craftboy")
 
-    i.SET_A("tmp_SUB_A craftboy")
+    i.LD("A registers", "tmp_SUB_A craftboy")
 end
 function i.SBC_A(value)
     w("#SBC_A")
 
-    i.GET_A()
-
-    i.LD("tmp_SBC_A craftboy", "out binary")
-
-    i.LD("tmp2_SBC_A craftboy", "tmp_SBC_A craftboy")
+    i.LD("tmp_SBC_A craftboy", "A registers")
+    i.LD("tmp2_SBC_A craftboy", "A registers")
 
     w("scoreboard players operation tmp_SBC_A craftboy -= " .. value)
     w("scoreboard players operation tmp_SBC_A craftboy -= C flags")
@@ -728,23 +633,16 @@ function i.SBC_A(value)
     w(
         "execute if score tmp_SBC_A craftboy matches 0 run scoreboard players set zflag_SBC craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SBC craftboy")
     w("scoreboard players set N flags 1")
     w("scoreboard players operation H flags = hflag_SBC craftboy")
     w("scoreboard players operation C flags = cflag_SBC craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SBC craftboy")
-    -- i.SET_FLAG_N("1 constants")
-    -- i.SET_FLAG_H("hflag_SBC craftboy")
-    -- i.SET_FLAG_C("cflag_SBC craftboy")
 
-    i.SET_A("tmp_SBC_A craftboy")
+    i.LD("A registers", "tmp_SBC_A craftboy")
 end
 function i.AND_A(value)
     w("#AND_A")
-    i.GET_A()
-    i.LD("in binary", "out binary")
+    i.LD("in binary", "A registers")
     w("function craftboy:util/binary_split0")
 
     i.LD("in binary", value)
@@ -762,23 +660,16 @@ function i.AND_A(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_AND_A craftboy 1")
 
-    i.SET_A("out binary")
+    i.LD("A registers", "out binary")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_AND_A craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 1")
     w("scoreboard players set C flags 0")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_AND_A craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("1 constants")
-    -- i.SET_FLAG_C("0 constants")
 end
 function i.XOR_A(value)
     w("#XOR_A")
-    i.GET_A()
-    i.LD("in binary", "out binary")
+    i.LD("in binary", "A registers")
     w("function craftboy:util/binary_split0")
 
     i.LD("in binary", value)
@@ -798,24 +689,17 @@ function i.XOR_A(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_XOR_A craftboy 1")
 
-    i.SET_A("out binary")
+    i.LD("A registers", "out binary")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_XOR_A craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players set C flags 0")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_XOR_A craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("0 constants")
 end
 function i.OR_A(value)
     w("#OR_A")
 
-    i.GET_A()
-    i.LD("in binary", "out binary")
+    i.LD("in binary", "A registers")
     w("function craftboy:util/binary_split0")
 
     i.LD("in binary", value)
@@ -834,26 +718,18 @@ function i.OR_A(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_OR_A craftboy 1")
 
-    i.SET_A("out binary")
+    i.LD("A registers", "out binary")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_OR_A craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players set C flags 0")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_OR_A craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("0 constants")
 end
 function i.CP_A(value)
     w("#CP_A")
-    i.GET_A()
 
-    i.LD("tmp_SUB_A craftboy", "out binary")
-
-    i.LD("tmp2_SUB craftboy", "tmp_SUB_A craftboy")
+    i.LD("tmp_SUB_A craftboy", "A registers")
+    i.LD("tmp2_SUB craftboy", "A registers")
 
     w("scoreboard players operation tmp_SUB_A craftboy -= " .. value)
 
@@ -881,16 +757,10 @@ function i.CP_A(value)
     w(
         "execute if score tmp_SUB_A craftboy matches 0 run scoreboard players set zflag_SUB craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SUB craftboy")
     w("scoreboard players set N flags 1")
     w("scoreboard players operation H flags = hflag_SUB craftboy")
     w("scoreboard players operation C flags = cflag_SUB craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SUB craftboy")
-    -- i.SET_FLAG_N("1 constants")
-    -- i.SET_FLAG_H("hflag_SUB craftboy")
-    -- i.SET_FLAG_C("cflag_SUB craftboy")
 end
 
 function i.DI()
@@ -927,16 +797,10 @@ function i.RLC(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_RLC craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_RLC craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_RLC craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_RLC craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_RLC craftboy")
 end
 function i.RRC(value)
     w("#RRC")
@@ -961,16 +825,10 @@ function i.RRC(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_RRC craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_RRC craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_RRC craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_RRC craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_RRC craftboy")
 end
 function i.RL(value)
     w("#RL")
@@ -996,16 +854,10 @@ function i.RL(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_RL craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_RL craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_RL craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_RL craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_RL craftboy")
 end
 function i.RR(value)
     w("#RR")
@@ -1031,16 +883,10 @@ function i.RR(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_RR craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_RR craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_RR craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_RR craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_RR craftboy")
 end
 function i.SLA(value)
     w("#SLA")
@@ -1066,16 +912,10 @@ function i.SLA(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_SLA craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SLA craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = cflag_SLA craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SLA craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("cflag_SLA craftboy")
 end
 function i.SRA(value)
     w("#SRA")
@@ -1100,16 +940,10 @@ function i.SRA(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_SRA craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SRA craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = cflag_SRA craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SRA craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("cflag_SRA craftboy")
 end
 function i.SWAP(value)
     w("#SWAP")
@@ -1126,16 +960,10 @@ function i.SWAP(value)
     w("execute if score " .. value ..
           " matches 0 run scoreboard players set zflag_SWAP craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SWAP craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players set C flags 0")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SWAP craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("0 constants")
 end
 function i.SRL(value)
     w("#SRL")
@@ -1161,16 +989,10 @@ function i.SRL(value)
     w(
         "execute if score out binary matches 0 run scoreboard players set zflag_SRL craftboy 1")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = zflag_SRL craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 0")
     w("scoreboard players operation C flags = tmp_SRL craftboy")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("zflag_SRL craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("0 constants")
-    -- i.SET_FLAG_C("tmp_SRL craftboy")
 end
 
 function i.BIT(index, value)
@@ -1180,14 +1002,9 @@ function i.BIT(index, value)
     i.LD("tmp_BIT craftboy", "out binary")
     i.INV_BIT("tmp_BIT craftboy")
 
-    i.GET_FLAGS()
     w("scoreboard players operation Z flags = tmp_BIT craftboy")
     w("scoreboard players set N flags 0")
     w("scoreboard players set H flags 1")
-    i.SET_FLAGS()
-    -- i.SET_FLAG_Z("tmp_BIT craftboy")
-    -- i.SET_FLAG_N("0 constants")
-    -- i.SET_FLAG_H("1 constants")
 end
 function i.RES(index, value)
     w("#RES")
@@ -1295,88 +1112,6 @@ function i.ADD_FF00(to)
     w("scoreboard players add " .. to .. " 65280")
 end
 
-function i.GET_A()
-    w("#GET_A")
-    i.GET_HI16("AF registers")
-end
-function i.SET_A(value)
-    w("#SET_A")
-    i.SET_HI16("AF registers", value)
-end
-
-function i.GET_F()
-    w("#GET_F")
-    i.GET_LO16("AF registers")
-end
-function i.SET_F(value)
-    w("#SET_F")
-    i.SET_LO16("AF registers", value)
-end
-
-function i.GET_B()
-    w("#GET_B")
-    i.GET_HI16("BC registers")
-end
-function i.SET_B(value)
-    w("#SET_B")
-    i.SET_HI16("BC registers", value)
-end
-
-function i.GET_C()
-    w("#GET_C")
-    i.GET_LO16("BC registers")
-end
-function i.SET_C(value)
-    w("#SET_C")
-    i.SET_LO16("BC registers", value)
-end
-
-function i.GET_D()
-    w("#GET_D")
-    i.GET_HI16("DE registers")
-end
-function i.SET_D(value)
-    w("#SET_D")
-    i.SET_HI16("DE registers", value)
-end
-
-function i.GET_E()
-    w("#GET_E")
-    i.GET_LO16("DE registers")
-end
-function i.SET_E(value)
-    w("#SET_E")
-    i.SET_LO16("DE registers", value)
-end
-
-function i.GET_H()
-    w("#GET_H")
-    i.GET_HI16("HL registers")
-end
-function i.SET_H(value)
-    w("#SET_H")
-    i.SET_HI16("HL registers", value)
-end
-
-function i.GET_L()
-    w("#GET_L")
-    i.GET_LO16("HL registers")
-end
-function i.SET_L(value)
-    w("#SET_L")
-    i.SET_LO16("HL registers", value)
-end
-
-i["GET_(HL)"] = function()
-    w("#GET_(HL)")
-    i.READ8("HL registers")
-    i.LD("out binary", "transfer craftboy")
-end
-i["SET_(HL)"] = function(value)
-    w("#SET_(HL)")
-    i.WRITE8("HL registers", value)
-end
-
 function i.GET_BIT(value, index)
     w("#GET_BIT")
     i.LD("in binary", value)
@@ -1397,49 +1132,9 @@ function i.INV_BIT(value)
     w("scoreboard players operation " .. value .. " = tmp_INV binary")
 end
 
--- function i.SET_FLAG_Z(value)
---     w("#SET_FLAG_Z")
---     i.GET_F()
---     i.LD("tmp_Z craftboy", "out binary")
---     i.SET_BIT("tmp_Z craftboy", 7, value)
---     i.LD("tmp_Z craftboy", "out binary")
---     i.SET_F("tmp_Z craftboy")
--- end
--- function i.SET_FLAG_N(value)
---     w("#SET_FLAG_N")
---     i.GET_F()
---     i.LD("tmp_N craftboy", "out binary")
---     i.SET_BIT("tmp_N craftboy", 6, value)
---     i.LD("tmp_N craftboy", "out binary")
---     i.SET_F("tmp_N craftboy")
--- end
--- function i.SET_FLAG_H(value)
---     w("#SET_FLAG_H")
---     i.GET_F()
---     i.LD("tmp_H craftboy", "out binary")
---     i.SET_BIT("tmp_H craftboy", 5, value)
---     i.LD("tmp_H craftboy", "out binary")
---     i.SET_F("tmp_H craftboy")
--- end
--- function i.SET_FLAG_C(value)
---     w("#SET_FLAG_C")
---     i.GET_F()
---     i.LD("tmp_C craftboy", "out binary")
---     i.SET_BIT("tmp_C craftboy", 4, value)
---     i.LD("tmp_C craftboy", "out binary")
---     i.SET_F("tmp_C craftboy")
--- end
-
 function i.GET_FLAGS()
     w("#GET_FLAGS")
     w('function craftboy:util/split_flags')
-    -- i.GET_LO16("AF registers")
-    -- i.LD("in binary", "out binary")
-    -- w("function craftboy:util/binary_split0")
-    -- i.LD("Z flags", "7_0 binary")
-    -- i.LD("N flags", "6_0 binary")
-    -- i.LD("H flags", "5_0 binary")
-    -- i.LD("C flags", "4_0 binary")
 end
 
 function i.SET_FLAGS()

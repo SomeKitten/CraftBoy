@@ -46,14 +46,26 @@ scoreboard players set 16384 constants 16384
 scoreboard players set 32768 constants 32768
 
 # NOT NECESSARY
-scoreboard players set AF registers 432
-scoreboard players set BC registers 19
-scoreboard players set DE registers 216
-scoreboard players set HL registers 333
+# scoreboard players set AF registers 432
+# scoreboard players set BC registers 19
+# scoreboard players set DE registers 216
+# scoreboard players set HL registers 333
+
+scoreboard players set Z flags 1
+scoreboard players set N flags 0
+scoreboard players set H flags 1
+scoreboard players set C flags 1
+
+scoreboard players set A registers 1
+scoreboard players set B registers 0
+scoreboard players set C registers 19
+scoreboard players set D registers 0
+scoreboard players set E registers 216
+scoreboard players set H registers 1
+scoreboard players set L registers 77
 scoreboard players set SP registers 65534
 
 # NECESSARY
-
 function craftboy:craftboy/unmap_boot
 scoreboard players set PC registers 256
 scoreboard players set DIV timer 0
@@ -72,7 +84,6 @@ scoreboard players set 65345 io 133
 scoreboard players set 65346 io 0
 scoreboard players set 65347 io 0
 scoreboard players set 65348 io 0
-# scoreboard players set 65348 io 144
 
 scoreboard players set mode2_bounds graphics 376
 scoreboard players set mode3_bounds graphics 204
@@ -93,7 +104,7 @@ execute store result score screen_y graphics run data get entity @e[type=minecra
 # execute at @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] run function craftboy:sort/summon
 
 # TEMP
-# scoreboard players set 65348 io 144
+scoreboard players set 65348 io 144
 
 # TODO rename to Block Matrix Game?
 # TODO set LY and others on start
