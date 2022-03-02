@@ -1,9 +1,5 @@
-
 scoreboard players operation in binary = AF registers
-scoreboard players operation tmp0 binary = AF registers
-scoreboard players operation tmp0 binary /= 256 constants
-scoreboard players operation tmp0 binary *= 256 constants
-scoreboard players operation in binary -= tmp0 binary
+scoreboard players operation in binary %= 256 constants
 
 scoreboard players set Z flags 0
 scoreboard players set N flags 0

@@ -1,8 +1,6 @@
-scoreboard players operation tmp0 binary = in binary
-scoreboard players operation tmp0 binary *= 256 constants
+scoreboard players operation out binary = in binary
+scoreboard players operation out binary *= 256 constants
 
-scoreboard players operation in binary = in_reg binary
+scoreboard players operation in_reg binary %= 256 constants
 
-function craftboy:util/get_lo16
-
-scoreboard players operation out binary += tmp0 binary
+scoreboard players operation out binary += in_reg binary
