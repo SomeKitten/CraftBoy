@@ -3,7 +3,7 @@ util = require "util"
 rom = {}
 
 directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-rom.filename = "Faceball 2000 (USA).gb"
+rom.filename = "marioland.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
