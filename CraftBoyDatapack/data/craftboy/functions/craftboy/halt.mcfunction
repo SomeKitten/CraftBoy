@@ -19,3 +19,6 @@ execute if score 4_0 binary matches 1 if score 4_1 binary matches 1 run scoreboa
 execute if score 5_0 binary matches 1 if score 5_1 binary matches 1 run scoreboard players set HALT registers 0
 execute if score 6_0 binary matches 1 if score 6_1 binary matches 1 run scoreboard players set HALT registers 0
 execute if score 7_0 binary matches 1 if score 7_1 binary matches 1 run scoreboard players set HALT registers 0
+
+scoreboard players set m_cycles craftboy 1
+execute if score enable_timer craftboy matches 1 run function craftboy:timer/tick_fast

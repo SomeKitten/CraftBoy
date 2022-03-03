@@ -10,7 +10,6 @@ execute if score HALT registers matches 1 run function craftboy:craftboy/halt
 
 execute if score IME registers matches 1 if score 65295 io matches 1.. if score 65535 interrupt matches 1.. run function craftboy:interrupt/run_interrupts
 
-
 execute if score SET_IME_1 craftboy matches 1 run scoreboard players set IME registers 1
 execute if score SET_IME_1 craftboy matches 1 run scoreboard players set SET_IME_1 craftboy 0
 

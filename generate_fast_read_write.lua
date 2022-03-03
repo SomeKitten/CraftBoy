@@ -53,11 +53,6 @@ function recursive(depth, unique_name, scoreboard, min, max)
                                        ".mcfunction", "w")
 
         for i = min, max do
-            -- if i == 0xFF44 then
-            --     read_file:write(
-            --         "execute if score index craftboy matches " .. i ..
-            --             " run scoreboard players set transfter craftboy 144\n")
-            -- else..
             if i == 0xFF4D then
                 read_file:write(
                     "execute if score index craftboy matches " .. i ..
@@ -70,16 +65,6 @@ function recursive(depth, unique_name, scoreboard, min, max)
             end
 
             if i < 0x8000 then
-                -- if i >= 0x200 and i < 0x4000 then
-                --     write_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " run function craftboy:mbc/swap_rom_lo")
-                -- end
-                -- if i >= 0x4000 and i < 0x6000 then
-                --     write_file:write(
-                --         "execute if score index craftboy matches " .. i ..
-                --             " if score 327 rom matches 1..3 run function craftboy:mbc/swap_rom_hi")
-                -- end
             elseif i == 0xFF00 then
                 write_file:write([[
 execute if score index craftboy matches ]] .. i ..

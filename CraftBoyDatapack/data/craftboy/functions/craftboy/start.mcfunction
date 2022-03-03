@@ -44,6 +44,7 @@ scoreboard players set 4096 constants 4096
 scoreboard players set 8192 constants 8192
 scoreboard players set 16384 constants 16384
 scoreboard players set 32768 constants 32768
+scoreboard players set 65536 constants 65536
 
 # NOT NECESSARY
 # scoreboard players set AF registers 432
@@ -72,7 +73,7 @@ scoreboard players set DIV timer 0
 
 # function rom_bios:bios
 # scoreboard players set PC registers 0
-scoreboard players set DIV timer 24
+scoreboard players set DIV timer 0
 
 # scoreboard players set inst_count registers -47932
 scoreboard players set inst_count registers 0
