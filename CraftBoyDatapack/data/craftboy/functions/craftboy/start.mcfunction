@@ -111,11 +111,14 @@ scoreboard players set mode3_bounds graphics 204
 scoreboard players set frame craftboy 0
 execute unless score frame_skip craftboy matches 1.. run scoreboard players set frame_skip craftboy 1
 
+execute unless score initial_rom craftboy matches 0.. run scoreboard players set initial_rom craftboy 1
+
 scoreboard players set ram_gate craftboy 1
-scoreboard players set rom_bank craftboy 1
+scoreboard players operation rom_bank craftboy = initial_rom craftboy 
+scoreboard players set rom_bank_lo craftboy 0
 scoreboard players set rom_bank_hi craftboy 0
 scoreboard players set ram_bank craftboy 0
-scoreboard players set bank craftboy 1
+scoreboard players operation bank craftboy = initial_rom craftboy 
 function craftboy:mbc/swap_rom
 function craftboy:mbc/swap_ram
 

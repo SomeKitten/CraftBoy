@@ -1,3 +1,4 @@
+execute if score bank craftboy matches 0 run function craftboy:mbc/bank_0
 execute if score bank craftboy matches 1 run function craftboy:mbc/bank_1
 execute if score bank craftboy matches 2 run function craftboy:mbc/bank_2
 execute if score bank craftboy matches 3 run function craftboy:mbc/bank_3

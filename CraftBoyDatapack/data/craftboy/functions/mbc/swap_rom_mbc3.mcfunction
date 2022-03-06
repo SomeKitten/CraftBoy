@@ -1,5 +1,8 @@
+# TODO what is going on here?
+# make clearer names (rom_bank, bank)
+
 scoreboard players operation rom_bank craftboy = transfer craftboy
-execute if score rom_bank craftboy matches 128.. run scoreboard players remove rom_bank crafboy 128
+scoreboard players operation rom_bank craftboy %= 128 constants
 execute if score rom_bank craftboy matches 0 run scoreboard players set rom_bank crafboy 1
 
 scoreboard players operation bank craftboy = transfer craftboy

@@ -1,6 +1,6 @@
 local folder = "./CraftBoyDatapack/data/craftboy/functions/mbc/"
 
-for i = 0, 3 do
+for i = 0, 15 do
     local bank = io.open(folder .. "ram_bank_" .. i .. ".mcfunction", "w")
     -- bank:write("say SWITCHING TO RAM BANK " .. i .. "\n")
 
