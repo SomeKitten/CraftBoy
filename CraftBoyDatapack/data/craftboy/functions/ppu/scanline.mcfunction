@@ -1,9 +1,5 @@
-scoreboard players operation tmp_x ppu = screen_x graphics
-scoreboard players operation tmp_y ppu = screen_y graphics
-scoreboard players operation tmp_y ppu += 65348 io
-
-execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu
-execute store result entity @s Pos[2] double 1 run scoreboard players get tmp_y ppu
+data modify entity @s Pos[0] set value 0d
+execute store result entity @s Pos[2] double 1 run scoreboard players get 65348 io
 
 scoreboard players set y ppu 255
 
@@ -55,7 +51,7 @@ execute if score 0_2 binary matches 1 run function craftboy:ppu/background
 
 execute if score 65354 io <= 65348 io if score 65354 io matches 0..143 if score 65355 io matches 0..166 if score 5_2 binary matches 1 run function craftboy:ppu/window
 
-execute store result entity @s Pos[0] double 1 run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
+data modify entity @s Pos[0] set value 0d
 
 scoreboard players set sprite_bg_priority ppu 0
 execute run function craftboy:ppu/sprites

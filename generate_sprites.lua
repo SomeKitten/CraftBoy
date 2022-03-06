@@ -9,8 +9,6 @@ function craftboy:sort/sprites
 
 scoreboard players set sprite_count ppu 0
 
-execute as @e[type=minecraft:armor_stand,name=sort_root] at @s run tp ~10 ~ ~
-
 ]])
 
 -- TODO optimize by making as much optional as possible
@@ -30,11 +28,9 @@ function craftboy:read/oam_0_0
 scoreboard players operation sprite_lower ppu = transfer craftboy
 scoreboard players operation sprite_higher ppu = transfer craftboy
 
-scoreboard players operation tmp_x ppu = screen_x graphics
-
 scoreboard players add index craftboy 1
 function craftboy:read/oam_0_0
-scoreboard players operation tmp_x ppu += transfer craftboy
+scoreboard players operation tmp_x ppu = transfer craftboy
 
 scoreboard players remove tmp_x ppu 8
 execute store result entity @s Pos[0] double 1 run scoreboard players get tmp_x ppu

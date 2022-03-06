@@ -15,9 +15,9 @@ execute if score 4_2 binary matches 1 run scoreboard players add row ppu 32768
 execute if score 4_2 binary matches 0 run scoreboard players add row ppu 36864
 execute if score 4_2 binary matches 0 if score row ppu matches 38912.. run scoreboard players remove row ppu 4096
 
-execute at @e[type=minecraft:armor_stand,name=inner_screen_paste1] run function craftboy:ppu/row
+execute at @s run function craftboy:ppu/row
 
-execute as @e[type=minecraft:armor_stand,name=inner_screen_paste1] at @s run tp ~8 ~ ~
+execute at @s run tp ~8 ~ ~
 
 
 scoreboard players add tileX ppu 1

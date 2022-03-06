@@ -22,10 +22,8 @@ scoreboard players operation y ppu *= -1 constants
 scoreboard players operation tileX ppu = x ppu
 scoreboard players operation tileX ppu /= 8 constants
 
-scoreboard players operation tmp_x ppu = screen_x graphics
-scoreboard players operation tmp_x ppu += 65355 io
-scoreboard players remove tmp_x ppu 7
-execute store result entity @e[type=minecraft:armor_stand,name=inner_screen_paste1,limit=1] Pos[0] double 1 run scoreboard players get tmp_x ppu
+execute store result entity @s Pos[0] double 1 run scoreboard players get 65355 io
+execute at @s run tp ~-7 ~ ~
 
 function craftboy:ppu/window_tile
 function craftboy:ppu/window_tile

@@ -124,9 +124,6 @@ function craftboy:mbc/swap_ram
 
 scoreboard players set DEBUG craftboy 0
 
-execute store result score screen_x graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[0]
-execute store result score screen_y graphics run data get entity @e[type=minecraft:armor_stand,name=inner_screen_paste,limit=1] Pos[2]
-
 # TEMP
 # scoreboard players set 65348 io 144
 
