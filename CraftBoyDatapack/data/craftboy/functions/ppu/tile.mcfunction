@@ -1,5 +1,5 @@
 scoreboard players operation index craftboy = map_addr ppu
-function craftboy:read/tile_map_vram_0_0
+function craftboy:read/tile_map_vram/main
 scoreboard players operation tileAddr ppu = transfer craftboy
 
 

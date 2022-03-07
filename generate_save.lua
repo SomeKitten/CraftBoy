@@ -6,8 +6,8 @@ therefile = "craftboy/functions/mbc/load_save.mcfunction"
 
 save = {}
 
-directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-save.filename = "pkred.sav"
+directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/saves/"
+save.filename = "pksilver.sav"
 
 save.file = io.open(directory .. save.filename, "r")
 save.data = {}

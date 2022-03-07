@@ -2,13 +2,13 @@ scoreboard players add sprite_count ppu 1
 
 # TODO bits in wrong order?
 scoreboard players operation index craftboy = row ppu
-function craftboy:read/tile_vram_0_0
+function craftboy:read/tile_vram/main
 scoreboard players operation in binary = transfer craftboy
 function craftboy:util/binary_split0
 
 
 scoreboard players add index craftboy 1
-function craftboy:read/tile_vram_0_0
+function craftboy:read/tile_vram/main
 scoreboard players operation in binary = transfer craftboy
 function craftboy:util/binary_split1
 execute unless block ~0 ~ ~ air if score 0_1 binary matches 0 if score 0_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~0 ~ ~ lime_concrete_powder

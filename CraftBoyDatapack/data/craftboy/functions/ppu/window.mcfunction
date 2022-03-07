@@ -25,6 +25,9 @@ scoreboard players operation tileX ppu /= 8 constants
 execute store result entity @s Pos[0] double 1 run scoreboard players get 65355 io
 execute at @s run tp ~-7 ~ ~
 
+scoreboard players operation in binary = 65351 io
+function craftboy:util/binary_split3
+
 function craftboy:ppu/window_tile
 function craftboy:ppu/window_tile
 function craftboy:ppu/window_tile

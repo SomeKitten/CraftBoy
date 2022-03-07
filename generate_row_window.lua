@@ -4,13 +4,13 @@ local master = io.open(folder .. "row_window.mcfunction", "w")
 master:write([[
 # TODO bits in wrong order?
 scoreboard players operation index craftboy = row ppu
-function craftboy:read/tile_vram_0_0
+function craftboy:read/tile_vram/main
 scoreboard players operation in binary = transfer craftboy
 function craftboy:util/binary_split0
 
 
 scoreboard players add index craftboy 1
-function craftboy:read/tile_vram_0_0
+function craftboy:read/tile_vram/main
 scoreboard players operation in binary = transfer craftboy
 function craftboy:util/binary_split1
 ]])

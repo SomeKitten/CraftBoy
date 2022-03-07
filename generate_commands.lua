@@ -93,7 +93,7 @@ for opcode = 0, 255 do
 
                         insts.LD("transfer craftboy", "A registers")
 
-                        w("function craftboy:craftboy/write")
+                        w("function craftboy:write/all/main")
                     end
                     if p == 1 then
                         insts.M_CYCLES(2)
@@ -106,7 +106,7 @@ for opcode = 0, 255 do
 
                         insts.LD("transfer craftboy", "A registers")
 
-                        w("function craftboy:craftboy/write")
+                        w("function craftboy:write/all/main")
                     end
                     if p == 2 then
                         insts.M_CYCLES(2)
@@ -119,7 +119,7 @@ for opcode = 0, 255 do
 
                         insts.LD("transfer craftboy", "A registers")
 
-                        w("function craftboy:craftboy/write")
+                        w("function craftboy:write/all/main")
 
                         w("scoreboard players add L registers 1")
                         w(
@@ -140,7 +140,7 @@ for opcode = 0, 255 do
 
                         insts.LD("transfer craftboy", "A registers")
 
-                        w("function craftboy:craftboy/write")
+                        w("function craftboy:write/all/main")
 
                         w("scoreboard players remove L registers 1")
                         w(
@@ -160,7 +160,7 @@ for opcode = 0, 255 do
                         w(
                             "scoreboard players operation index craftboy += C registers")
 
-                        w("function craftboy:craftboy/read")
+                        w("function craftboy:read/all/main")
 
                         insts.LD("A registers", "transfer craftboy")
                     end
@@ -173,7 +173,7 @@ for opcode = 0, 255 do
                         w(
                             "scoreboard players operation index craftboy += E registers")
 
-                        w("function craftboy:craftboy/read")
+                        w("function craftboy:read/all/main")
 
                         insts.LD("A registers", "transfer craftboy")
                     end
@@ -186,7 +186,7 @@ for opcode = 0, 255 do
                         w(
                             "scoreboard players operation index craftboy += L registers")
 
-                        w("function craftboy:craftboy/read")
+                        w("function craftboy:read/all/main")
 
                         insts.LD("A registers", "transfer craftboy")
 
@@ -207,7 +207,7 @@ for opcode = 0, 255 do
                         w(
                             "scoreboard players operation index craftboy += L registers")
 
-                        w("function craftboy:craftboy/read")
+                        w("function craftboy:read/all/main")
 
                         insts.LD("A registers", "transfer craftboy")
 
@@ -263,7 +263,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts.INC8("transfer craftboy")
 
@@ -273,7 +273,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 else
                     insts.M_CYCLES(1)
 
@@ -289,7 +289,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts.DEC8("transfer craftboy")
 
@@ -299,7 +299,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 else
                     insts.M_CYCLES(1)
 
@@ -319,7 +319,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 else
                     insts.M_CYCLES(2)
 
@@ -365,7 +365,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 elseif lookups.r[z] == "HL registers" then
                     insts.M_CYCLES(2)
 
@@ -374,7 +374,7 @@ for opcode = 0, 255 do
                         "scoreboard players operation index craftboy *= 256 constants")
                     w(
                         "scoreboard players operation index craftboy += L registers")
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts.LD(lookups.r[y], "transfer craftboy")
                 else
@@ -391,7 +391,7 @@ for opcode = 0, 255 do
                 w("scoreboard players operation index craftboy *= 256 constants")
                 w("scoreboard players operation index craftboy += L registers")
 
-                w("function craftboy:craftboy/read")
+                w("function craftboy:read/all/main")
 
                 insts[lookups.alu[y]]("transfer craftboy")
             else
@@ -572,7 +572,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts[lookups.rot[y]]("transfer craftboy")
 
@@ -582,7 +582,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 else
                     insts.M_CYCLES(1)
 
@@ -598,7 +598,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts.BIT(y, "transfer craftboy")
                 else
@@ -616,7 +616,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts.RES(y, "transfer craftboy")
 
@@ -625,7 +625,7 @@ for opcode = 0, 255 do
                         "scoreboard players operation index craftboy *= 256 constants")
                     w(
                         "scoreboard players operation index craftboy += L registers")
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 else
                     insts.M_CYCLES(2)
 
@@ -641,7 +641,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/read")
+                    w("function craftboy:read/all/main")
 
                     insts.SET(y, "transfer craftboy")
 
@@ -651,7 +651,7 @@ for opcode = 0, 255 do
                     w(
                         "scoreboard players operation index craftboy += L registers")
 
-                    w("function craftboy:craftboy/write")
+                    w("function craftboy:write/all/main")
                 else
                     insts.M_CYCLES(2)
 

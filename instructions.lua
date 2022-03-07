@@ -1020,7 +1020,7 @@ end
 function i.READ8(index)
     w("#READ8")
     i.LD("index craftboy", index)
-    w("function craftboy:craftboy/read")
+    w("function craftboy:read/all/main")
 end
 function i.READ16(index)
     w("#READ16")
@@ -1036,7 +1036,7 @@ function i.WRITE8(index, value)
     i.LD("index craftboy", index)
     i.LD("transfer craftboy", value)
 
-    w("function craftboy:craftboy/write")
+    w("function craftboy:write/all/main")
 end
 function i.WRITE16(index, value)
     w("#WRITE16")
