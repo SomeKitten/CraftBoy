@@ -2,7 +2,7 @@ util = require "util"
 
 there =
     "/home/kitten/.minecraft/saves/GB Emulator 1_18_2/datapacks/CraftBoyDatapack/data/"
-therefile = "craftboy/functions/mbc/load_save.mcfunction"
+therefile = "craftboy/functions/load_save.mcfunction"
 
 save = {}
 

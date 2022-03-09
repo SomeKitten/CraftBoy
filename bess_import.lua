@@ -97,7 +97,7 @@ local HRAM_offset = read32little(state.data, core_block + 0xBC)
 
 there =
     "/home/kitten/.minecraft/saves/GB Emulator 1_18_2/datapacks/CraftBoyDatapack/data/"
-therefile = "craftboy/functions/craftboy/load_state.mcfunction"
+therefile = "craftboy/functions/load_state.mcfunction"
 
 local mcfunction = io.open(there .. therefile, "w")
 mcfunction:write("say LOADING " .. state.filename .. "\n")
