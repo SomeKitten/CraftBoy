@@ -45,13 +45,13 @@ execute if score 1_3 binary matches 1 if score 0_3 binary matches 1 at @s run fi
 
 
 scoreboard players set sprite_bg_priority ppu 1
-execute run function craftboy:ppu/sprites
+execute if score 1_2 binary matches 1 run function craftboy:ppu/sprites
 
 execute if score 0_2 binary matches 1 run function craftboy:ppu/background
 
-execute if score 65354 io <= 65348 io if score 65354 io matches 0..143 if score 65355 io matches 0..166 if score 5_2 binary matches 1 run function craftboy:ppu/window
+execute if score 5_2 binary matches 1 if score 65354 io <= 65348 io if score 65354 io matches 0..143 if score 65355 io matches 0..166 run function craftboy:ppu/window
 
 data modify entity @s Pos[0] set value 0d
 
 scoreboard players set sprite_bg_priority ppu 0
-execute run function craftboy:ppu/sprites
+execute if score 1_2 binary matches 1 run function craftboy:ppu/sprites

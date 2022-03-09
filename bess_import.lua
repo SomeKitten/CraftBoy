@@ -35,7 +35,7 @@ end
 local state = {}
 
 local directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-state.filename = "pkred.s0"
+state.filename = "tetris.s0"
 
 state.file = io.open(directory .. state.filename, "r")
 state.data = {}

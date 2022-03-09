@@ -2,7 +2,6 @@ local folder = "./CraftBoyDatapack/data/craftboy/functions/ppu/"
 local master = io.open(folder .. "row_window.mcfunction", "w")
 
 master:write([[
-# TODO bits in wrong order?
 scoreboard players operation index craftboy = row ppu
 function craftboy:read/tile_vram/main
 scoreboard players operation in binary = transfer craftboy
