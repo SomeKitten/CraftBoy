@@ -199,14 +199,22 @@ if __name__ == '__main__':
     create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/tile_map_vram',
                            'craftboy:write/tile_map_vram', 'index craftboy', write, (0x9800, 0x9FFF), (False, False), 1, 3)
 
-# div.mcfunction
-# scoreboard players set DIV timer 0
-# scoreboard players set 65284 io 0
 
+with open('./CraftBoyDatapack/data/craftboy/functions/write/all/main.mcfunction', 'a') as f:
+    f.write(
+        'execute if score index craftboy matches 0..32767 run function craftboy:mbc/write')
 
-# joypad.mcfunction
-# scoreboard players operation in binary = transfer craftboy
-# function craftboy: util/binary_split5
+with open('./CraftBoyDatapack/data/craftboy/functions/write/div.mcfunction', 'w') as f:
+    f.write("""
+scoreboard players set DIV timer 0
+scoreboard players set 65284 io 0
+""")
 
-# execute if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
-# execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
+with open('./CraftBoyDatapack/data/craftboy/functions/write/joypad.mcfunction', 'w') as f:
+    f.write("""
+scoreboard players operation in binary = transfer craftboy
+function craftboy:util/binary_split5
+
+execute if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
+execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
+""")
