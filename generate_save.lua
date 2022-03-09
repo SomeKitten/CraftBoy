@@ -7,23 +7,23 @@ therefile = "craftboy/functions/mbc/load_save.mcfunction"
 save = {}
 
 directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/saves/"
-save.filename = "pksilver.sav"
+save.filename = "pkred.sav"
 
 save.file = io.open(directory .. save.filename, "r")
 save.data = {}
 
 util.file_to_bytes(save.file, save.data, 0x0000)
 
-save.mcfunction_rom = io.open(there .. therefile, "w")
+save.mcfunction = io.open(there .. therefile, "w")
 
-save.mcfunction_rom:write("say LOADING " .. save.filename .. "\n")
+save.mcfunction:write("say LOADING " .. save.filename .. "\n")
 
 for i = 0, 0x7FFF do
-    save.mcfunction_rom:write("scoreboard players set " .. i .. " sram " ..
-                                  save.data[i] .. "\n")
+    save.mcfunction:write("scoreboard players set " .. i .. " sram " ..
+                              save.data[i] .. "\n")
 end
 
-save.mcfunction_rom:write("scoreboard players set ram_bank craftboy 0\n")
-save.mcfunction_rom:write("function craftboy:mbc/swap_ram")
+save.mcfunction:write("scoreboard players set ram_bank craftboy 0\n")
+save.mcfunction:write("function craftboy:mbc/swap_ram")
 
-save.mcfunction_rom:close()
+save.mcfunction:close()

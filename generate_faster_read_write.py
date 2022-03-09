@@ -198,3 +198,15 @@ if __name__ == '__main__':
                            'craftboy:read/tile_map_vram', 'index craftboy', read, (0x9800, 0x9FFF), (False, False), 1, 3)
     create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/tile_map_vram',
                            'craftboy:write/tile_map_vram', 'index craftboy', write, (0x9800, 0x9FFF), (False, False), 1, 3)
+
+# div.mcfunction
+# scoreboard players set DIV timer 0
+# scoreboard players set 65284 io 0
+
+
+# joypad.mcfunction
+# scoreboard players operation in binary = transfer craftboy
+# function craftboy: util/binary_split5
+
+# execute if score 5_5 binary matches 0 run scoreboard players operation 65280 io = buttons craftboy
+# execute if score 4_5 binary matches 0 run scoreboard players operation 65280 io = dpad craftboy
