@@ -1,3 +1,5 @@
+# TODO reimplement ram_gate
+
 scoreboard players operation transfer craftboy %= 16 constants
 
 scoreboard players set ram_gate craftboy 0
