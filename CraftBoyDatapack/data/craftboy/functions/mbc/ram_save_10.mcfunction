@@ -1,4 +1,3 @@
-say SAVING RAM BANK 10
 scoreboard players operation 81920 sram = 40960 ram
 scoreboard players operation 81921 sram = 40961 ram
 scoreboard players operation 81922 sram = 40962 ram

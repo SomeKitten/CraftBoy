@@ -182,10 +182,20 @@ if __name__ == '__main__':
         else:
             return 'scoreboard players operation ' + str(i) + ' ' + board + ' = transfer craftboy'
 
-    create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/all',
-                           'craftboy:read/all', 'index craftboy', read, (0, 0xFFFF), (False, False), 1, 3)
-    create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/all',
-                           'craftboy:write/all', 'index craftboy', write, (0x8000, 0xFFFF), (False, False), 1, 3)
+    create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/all_a',
+                           'craftboy:read/all_a', 'index craftboy', read, (0x0000, 0x9FFF), (False, False), 1, 3)
+    create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/ram',
+                           'craftboy:read/ram', 'index craftboy', read, (0xA000, 0xBFFF), (False, False), 1, 3)
+    create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/all_b',
+                           'craftboy:read/all_b', 'index craftboy', read, (0xC000, 0xFFFF), (False, False), 1, 3)
+
+    create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/vram',
+                           'craftboy:write/vram', 'index craftboy', write, (0x8000, 0x9FFF), (False, False), 1, 3)
+    create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/ram',
+                           'craftboy:write/ram', 'index craftboy', write, (0xA000, 0xBFFF), (False, False), 1, 3)
+    create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/all_b',
+                           'craftboy:write/all_b', 'index craftboy', write, (0xC000, 0xFFFF), (False, False), 1, 3)
+
     create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/oam',
                            'craftboy:read/oam', 'index craftboy', read, (0xFE00, 0xFE9F), (False, False), 1, 3)
     create_search_function('./CraftBoyDatapack/data/craftboy/functions/write/oam',
@@ -200,9 +210,28 @@ if __name__ == '__main__':
                            'craftboy:write/tile_map_vram', 'index craftboy', write, (0x9800, 0x9FFF), (False, False), 1, 3)
 
 
-with open('./CraftBoyDatapack/data/craftboy/functions/write/all/main.mcfunction', 'a') as f:
+with open('./CraftBoyDatapack/data/craftboy/functions/write/all/main.mcfunction', 'w') as f:
     f.write(
-        'execute if score index craftboy matches 0..32767 run function craftboy:mbc/write')
+        'execute if score index craftboy matches 0..32767 run function craftboy:mbc/write\n')
+    f.write(
+        'execute if score index craftboy matches 32768..40959 run function craftboy:write/vram/main\n')
+    f.write(
+        'execute if score ram_gate craftboy matches 1 unless score 327 rom matches 252 if score index craftboy matches 40960..49151 run function craftboy:write/ram/main\n')
+    f.write(
+        'execute if score 327 rom matches 252 if score index craftboy matches 40960..49151 run say NOT IMPLEMENTED POCKET CAM SRAM\n')
+    f.write(
+        'execute if score index craftboy matches 49152..65535 run function craftboy:write/all_b/main\n')
+
+with open('./CraftBoyDatapack/data/craftboy/functions/read/all/main.mcfunction', 'w') as f:
+    f.write(
+        'execute if score index craftboy matches 0..40959 run function craftboy:read/all_a/main\n')
+    f.write(
+        'execute if score ram_gate craftboy matches 1 if score index craftboy matches 40960..49151 run function craftboy:read/ram/main\n')
+    f.write(
+        'execute if score ram_gate craftboy matches 0 if score index craftboy matches 40960..49151 run scoreboard players set transfer craftboy 255\n')
+    f.write(
+        'execute if score index craftboy matches 49152..65535 run function craftboy:read/all_b/main\n')
+
 
 with open('./CraftBoyDatapack/data/craftboy/functions/write/div.mcfunction', 'w') as f:
     f.write("""

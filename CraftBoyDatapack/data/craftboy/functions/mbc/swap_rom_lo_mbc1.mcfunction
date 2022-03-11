@@ -1,4 +1,7 @@
-scoreboard players operation rom_bank craftboy = transfer craftboy
-execute if score rom_bank craftboy matches 0 run scoreboard players set rom_bank crafboy 1
+# say SWAP ROM LO MBC1
+# tellraw @a [{"score":{"name":"transfer","objective":"craftboy"}}]
+
+scoreboard players operation rom_bank_lo craftboy = transfer craftboy
+scoreboard players operation rom_bank_lo craftboy %= 32 constants
 
 function craftboy:mbc/swap_rom_mbc1

@@ -1,4 +1,3 @@
-say SWITCHING TO RAM BANK 13
 scoreboard players operation 40960 ram = 106496 sram
 scoreboard players operation 40961 ram = 106497 sram
 scoreboard players operation 40962 ram = 106498 sram

@@ -1,4 +1,3 @@
-say SWITCHING TO RAM BANK 5
 scoreboard players operation 40960 ram = 40960 sram
 scoreboard players operation 40961 ram = 40961 sram
 scoreboard players operation 40962 ram = 40962 sram

@@ -1,3 +1,5 @@
-scoreboard players operation in binary = transfer craftboy
-function craftboy:util/binary_split0
-scoreboard players operation bank_mode craftboy = 0_0 binary
+say SELECTING MODE
+tellraw @a [{"score":{"name":"transfer","objective":"craftboy"}}]
+
+scoreboard players operation bank_mode craftboy = transfer craftboy
+scoreboard players operation bank_mode craftboy %= 2

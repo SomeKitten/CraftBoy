@@ -113,9 +113,39 @@ execute unless score frame_skip craftboy matches 1.. run scoreboard players set 
 
 execute unless score initial_rom craftboy matches 0.. run scoreboard players set initial_rom craftboy 1
 
-scoreboard players set ram_gate craftboy 1
+#   00h -  32KByte (no ROM banking)
+execute if score 328 rom matches 0 run scoreboard players set rom_amount craftboy 0
+#   01h -  64KByte (4 banks)
+execute if score 328 rom matches 1 run scoreboard players set rom_amount craftboy 4
+#   02h - 128KByte (8 banks)
+execute if score 328 rom matches 2 run scoreboard players set rom_amount craftboy 8
+#   03h - 256KByte (16 banks)
+execute if score 328 rom matches 3 run scoreboard players set rom_amount craftboy 16
+#   04h - 512KByte (32 banks)
+execute if score 328 rom matches 4 run scoreboard players set rom_amount craftboy 32
+#   05h -   1MByte (64 banks)  - only 63 banks used by MBC1
+execute if score 328 rom matches 5 run scoreboard players set rom_amount craftboy 64
+#   06h -   2MByte (128 banks) - only 125 banks used by MBC1
+execute if score 328 rom matches 6 run scoreboard players set rom_amount craftboy 128
+#   07h -   4MByte (256 banks)
+execute if score 328 rom matches 7 run scoreboard players set rom_amount craftboy 256
+#   52h - 1.1MByte (72 banks)
+#   53h - 1.2MByte (80 banks)
+#   54h - 1.5MByte (96 banks)
+
+#   00h - None
+execute if score 329 rom matches 0 run scoreboard players set ram_amount craftboy 0
+#   01h - 2 KBytes
+execute if score 329 rom matches 1 run scoreboard players set ram_amount craftboy 1
+#   02h - 8 Kbytes
+execute if score 329 rom matches 2 run scoreboard players set ram_amount craftboy 1
+#   03h - 32 KBytes (4 banks of 8KBytes each)
+execute if score 329 rom matches 3 run scoreboard players set ram_amount craftboy 4
+
+scoreboard players set ram_gate craftboy 0
+scoreboard players set bank_mode craftboy 0
 scoreboard players operation rom_bank craftboy = initial_rom craftboy 
-scoreboard players set rom_bank_lo craftboy 0
+scoreboard players operation rom_bank_lo craftboy = initial_rom craftboy 
 scoreboard players set rom_bank_hi craftboy 0
 scoreboard players set ram_bank craftboy 0
 scoreboard players operation bank craftboy = initial_rom craftboy 
