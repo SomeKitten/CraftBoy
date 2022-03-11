@@ -7,7 +7,7 @@ therefile = "craftboy/functions/load_save.mcfunction"
 save = {}
 
 directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/saves/"
-save.filename = "pkred.sav"
+save.filename = "marioland2glitch.sav"
 
 save.file = io.open(directory .. save.filename, "r")
 save.data = {}
@@ -19,8 +19,12 @@ save.mcfunction = io.open(there .. therefile, "w")
 save.mcfunction:write("say LOADING " .. save.filename .. "\n")
 
 for i = 0, 0x7FFF do
-    save.mcfunction:write("scoreboard players set " .. i .. " sram " ..
-                              save.data[i] .. "\n")
+    if not save.data[i] then
+        save.mcfunction:write("scoreboard players set " .. i .. " sram 255\n")
+    else
+        save.mcfunction:write("scoreboard players set " .. i .. " sram " ..
+                                  save.data[i] .. "\n")
+    end
 end
 
 save.mcfunction:write("scoreboard players set rom_bank_hi craftboy 0\n")

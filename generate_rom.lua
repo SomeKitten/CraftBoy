@@ -4,7 +4,7 @@ rom = {}
 
 directory =
     "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mooneye-gb/emulator-only/mbc1/"
-rom.filename = "rom_16Mb.gb"
+rom.filename = "bits_mode.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
@@ -45,15 +45,31 @@ for i = 0, 0x7FFF do
                                  rom.destination .. " " .. rom.data[i] .. "\n")
 end
 
+-- TODO redo ROM bank swapping
+-- scoreboard players operation ...
 for i = 0, math.floor(#rom.data / 0x4000) do
     local file = io.open(rom.directory .. "functions/bank_" .. i ..
                              ".mcfunction", "w")
 
-    -- file:write("say ROM BANK " .. i .. "\n")
+    file:write("say ROM1 BANK " .. i .. "\n")
 
     pcall(function()
         for j = 0x4000, 0x7FFF do
             file:write("scoreboard players set " .. j .. " rom " ..
+                           rom.data[i * 0x4000 + j - 0x4000] .. "\n")
+        end
+    end)
+
+    file:close()
+
+    file = io.open(rom.directory .. "functions/bank0_" .. i .. ".mcfunction",
+                   "w")
+
+    file:write("say ROM0 BANK " .. i .. "\n")
+
+    pcall(function()
+        for j = 0x4000, 0x7FFF do
+            file:write("scoreboard players set " .. j - 0x4000 .. " rom " ..
                            rom.data[i * 0x4000 + j - 0x4000] .. "\n")
         end
     end)

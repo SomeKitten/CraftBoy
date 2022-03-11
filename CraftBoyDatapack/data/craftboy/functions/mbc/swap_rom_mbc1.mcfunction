@@ -1,7 +1,7 @@
 say SWAP ROM MBC1
 
-scoreboard players operation bank craftboy = rom_bank_hi craftboy
-scoreboard players operation bank craftboy *= 32 constants
+function craftboy:mbc/swap_rom0_mbc1
+
 scoreboard players operation bank craftboy += rom_bank_lo craftboy
 
 tellraw @a [{"score":{"name":"rom_bank_lo","objective":"craftboy"}}]

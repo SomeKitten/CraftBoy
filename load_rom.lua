@@ -6,5 +6,5 @@ dir = "rom_" .. "mooneyegbtest"
 
 os.execute("rm -r \"" .. there .. dir .. "\"")
 os.execute("cp -r " .. here .. dir .. " \"" .. there .. dir .. "\"")
-os.execute("cp " .. here .. dir .. "/functions/bank_*.mcfunction \"" .. there ..
+os.execute("cp " .. here .. dir .. "/functions/bank*.mcfunction \"" .. there ..
                "craftboy/functions/mbc/\"")

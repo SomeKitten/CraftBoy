@@ -147,7 +147,8 @@ scoreboard players set bank_mode craftboy 0
 scoreboard players operation rom_bank craftboy = initial_rom craftboy 
 scoreboard players operation rom_bank_lo craftboy = initial_rom craftboy 
 scoreboard players set rom_bank_hi craftboy 0
-scoreboard players operation bank craftboy = initial_rom craftboy 
+scoreboard players operation bank craftboy = initial_rom craftboy
+function craftboy:mbc/swap_rom0
 function craftboy:mbc/swap_rom
 function craftboy:mbc/swap_ram
 
