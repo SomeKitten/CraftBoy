@@ -23,7 +23,7 @@ for i = 0, 0x7FFF do
                               save.data[i] .. "\n")
 end
 
-save.mcfunction:write("scoreboard players set ram_bank craftboy 0\n")
+save.mcfunction:write("scoreboard players set rom_bank_hi craftboy 0\n")
 save.mcfunction:write("function craftboy:mbc/swap_ram")
 
 save.mcfunction:close()

@@ -2,9 +2,8 @@ util = require "util"
 
 rom = {}
 
-directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mooneye-gb/emulator-only/mbc1/"
-rom.filename = "ram_256kb.gb"
+directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
+rom.filename = "smbdeluxe.gbc"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}

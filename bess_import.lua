@@ -35,7 +35,7 @@ end
 local state = {}
 
 local directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-state.filename = "tetris.s0"
+state.filename = "marioland2glitch.s0"
 
 state.file = io.open(directory .. state.filename, "r")
 state.data = {}
@@ -188,5 +188,6 @@ if mbc_block ~= 0 then
                              state.data[mbc_block + j * 3 + 1] * 256 .. "\n")
         mcfunction:write("scoreboard players set transfer craftboy " ..
                              state.data[mbc_block + j * 3 + 2] .. "\n")
+        mcfunction:write("function craftboy:write/all/main\n")
     end
 end
