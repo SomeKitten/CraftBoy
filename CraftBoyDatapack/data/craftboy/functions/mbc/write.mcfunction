@@ -1,3 +1,6 @@
+# TODO MBC1 0x0000 - 0x3FFF bank switching for MBC1
+# TODO retest and fix MBC3 and MBC5
+
 execute if score index craftboy matches 0..8191 if score 327 rom matches 1..3 run function craftboy:mbc/ram_gate
 execute if score index craftboy matches 0..8191 if score 327 rom matches 15..19 run function craftboy:mbc/ram_gate
 execute if score index craftboy matches 0..8191 if score 327 rom matches 25..30 run function craftboy:mbc/ram_gate
