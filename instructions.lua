@@ -236,7 +236,6 @@ function i.INC8(value)
     w("execute if score " .. value ..
           " matches 256.. run scoreboard players remove " .. value .. " 256")
 
-    --   TODO check HFLAG of all instructions
     -- HFLAG
     i.GET_LO8(value)
 
@@ -522,7 +521,6 @@ function i.ADC_A(value)
     w("scoreboard players operation tmp_ADC_A craftboy += " .. value)
     w("scoreboard players operation tmp_ADC_A craftboy += C flags")
 
-    -- TODO fix flags using overwritten values
     -- HFLAG
     i.GET_LO8("tmp2_ADC_A craftboy")
     i.LD("tmp0_ADC_A craftboy", "out binary")

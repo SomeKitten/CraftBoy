@@ -1,4 +1,3 @@
-# TODO bits in wrong order?
 scoreboard players operation index craftboy = row ppu
 function craftboy:read/tile_vram/main
 scoreboard players operation in binary = transfer craftboy

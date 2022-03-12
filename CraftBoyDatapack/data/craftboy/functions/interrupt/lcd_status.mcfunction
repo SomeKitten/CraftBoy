@@ -1,7 +1,6 @@
 scoreboard players operation in binary = 65345 io
 function craftboy:util/binary_split0
 
-# -- TODO LCD ENABLE/DISABLE
 scoreboard players operation currentmode graphics = mode graphics
 
 scoreboard players set req_int graphics 0
