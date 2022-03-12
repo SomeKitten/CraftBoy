@@ -3,8 +3,8 @@ util = require "util"
 rom = {}
 
 directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mooneye-gb/emulator-only/mbc1/"
-rom.filename = "rom_8Mb.gb"
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mooneye-gb/emulator-only/mbc5/"
+rom.filename = "rom_64Mb.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
