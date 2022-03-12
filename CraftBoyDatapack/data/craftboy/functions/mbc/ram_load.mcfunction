@@ -1,0 +1,16 @@
+execute if score ram_bank craftboy matches 0 run function craftboy:banks/ram_load_0
+execute if score ram_bank craftboy matches 1 run function craftboy:banks/ram_load_1
+execute if score ram_bank craftboy matches 2 run function craftboy:banks/ram_load_2
+execute if score ram_bank craftboy matches 3 run function craftboy:banks/ram_load_3
+execute if score ram_bank craftboy matches 4 run function craftboy:banks/ram_load_4
+execute if score ram_bank craftboy matches 5 run function craftboy:banks/ram_load_5
+execute if score ram_bank craftboy matches 6 run function craftboy:banks/ram_load_6
+execute if score ram_bank craftboy matches 7 run function craftboy:banks/ram_load_7
+execute if score ram_bank craftboy matches 8 run function craftboy:banks/ram_load_8
+execute if score ram_bank craftboy matches 9 run function craftboy:banks/ram_load_9
+execute if score ram_bank craftboy matches 10 run function craftboy:banks/ram_load_10
+execute if score ram_bank craftboy matches 11 run function craftboy:banks/ram_load_11
+execute if score ram_bank craftboy matches 12 run function craftboy:banks/ram_load_12
+execute if score ram_bank craftboy matches 13 run function craftboy:banks/ram_load_13
+execute if score ram_bank craftboy matches 14 run function craftboy:banks/ram_load_14
+execute if score ram_bank craftboy matches 15 run function craftboy:banks/ram_load_15

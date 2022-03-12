@@ -1,8 +1,8 @@
-local folder = "./CraftBoyDatapack/data/craftboy/functions/mbc/"
+local folder = "./CraftBoyDatapack/data/craftboy/functions/banks/"
 
 for i = 0, 15 do
-    local bank = io.open(folder .. "ram_bank_" .. i .. ".mcfunction", "w")
-    -- bank:write("say SWITCHING TO RAM BANK " .. i .. "\n")
+    local bank = io.open(folder .. "ram_load_" .. i .. ".mcfunction", "w")
+    -- bank:write("say LOADING RAM BANK " .. i .. "\n")
 
     for j = 0x0000, 0x1FFF do
         bank:write("scoreboard players operation " .. j + 0xA000 .. " ram = " ..
