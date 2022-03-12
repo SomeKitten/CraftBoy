@@ -216,9 +216,7 @@ with open('./CraftBoyDatapack/data/craftboy/functions/write/all/main.mcfunction'
     f.write(
         'execute if score index craftboy matches 32768..40959 run function craftboy:write/vram/main\n')
     f.write(
-        'execute if score ram_gate craftboy matches 1 unless score 327 rom matches 252 if score index craftboy matches 40960..49151 run function craftboy:write/ram/main\n')
-    f.write(
-        'execute if score 327 rom matches 252 if score index craftboy matches 40960..49151 run say NOT IMPLEMENTED POCKET CAM SRAM\n')
+        'execute if score ram_gate craftboy matches 1 if score index craftboy matches 40960..49151 run function craftboy:write/ram/main\n')
     f.write(
         'execute if score index craftboy matches 49152..65535 run function craftboy:write/all_b/main\n')
 
@@ -226,11 +224,16 @@ with open('./CraftBoyDatapack/data/craftboy/functions/read/all/main.mcfunction',
     f.write(
         'execute if score index craftboy matches 0..40959 run function craftboy:read/all_a/main\n')
     f.write(
-        'execute if score ram_gate craftboy matches 1 if score index craftboy matches 40960..49151 run function craftboy:read/ram/main\n')
-    f.write(
-        'execute if score ram_gate craftboy matches 0 if score index craftboy matches 40960..49151 run scoreboard players set transfer craftboy 255\n')
+        'execute if score index craftboy matches 40960..49151 run function craftboy:read/ram\n')
     f.write(
         'execute if score index craftboy matches 49152..65535 run function craftboy:read/all_b/main\n')
+
+
+with open('./CraftBoyDatapack/data/craftboy/functions/read/ram.mcfunction', 'w') as f:
+    f.write("""
+execute if score ram_gate craftboy matches 1 run function craftboy:read/ram/main
+execute if score ram_gate craftboy matches 0 run scoreboard players set transfer craftboy 255
+""")
 
 
 with open('./CraftBoyDatapack/data/craftboy/functions/write/div.mcfunction', 'w') as f:

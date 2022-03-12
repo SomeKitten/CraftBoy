@@ -3,8 +3,8 @@ util = require "util"
 rom = {}
 
 directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/mooneye-gb/emulator-only/mbc5/"
-rom.filename = "rom_64Mb.gb"
+    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/"
+rom.filename = "cpu_instrs.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}
@@ -35,8 +35,10 @@ rom.mcfunction_rom = io.open(rom.directory .. "functions/" .. rom.name_lower ..
                                  ".mcfunction", "w")
 
 if rom.destination == "bios" then
+    rom.mcfunction_rom:write("scoreboard objectives remove bios\n")
     rom.mcfunction_rom:write("scoreboard objectives add bios dummy\n")
 else
+    rom.mcfunction_rom:write("scoreboard objectives remove full_rom\n")
     rom.mcfunction_rom:write("scoreboard objectives add full_rom dummy\n")
 end
 
