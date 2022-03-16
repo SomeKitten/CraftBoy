@@ -9,4 +9,4 @@ scoreboard players add 65348 io 1
 execute if score 65348 io matches 153.. run scoreboard players set window_count graphics 0
 execute if score 65348 io matches 153.. run scoreboard players set 65348 io 0
 
-execute run scoreboard players add scancount graphics 456
+scoreboard players add scancount graphics 456

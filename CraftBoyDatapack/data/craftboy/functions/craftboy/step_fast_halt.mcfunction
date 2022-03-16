@@ -1,11 +1,6 @@
 execute if score HALT registers matches 0 run function craftboy:craftboy/step_fast
 
 # function compare:parity
-# execute if score inst_count registers matches 14370 run scoreboard players set DEBUG craftboy 1
-# execute if score inst_count registers matches 14400 run scoreboard players set DEBUG craftboy 1
-# execute if score inst_count registers matches 14430 run scoreboard players set DEBUG craftboy 1
-# execute if score rom0_bank craftboy matches 1.. run scoreboard players set DEBUG craftboy 1
-# execute if score HALT registers matches 0 if score DEBUG craftboy matches 0 run scoreboard players add inst_count registers 1
 # execute if score HALT registers matches 0 if score DEBUG craftboy matches 0 run function craftboy:craftboy/step_fast
 
 execute if score HALT registers matches 1 run function craftboy:craftboy/halt

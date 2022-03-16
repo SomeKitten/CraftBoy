@@ -1,3 +1,5 @@
+execute if score PC registers matches 65536.. run scoreboard players operation PC registers %= 65536 constants
+
 scoreboard players add inst_count registers 1
 
 function craftboy:util/get_op

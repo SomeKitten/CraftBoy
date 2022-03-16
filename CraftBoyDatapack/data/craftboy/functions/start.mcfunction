@@ -9,7 +9,7 @@ scoreboard objectives remove graphics
 # scoreboard objectives remove bios
 # scoreboard objectives remove rom
 scoreboard objectives remove vram
-scoreboard objectives remove ram
+# remove RAM later in file
 scoreboard objectives remove wram
 scoreboard objectives remove oam
 scoreboard objectives remove io
@@ -25,7 +25,7 @@ scoreboard objectives add graphics dummy
 scoreboard objectives add bios dummy
 scoreboard objectives add rom dummy
 scoreboard objectives add vram dummy
-scoreboard objectives add ram dummy
+# add ram later in file
 scoreboard objectives add wram dummy
 scoreboard objectives add oam dummy
 scoreboard objectives add io dummy
@@ -118,11 +118,11 @@ function craftboy:mbc/ram_save
 scoreboard players set ram_gate craftboy 0
 scoreboard players set bank_mode craftboy 0
 
-scoreboard players operation bank1 craftboy = initial_rom craftboy
+scoreboard players set bank1 craftboy 1
 scoreboard players set bank2 craftboy 0
 
 scoreboard players set rom0_bank craftboy 0
-scoreboard players operation rom1_bank craftboy = initial_rom craftboy
+scoreboard players set rom1_bank craftboy 1
 scoreboard players set ram_bank craftboy 0
 
 function craftboy:mbc/rom0_update
@@ -130,35 +130,38 @@ function craftboy:mbc/rom1_update
 function craftboy:mbc/ram_load
 
 #   00h -  32KByte (no ROM banking)
-execute if score 328 rom matches 0 run scoreboard players set rom_amount craftboy 0
+execute if score 328 full_rom matches 0 run scoreboard players set rom_amount craftboy 2
 #   01h -  64KByte (4 banks)
-execute if score 328 rom matches 1 run scoreboard players set rom_amount craftboy 4
+execute if score 328 full_rom matches 1 run scoreboard players set rom_amount craftboy 4
 #   02h - 128KByte (8 banks)
-execute if score 328 rom matches 2 run scoreboard players set rom_amount craftboy 8
+execute if score 328 full_rom matches 2 run scoreboard players set rom_amount craftboy 8
 #   03h - 256KByte (16 banks)
-execute if score 328 rom matches 3 run scoreboard players set rom_amount craftboy 16
+execute if score 328 full_rom matches 3 run scoreboard players set rom_amount craftboy 16
 #   04h - 512KByte (32 banks)
-execute if score 328 rom matches 4 run scoreboard players set rom_amount craftboy 32
+execute if score 328 full_rom matches 4 run scoreboard players set rom_amount craftboy 32
 #   05h -   1MByte (64 banks)  - only 63 banks used by MBC1
-execute if score 328 rom matches 5 run scoreboard players set rom_amount craftboy 64
+execute if score 328 full_rom matches 5 run scoreboard players set rom_amount craftboy 64
 #   06h -   2MByte (128 banks) - only 125 banks used by MBC1
-execute if score 328 rom matches 6 run scoreboard players set rom_amount craftboy 128
+execute if score 328 full_rom matches 6 run scoreboard players set rom_amount craftboy 128
 #   07h -   4MByte (256 banks)
-execute if score 328 rom matches 7 run scoreboard players set rom_amount craftboy 256
+execute if score 328 full_rom matches 7 run scoreboard players set rom_amount craftboy 256
 #   52h - 1.1MByte (72 banks)
 #   53h - 1.2MByte (80 banks)
 #   54h - 1.5MByte (96 banks)
-
 #   00h - None
-execute if score 329 rom matches 0 run scoreboard players set ram_amount craftboy 0
+execute if score 329 full_rom matches 0 run scoreboard players set ram_amount craftboy 0
 #   01h - 2 KBytes
-execute if score 329 rom matches 1 run scoreboard players set ram_amount craftboy 1
+execute if score 329 full_rom matches 1 run scoreboard players set ram_amount craftboy 1
 #   02h - 8 Kbytes
-execute if score 329 rom matches 2 run scoreboard players set ram_amount craftboy 1
+execute if score 329 full_rom matches 2 run scoreboard players set ram_amount craftboy 1
 #   03h - 32 KBytes (4 banks of 8KBytes each)
-execute if score 329 rom matches 3 run scoreboard players set ram_amount craftboy 4
+execute if score 329 full_rom matches 3 run scoreboard players set ram_amount craftboy 4
+
+scoreboard objectives remove ram
+scoreboard objectives add ram dummy
 
 scoreboard players set 65344 io 145
+scoreboard players set 65535 interrupt 0
 
 scoreboard players set DEBUG craftboy 0
 

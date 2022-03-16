@@ -1,8 +1,12 @@
-execute if score mode graphics matches 1 run scoreboard players set scancount graphics 0
+scoreboard players operation lcd_enable graphics = 65344 io
+scoreboard players operation lcd_enable graphics /= 128 constants
 
-execute if score mode graphics matches 0 run scoreboard players set scancount graphics 376
-execute if score mode graphics matches 2 run scoreboard players set scancount graphics 204
-execute if score mode graphics matches 3 run scoreboard players set scancount graphics 0
+# TODO put all of these in one file
+execute if score lcd_enable graphics matches 1 if score mode graphics matches 1 run scoreboard players set scancount graphics 0
+execute if score lcd_enable graphics matches 1 if score mode graphics matches 0 run scoreboard players set scancount graphics 376
+execute if score lcd_enable graphics matches 1 if score mode graphics matches 2 run scoreboard players set scancount graphics 204
+execute if score lcd_enable graphics matches 1 if score mode graphics matches 3 run scoreboard players set scancount graphics 0
+
 
 function craftboy:graphics/run
 
