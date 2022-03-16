@@ -1,5 +1,7 @@
 local folder = "./CraftBoyDatapack/data/craftboy/functions/banks/"
 
+os.execute("mkdir " .. folder)
+
 local bank
 for i = 0, 255 do
     if i % 32 == 0 then

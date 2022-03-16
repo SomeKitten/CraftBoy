@@ -1,5 +1,7 @@
 local folder = "./CraftBoyDatapack/data/craftboy/functions/banks/"
 
+os.execute("mkdir " .. folder)
+
 for i = 0, 15 do
     local bank = io.open(folder .. "ram_load_" .. i .. ".mcfunction", "w")
     -- bank:write("say LOADING RAM BANK " .. i .. "\n")

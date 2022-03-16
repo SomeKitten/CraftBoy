@@ -4,6 +4,8 @@ local lookups = require("lookups")
 
 local path = "./CraftBoyDatapack/data/craftboy/functions/instructions/"
 
+os.execute("mkdir " .. path)
+
 local get_d = "function craftboy:util/get_d"
 local get_n = "function craftboy:util/get_n"
 local get_nn = "function craftboy:util/get_nn"

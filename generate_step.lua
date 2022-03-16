@@ -1,5 +1,7 @@
 local directory = "./CraftBoyDatapack/data/craftboy/functions/step/"
 
+os.execute("mkdir " .. directory)
+
 command_step = {
     "execute if score op craftboy matches ",
     " run function craftboy:instructions/", "\n"

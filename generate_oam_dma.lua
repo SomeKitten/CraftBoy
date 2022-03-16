@@ -1,5 +1,7 @@
 local folder = "./CraftBoyDatapack/data/craftboy/functions/dma/"
 
+os.execute("mkdir " .. folder)
+
 local recursions = 0
 
 function recursive(depth, unique_name, min, max)

@@ -182,6 +182,15 @@ if __name__ == '__main__':
         else:
             return 'scoreboard players operation ' + str(i) + ' ' + board + ' = transfer craftboy'
 
+    if not os.path.exists('./CraftBoyDatapack/data/craftboy/functions/read'):
+        os.mkdir('./CraftBoyDatapack/data/craftboy/functions/read')
+    if not os.path.exists('./CraftBoyDatapack/data/craftboy/functions/read/all'):
+        os.mkdir('./CraftBoyDatapack/data/craftboy/functions/read/all')
+    if not os.path.exists('./CraftBoyDatapack/data/craftboy/functions/write'):
+        os.mkdir('./CraftBoyDatapack/data/craftboy/functions/write')
+    if not os.path.exists('./CraftBoyDatapack/data/craftboy/functions/write/all'):
+        os.mkdir('./CraftBoyDatapack/data/craftboy/functions/write/all')
+
     create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/all_a',
                            'craftboy:read/all_a', 'index craftboy', read, (0x0000, 0x9FFF), (False, False), 1, 3)
     create_search_function('./CraftBoyDatapack/data/craftboy/functions/read/ram',
