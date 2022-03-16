@@ -42,12 +42,6 @@ else
     rom.mcfunction_rom:write("scoreboard objectives add full_rom dummy\n")
 end
 
-if rom.data[327] >= 0x19 and rom.data[327] <= 0x1E then
-    rom.mcfunction_rom:write("scoreboard players set initial_rom craftboy 0\n")
-else
-    rom.mcfunction_rom:write("scoreboard players set initial_rom craftboy 1\n")
-end
-
 for i = 0, #rom.data do
     rom.mcfunction_rom:write("scoreboard players set " .. i .. " " ..
                                  rom.destination .. " " .. rom.data[i] .. "\n")

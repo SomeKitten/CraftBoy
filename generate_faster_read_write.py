@@ -134,6 +134,9 @@ if __name__ == '__main__':
             board = "ram"
         if i in range(0xC000, 0xDFFF + 1):
             board = "wram"
+        if i in range(0xE000, 0xFDFF + 1):
+            i = i - 0x2000
+            board = "wram"
         if i in range(0xFE00, 0xFE9F + 1):
             board = "oam"
         if i in range(0xFF00, 0xFF7F + 1):
@@ -159,6 +162,9 @@ if __name__ == '__main__':
         if i in range(0xA000, 0xBFFF + 1):
             board = "ram"
         if i in range(0xC000, 0xDFFF + 1):
+            board = "wram"
+        if i in range(0xE000, 0xFDFF + 1):
+            i = i - 0x2000
             board = "wram"
         if i in range(0xFE00, 0xFE9F + 1):
             board = "oam"

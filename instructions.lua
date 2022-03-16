@@ -74,8 +74,8 @@ end
 
 function i.PUSH(value)
     w("#PUSH")
-    i.GET_HI16(value)
 
+    i.GET_HI16(value)
     i.DEC16("SP registers")
     i.WRITE8("SP registers", "out binary")
 
@@ -94,6 +94,7 @@ function i.PUSH2(value)
 end
 function i.POP(to)
     w("#POP")
+
     i.READ8("SP registers")
     i.INC16("SP registers")
 
@@ -106,6 +107,7 @@ function i.POP(to)
 end
 function i.POP2(to)
     w("#POP")
+
     i.READ8("SP registers")
     i.INC16("SP registers")
 
@@ -1038,13 +1040,11 @@ function i.WRITE8(index, value)
 end
 function i.WRITE16(index, value)
     w("#WRITE16")
-    i.LD("tmp_WRITE16 craftboy", index)
     i.GET_LO16(value)
-    i.WRITE8("tmp_WRITE16 craftboy", "out binary")
+    i.WRITE8(index, "out binary")
 
-    i.INC16("tmp_WRITE16 craftboy")
     i.GET_HI16(value)
-    i.WRITE8("tmp_WRITE16 craftboy", "out binary")
+    i.WRITE8(index, "out binary")
 end
 
 function i.GET_LO8(value)
