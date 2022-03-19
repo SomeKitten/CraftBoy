@@ -6,7 +6,7 @@ execute if score 327 full_rom matches 1..3 if score index craftboy matches 16384
 execute if score 327 full_rom matches 1..3 if score index craftboy matches 24576..32767 run function craftboy:mbc1/mode
 
 execute if score 327 full_rom matches 15..19 if score index craftboy matches 0..8191 run function craftboy:mbc3/ramg
-execute if score 327 full_rom matches 15..19 if score index craftboy matches 8192..16383 run function craftboy:mbc3/full_rom
+execute if score 327 full_rom matches 15..19 if score index craftboy matches 8192..16383 run function craftboy:mbc3/rom
 execute if score 327 full_rom matches 15..19 if score index craftboy matches 16384..24575 run function craftboy:mbc3/ram
 
 execute if score 327 full_rom matches 25..30 if score index craftboy matches 0..8191 run function craftboy:mbc5/ramg

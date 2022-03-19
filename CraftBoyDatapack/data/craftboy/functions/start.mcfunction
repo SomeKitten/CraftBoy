@@ -163,6 +163,7 @@ scoreboard objectives add ram dummy
 scoreboard players set 65344 io 145
 scoreboard players set 65535 interrupt 0
 
+scoreboard players set scancount graphics 456
 scoreboard players set DEBUG craftboy 0
 
 # TEMP
