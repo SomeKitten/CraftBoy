@@ -1,5 +1,3 @@
-# TODO make window not bg overlay, but bg replacement
-
 scoreboard players operation y ppu = window_count graphics
 scoreboard players set x ppu 0
 

@@ -38,14 +38,7 @@ function craftboy:util/binary_split2
 scoreboard players operation in binary = 65351 io
 function craftboy:util/binary_split3
 
-execute if score 1_3 binary matches 0 if score 0_3 binary matches 0 at @s run fill ~ ~ ~ ~159 ~ ~ minecraft:lime_concrete_powder
-execute if score 1_3 binary matches 0 if score 0_3 binary matches 1 at @s run fill ~ ~ ~ ~159 ~ ~ minecraft:lime_concrete
-execute if score 1_3 binary matches 1 if score 0_3 binary matches 0 at @s run fill ~ ~ ~ ~159 ~ ~ minecraft:green_concrete_powder
-execute if score 1_3 binary matches 1 if score 0_3 binary matches 1 at @s run fill ~ ~ ~ ~159 ~ ~ minecraft:green_concrete
-
-
-scoreboard players set sprite_bg_priority ppu 1
-execute if score 1_2 binary matches 1 run function craftboy:ppu/sprites
+execute at @s run fill 0 ~ ~ 159 ~ ~ minecraft:red_concrete
 
 execute if score 0_2 binary matches 1 run function craftboy:ppu/background
 
@@ -53,5 +46,12 @@ execute if score 5_2 binary matches 1 if score 65354 io <= 65348 io if score 653
 
 data modify entity @s Pos[0] set value 0d
 
+scoreboard players set sprite_bg_priority ppu 1
+execute if score 1_2 binary matches 1 run function craftboy:ppu/sprites
 scoreboard players set sprite_bg_priority ppu 0
 execute if score 1_2 binary matches 1 run function craftboy:ppu/sprites
+
+execute at @s if score 1_3 binary matches 0 if score 0_3 binary matches 0 at @s run fill 0 ~ ~ 159 ~ ~ minecraft:lime_concrete_powder replace minecraft:red_concrete
+execute at @s if score 1_3 binary matches 0 if score 0_3 binary matches 1 at @s run fill 0 ~ ~ 159 ~ ~ minecraft:lime_concrete replace minecraft:red_concrete
+execute at @s if score 1_3 binary matches 1 if score 0_3 binary matches 0 at @s run fill 0 ~ ~ 159 ~ ~ minecraft:green_concrete_powder replace minecraft:red_concrete
+execute at @s if score 1_3 binary matches 1 if score 0_3 binary matches 1 at @s run fill 0 ~ ~ 159 ~ ~ minecraft:green_concrete replace minecraft:red_concrete

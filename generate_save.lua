@@ -7,7 +7,7 @@ therefile = "craftboy/functions/load_save.mcfunction"
 save = {}
 
 directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/saves/"
-save.filename = "marioland2glitch.sav"
+save.filename = "pkred.sav"
 
 save.file = io.open(directory .. save.filename, "r")
 save.data = {}
@@ -27,7 +27,7 @@ for i = 0, 0x7FFF do
     end
 end
 
-save.mcfunction:write("scoreboard players set rom_bank_hi craftboy 0\n")
-save.mcfunction:write("function craftboy:mbc/swap_ram")
+save.mcfunction:write("scoreboard players set ram_bank craftboy 0\n")
+save.mcfunction:write("function craftboy:mbc/ram_load")
 
 save.mcfunction:close()

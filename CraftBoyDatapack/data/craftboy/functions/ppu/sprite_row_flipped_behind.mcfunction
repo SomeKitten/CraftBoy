@@ -1,0 +1,138 @@
+scoreboard players operation index craftboy = row ppu
+function craftboy:read/tile_vram/main
+scoreboard players operation in binary = transfer craftboy
+function craftboy:util/binary_split0
+
+
+scoreboard players add index craftboy 1
+function craftboy:read/tile_vram/main
+scoreboard players operation in binary = transfer craftboy
+function craftboy:util/binary_split1
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 0 if score 0_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~0 ~ ~ lime_concrete_powder
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 0 if score 0_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~0 ~ ~ lime_concrete
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 0 if score 0_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~0 ~ ~ green_concrete_powder
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 0 if score 0_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~0 ~ ~ green_concrete
+
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~0 ~ ~ lime_concrete_powder
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~0 ~ ~ lime_concrete
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~0 ~ ~ green_concrete_powder
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~0 ~ ~ green_concrete
+
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~0 ~ ~ lime_concrete_powder
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~0 ~ ~ lime_concrete
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~0 ~ ~ green_concrete_powder
+execute if block ~0 ~ ~ red_concrete if score 0_1 binary matches 1 if score 0_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~0 ~ ~ green_concrete
+
+
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 0 if score 1_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~1 ~ ~ lime_concrete_powder
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 0 if score 1_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~1 ~ ~ lime_concrete
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 0 if score 1_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~1 ~ ~ green_concrete_powder
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 0 if score 1_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~1 ~ ~ green_concrete
+
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~1 ~ ~ lime_concrete_powder
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~1 ~ ~ lime_concrete
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~1 ~ ~ green_concrete_powder
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~1 ~ ~ green_concrete
+
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~1 ~ ~ lime_concrete_powder
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~1 ~ ~ lime_concrete
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~1 ~ ~ green_concrete_powder
+execute if block ~1 ~ ~ red_concrete if score 1_1 binary matches 1 if score 1_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~1 ~ ~ green_concrete
+
+
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 0 if score 2_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~2 ~ ~ lime_concrete_powder
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 0 if score 2_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~2 ~ ~ lime_concrete
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 0 if score 2_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~2 ~ ~ green_concrete_powder
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 0 if score 2_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~2 ~ ~ green_concrete
+
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~2 ~ ~ lime_concrete_powder
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~2 ~ ~ lime_concrete
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~2 ~ ~ green_concrete_powder
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~2 ~ ~ green_concrete
+
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~2 ~ ~ lime_concrete_powder
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~2 ~ ~ lime_concrete
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~2 ~ ~ green_concrete_powder
+execute if block ~2 ~ ~ red_concrete if score 2_1 binary matches 1 if score 2_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~2 ~ ~ green_concrete
+
+
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 0 if score 3_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~3 ~ ~ lime_concrete_powder
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 0 if score 3_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~3 ~ ~ lime_concrete
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 0 if score 3_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~3 ~ ~ green_concrete_powder
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 0 if score 3_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~3 ~ ~ green_concrete
+
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~3 ~ ~ lime_concrete_powder
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~3 ~ ~ lime_concrete
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~3 ~ ~ green_concrete_powder
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~3 ~ ~ green_concrete
+
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~3 ~ ~ lime_concrete_powder
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~3 ~ ~ lime_concrete
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~3 ~ ~ green_concrete_powder
+execute if block ~3 ~ ~ red_concrete if score 3_1 binary matches 1 if score 3_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~3 ~ ~ green_concrete
+
+
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 0 if score 4_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~4 ~ ~ lime_concrete_powder
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 0 if score 4_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~4 ~ ~ lime_concrete
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 0 if score 4_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~4 ~ ~ green_concrete_powder
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 0 if score 4_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~4 ~ ~ green_concrete
+
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~4 ~ ~ lime_concrete_powder
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~4 ~ ~ lime_concrete
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~4 ~ ~ green_concrete_powder
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~4 ~ ~ green_concrete
+
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~4 ~ ~ lime_concrete_powder
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~4 ~ ~ lime_concrete
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~4 ~ ~ green_concrete_powder
+execute if block ~4 ~ ~ red_concrete if score 4_1 binary matches 1 if score 4_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~4 ~ ~ green_concrete
+
+
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 0 if score 5_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~5 ~ ~ lime_concrete_powder
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 0 if score 5_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~5 ~ ~ lime_concrete
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 0 if score 5_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~5 ~ ~ green_concrete_powder
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 0 if score 5_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~5 ~ ~ green_concrete
+
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~5 ~ ~ lime_concrete_powder
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~5 ~ ~ lime_concrete
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~5 ~ ~ green_concrete_powder
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~5 ~ ~ green_concrete
+
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~5 ~ ~ lime_concrete_powder
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~5 ~ ~ lime_concrete
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~5 ~ ~ green_concrete_powder
+execute if block ~5 ~ ~ red_concrete if score 5_1 binary matches 1 if score 5_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~5 ~ ~ green_concrete
+
+
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 0 if score 6_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~6 ~ ~ lime_concrete_powder
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 0 if score 6_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~6 ~ ~ lime_concrete
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 0 if score 6_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~6 ~ ~ green_concrete_powder
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 0 if score 6_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~6 ~ ~ green_concrete
+
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~6 ~ ~ lime_concrete_powder
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~6 ~ ~ lime_concrete
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~6 ~ ~ green_concrete_powder
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~6 ~ ~ green_concrete
+
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~6 ~ ~ lime_concrete_powder
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~6 ~ ~ lime_concrete
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~6 ~ ~ green_concrete_powder
+execute if block ~6 ~ ~ red_concrete if score 6_1 binary matches 1 if score 6_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~6 ~ ~ green_concrete
+
+
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 0 if score 7_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 0 run setblock ~7 ~ ~ lime_concrete_powder
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 0 if score 7_0 binary matches 1 if score 3_3 binary matches 0 if score 2_3 binary matches 1 run setblock ~7 ~ ~ lime_concrete
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 0 if score 7_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 0 run setblock ~7 ~ ~ green_concrete_powder
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 0 if score 7_0 binary matches 1 if score 3_3 binary matches 1 if score 2_3 binary matches 1 run setblock ~7 ~ ~ green_concrete
+
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 0 run setblock ~7 ~ ~ lime_concrete_powder
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 0 if score 5_3 binary matches 0 if score 4_3 binary matches 1 run setblock ~7 ~ ~ lime_concrete
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 0 run setblock ~7 ~ ~ green_concrete_powder
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 0 if score 5_3 binary matches 1 if score 4_3 binary matches 1 run setblock ~7 ~ ~ green_concrete
+
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 0 run setblock ~7 ~ ~ lime_concrete_powder
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 1 if score 7_3 binary matches 0 if score 6_3 binary matches 1 run setblock ~7 ~ ~ lime_concrete
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 0 run setblock ~7 ~ ~ green_concrete_powder
+execute if block ~7 ~ ~ red_concrete if score 7_1 binary matches 1 if score 7_0 binary matches 1 if score 7_3 binary matches 1 if score 6_3 binary matches 1 run setblock ~7 ~ ~ green_concrete
+
+
