@@ -1,5 +1,3 @@
-# TODO remake MBC3
-
 execute if score 327 full_rom matches 1..3 if score index craftboy matches 0..8191 run function craftboy:mbc1/ramg
 execute if score 327 full_rom matches 1..3 if score index craftboy matches 8192..16383 run function craftboy:mbc1/bank1
 execute if score 327 full_rom matches 1..3 if score index craftboy matches 16384..24575 run function craftboy:mbc1/bank2
