@@ -34,8 +34,8 @@ end
 
 local state = {}
 
-local directory = "/home/kitten/プロジェクト/Gameboy/Badboy/tests/"
-state.filename = "marioland2glitch.s0"
+local directory = "/home/kitten/プロジェクト/Roms/Gameboy/"
+state.filename = "pkred.s0"
 
 state.file = io.open(directory .. state.filename, "r")
 state.data = {}
@@ -49,19 +49,21 @@ local core_block = 0
 -- TODO redo core block detection
 local i = 0
 while true do
-    if state.data[i] == 0x47 and state.data[i + 1] == 0x44 and state.data[i + 2] ==
-        0x42 then
+    if state.data[i] == 0x43 and state.data[i + 1] == 0x4F and state.data[i + 2] ==
+        0x52 and state.data[i + 3] == 0x45 then
         if core_block ~= 0 then
             print("ERROR: Multiple core blocks found")
         end
 
-        core_block = i - 0x04
+        core_block = i + 0x08
     end
 
     i = i + 1
 
     if state.data[i] == nil then break end
 end
+
+print(core_block)
 
 local PC = state.data[core_block + 0x08] + state.data[core_block + 0x08 + 1] *
                256
@@ -77,8 +79,7 @@ local SP = state.data[core_block + 0x12] + state.data[core_block + 0x12 + 1] *
                256
 local IME = state.data[core_block + 0x14] % 2
 local IE = state.data[core_block + 0x15]
-local IF = state.data[core_block + 0x16]
-local HALT = state.data[core_block + 0x17] == 1 and 1 or 0
+local HALT = state.data[core_block + 0x16] == 1 and 1 or 0
 
 local WRAM_size = read32little(state.data, core_block + 0x98)
 local WRAM_offset = read32little(state.data, core_block + 0x9C)
@@ -104,10 +105,13 @@ mcfunction:write("say LOADING " .. state.filename .. "\n")
 
 for j = 0, 0x7F do
     local index = 0xFF00 + j
-    mcfunction:write("scoreboard players set index craftboy " .. index .. "\n")
-    mcfunction:write("scoreboard players set transfer craftboy " ..
-                         state.data[core_block + 0x18 + j] .. "\n")
-    mcfunction:write("function craftboy:write/all/main\n")
+    if index ~= 0xFF46 then
+        mcfunction:write("scoreboard players set index craftboy " .. index ..
+                             "\n")
+        mcfunction:write("scoreboard players set transfer craftboy " ..
+                             state.data[core_block + 0x18 + j] .. "\n")
+        mcfunction:write("function craftboy:write/all/main\n")
+    end
 end
 
 for j = 0, WRAM_size - 1 do
@@ -163,7 +167,7 @@ mcfunction:write("scoreboard players set SP registers " .. SP .. "\n")
 mcfunction:write("scoreboard players set IME registers " .. IME .. "\n")
 mcfunction:write("scoreboard players set HALT registers " .. HALT .. "\n")
 mcfunction:write("scoreboard players set 65535 interrupt " .. IE .. "\n")
-mcfunction:write("scoreboard players set 65295 io " .. IF .. "\n")
+-- mcfunction:write("scoreboard players set 65295 io " .. IF .. "\n")
 
 local mbc_block = 0
 

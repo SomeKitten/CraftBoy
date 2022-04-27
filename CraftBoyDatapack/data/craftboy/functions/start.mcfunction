@@ -1,7 +1,7 @@
 gamerule maxCommandChainLength 2147483647
 
 # scoreboard objectives remove craftboy
-scoreboard objectives remove registers
+# scoreboard objectives remove registers
 scoreboard objectives remove ppu
 scoreboard objectives remove flags
 scoreboard objectives remove graphics
@@ -87,6 +87,8 @@ scoreboard players set H registers 1
 scoreboard players set L registers 77
 scoreboard players set SP registers 65534
 
+function rom:rom
+
 function craftboy:craftboy/unmap_boot
 scoreboard players set PC registers 256
 scoreboard players set DIV timer 0
@@ -125,10 +127,6 @@ scoreboard players set rom0_bank craftboy 0
 scoreboard players set rom1_bank craftboy 1
 scoreboard players set ram_bank craftboy 0
 
-function craftboy:mbc/rom0_update
-function craftboy:mbc/rom1_update
-function craftboy:mbc/ram_load
-
 #   00h -  32KByte (no ROM banking)
 execute if score 328 full_rom matches 0 run scoreboard players set rom_amount craftboy 2
 #   01h -  64KByte (4 banks)
@@ -159,6 +157,10 @@ execute if score 329 full_rom matches 3 run scoreboard players set ram_amount cr
 
 scoreboard objectives remove ram
 scoreboard objectives add ram dummy
+
+function craftboy:mbc/rom0_update
+function craftboy:mbc/rom1_update
+function craftboy:mbc/ram_load
 
 scoreboard players set 65344 io 145
 scoreboard players set 65535 interrupt 0

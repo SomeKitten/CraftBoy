@@ -1,4 +1,4 @@
-fill 0 -63 0 159 -63 143 minecraft:lime_concrete_powder
+execute if score lcd_enable_prev graphics matches 1 run fill 0 -63 0 159 -63 143 minecraft:lime_concrete_powder
 scoreboard players operation 65345 io /= 4 constants
 scoreboard players operation 65345 io *= 4 constants
 scoreboard players set scancount graphics 456

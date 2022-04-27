@@ -1,6 +1,3 @@
-scoreboard players operation lcd_enable graphics = 65344 io
-scoreboard players operation lcd_enable graphics /= 128 constants
-
 execute if score lcd_enable graphics matches 1 run function craftboy:craftboy/halt_scancount
 
 function craftboy:graphics/run

@@ -1,3 +1,5 @@
+function craftboy:interrupt/lcd_status
+
 scoreboard players operation t_cycles craftboy = m_cycles craftboy
 scoreboard players operation t_cycles craftboy *= 4 constants
 scoreboard players operation scancount graphics -= t_cycles craftboy

@@ -2,4 +2,4 @@ scoreboard players operation in binary = 65295 io
 function craftboy:util/binary_split4
 scoreboard players set 0_4 binary 1
 function craftboy:util/binary_join4
-scoreboard players operation 65295 io = out binary
+execute if score lcd_enable graphics matches 1 run scoreboard players operation 65295 io = out binary
