@@ -48,9 +48,7 @@ function recursive(depth, unique_name, min, max)
 end
 
 function get_area(i)
-    if i < 0x00FF then
-        return "bios"
-    elseif i < 0x7FFF then
+    if i < 0x7FFF then
         return "rom"
     elseif i < 0x9FFF then
         return "vram"

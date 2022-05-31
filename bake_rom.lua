@@ -2,9 +2,8 @@ util = require "util"
 
 rom = {}
 
-directory =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/"
-rom.filename = "cpu_instrs.gb"
+directory = "/home/kitten/プロジェクト/Roms/Gameboy/"
+rom.filename = "pkred.gb"
 
 rom.file = io.open(directory .. rom.filename, "r")
 rom.data = {}

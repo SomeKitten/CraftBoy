@@ -19,8 +19,8 @@ execute if score PC registers matches 65536.. run scoreboard players operation P
 
 scoreboard players add inst_count registers 1
 
-function craftboy:util/get_op
+execute if score PC registers matches ..32767 run function craftboy:util/rom_instruction
+execute if score PC registers matches 32768.. run function craftboy:util/instruction
 
-function craftboy:step/0_0
 execute if score enable_timer craftboy matches 1 run function craftboy:timer/tick_fast
 function craftboy:graphics/run

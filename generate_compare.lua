@@ -9,7 +9,7 @@ start = 0
 txt_name = "06.txt"
 
 filename =
-    "/home/kitten/プロジェクト/Gameboy/Badboy/tests/blargg/cpu_instrs/individual/" ..
+    "/home/kitten/プロジェクト/Roms/Gameboy/blargg/cpu_instrs/individual/" ..
         txt_name
 
 in_file = io.open(filename, "r")
